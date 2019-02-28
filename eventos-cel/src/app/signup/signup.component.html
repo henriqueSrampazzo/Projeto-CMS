@@ -1,0 +1,45 @@
+<div class="container">
+  <br>
+    <div class="row justify-content-center">
+    <div class="col-md-6">
+    <div class="card">
+    <header class="card-header">
+      <h4 class="card-title mt-2">Cadastre-se</h4>
+    </header>
+    <article class="card-body">
+    <form>
+      <div class="form-row">
+        <div class="col form-group">
+          <label>Nome</label>   
+            <input type="text" class="form-control" [(ngModel)]="user.name" name="name">
+        </div> <!-- form-group end.// -->
+        <div class="col form-group">
+          <label>Login</label>
+            <input type="text" class="form-control" [(ngModel)]="user.username" name="username">
+        </div> <!-- form-group end.// -->
+      </div> <!-- form-row end.// -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
+        <small class="form-text text-muted">Nós nunca vamos compartilhar seu email com alguém.</small>
+      </div> <!-- form-group end.// -->
+      <div class="form-group">
+        <label>Senha</label>
+          <input class="form-control" type="password" [(ngModel)]="user.password" name="password">
+      </div> <!-- form-group end.// -->  
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" (click)="signup()"> Registrar  </button>
+        </div> <!-- form-group// -->      
+        <small class="text-muted">Clicando no botão "Cadastrar", você concorda com <br> os termos de uso e políticas de privacidade.</small>                                          
+    </form>
+    </article> <!-- card-body end .// -->
+    <div class="border-top card-body text-center">Já tem uma conta? <a routerLink="../login">Entrar</a></div>
+    </div> <!-- card.// -->
+    </div> <!-- col.//-->
+    
+    </div> <!-- row.//-->
+    
+    
+    </div> 
+    <!--container end.//-->
+    <router-outlet></router-outlet>

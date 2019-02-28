@@ -1,0 +1,24 @@
+
+<br><br><br>
+<div class="card" style="width:18rem">
+  <img class="card-img-top" src="http://lorempixel.com/400/200/" alt="Card image cap">
+
+  <div class="card-content white-text">
+    <h5 class="card-title">{{event?.title}}</h5>
+    <p class="card-text">{{event?.description}}</p>
+  </div>
+  <div class="card-action">
+    <a class="btn btn-primary" [routerLink]="['event', event.id]">Ver Evento</a>
+  </div>
+</div>
+
+
+
+<!-- <div class="card" style="width: 18rem; ">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text".</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> -->

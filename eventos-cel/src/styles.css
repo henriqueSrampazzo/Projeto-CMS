@@ -1,0 +1,15 @@
+
+
+.back{
+
+    /* background-color: rgba(192, 186, 186, 0.678); */
+    background: no-repeat;
+    background-size: cover;
+    background-image: linear-gradient(to bottom , gray, rgb(238, 238, 238));
+    
+
+}
+
+.espaco{
+    padding-top: 27.5%;
+}
