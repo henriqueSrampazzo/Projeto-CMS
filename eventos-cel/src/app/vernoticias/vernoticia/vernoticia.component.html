@@ -1,0 +1,12 @@
+<br><br><br>
+<div class="card" style="width:18rem">
+  <img class="card-img-top" [src]="noticia?.photo1" alt="Card image cap">
+
+  <div class="card-content white-text">
+    <h5 class="card-title">{{noticia?.title}}</h5>
+    <p class="card-text">{{noticia?.description}}</p>
+  </div>
+  <div class="card-action">
+    <a class="btn btn-primary" [routerLink]="['noticia', noticia.id]">Ver Notícia</a>
+  </div>
+</div>

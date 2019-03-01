@@ -27,7 +27,6 @@ export class SignupComponent implements OnInit {
              .subscribe(res => {
                //toastr.success(res.msg, 'Sucesso');
                alert('Cadastrado com sucesso');
-
              });
   }
 

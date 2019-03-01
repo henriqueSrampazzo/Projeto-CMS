@@ -11,6 +11,7 @@ use JMS\Serializer\Annotation as JMS;
  * @ORM\Table("noticias")
  * @ORM\Entity
  */
+
 class Noticia implements Entity
 {
     /**
@@ -74,7 +75,7 @@ class Noticia implements Entity
     /**
      * @JMS\Groups({"list"})
      *
-     * @ORM\Column(name="postDate", type="string")
+     * @ORM\Column(name="postDate", type="datetime")
      */
     private $postDate;
 
@@ -144,7 +145,24 @@ class Noticia implements Entity
      */
     public function setPhoto1($photo1)
     {
-        $this->photo1 = $photo1;
+
+
+    // $uploaddir = './pasta';
+    // $uploadfile = $uploaddir.basename($_FILES['photo1'][$photo1]);
+
+    // // Move the uploaded file to the new location on the server. The move_uploaded_file returns true if successful or false if not, hence the if-else statement
+    // if (move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadfile)) {
+    //     echo "File is valid, and was successfully uploaded.";
+    // } else {
+    //     echo "Error uploading file!";
+    // }
+
+       $this->photo1 = $photo1;
+       move_uploaded_file($photo1, "/pasta");
+        $photomod1;
+        $photomod1 = substr($photo1, 12);
+        $this->photo1 = "pasta/".time().mt_rand().$photomod1;
+
     }
 
 
@@ -161,8 +179,16 @@ class Noticia implements Entity
      */
     public function setPhoto2($photo2)
     {
+        if (empty($photo2)) {
+                $photovazia="";
+                $this->photo2=$photovazia;     
+        } else{
         $this->photo2 = $photo2;
+        $photomod2;
+        $photomod2 = substr($photo2, 12);
+        $this->photo2 = "pasta/".time().mt_rand().$photomod2;
     }
+}
 
     /**
      * @return mixed
@@ -178,6 +204,9 @@ class Noticia implements Entity
     public function setPhoto3($photo3)
     {
         $this->photo3 = $photo3;
+        $photomod3;
+        $photomod3 = substr($photo3, 12);
+        $this->photo3 = "pasta/".time().mt_rand().$photomod3;
     }
 
     /**
@@ -194,6 +223,9 @@ class Noticia implements Entity
     public function setPhoto4($photo4)
     {
         $this->photo4 = $photo4;
+        $photomod4;
+        $photomod4 = substr($photo4, 12);
+        $this->photo4 = "pasta/".time().mt_rand().$photomod4;
     }
 
     /**
@@ -210,6 +242,9 @@ class Noticia implements Entity
     public function setPhoto5($photo5)
     {
         $this->photo5 = $photo5;
+        $photomod5;
+        $photomod5 = substr($photo5, 12);
+        $this->photo5 = "pasta/".time().mt_rand().$photomod5;
     }
     /**
      * @return mixed

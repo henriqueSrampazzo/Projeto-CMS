@@ -22,20 +22,28 @@ import { PainelComponent } from './painel/painel.component';
 import { UserEventsComponent } from './painel/user-events/user-events.component';
 import { AuthGuard } from './guard/auth.guard';
 import { EventComponent } from './events/event/event.component';
+import { NoticiasComponent } from './noticias/noticias.component';
+import { VerNoticiasComponent } from './vernoticias/vernoticias.component';
+import { VerNoticiaComponent } from './vernoticias/vernoticia/vernoticia.component';
+import { NoticiaSingleComponent } from './vernoticias/noticiasingle/noticia-single.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MeucomponentComponent,
     EventsComponent,
+    EventComponent,
     EventSingleComponent,
+    VerNoticiasComponent,
+    VerNoticiaComponent,
+    NoticiaSingleComponent,
     SignupComponent,
     LoginComponent,
     MakeSubscriptionComponent,
     ConfirmComponent,
     PainelComponent,
     UserEventsComponent,
-    EventComponent
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,
