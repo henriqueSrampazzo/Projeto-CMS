@@ -1,0 +1,62 @@
+<div class="container">
+  <br>
+    <div class="row justify-content-center">
+    <div class="col-md-10">
+    <div class="card">
+    <header class="card-header">
+      <h4 class="card-title mt-2">Cadastre uma notícia</h4>
+    </header>
+    <article class="card-body">
+    <form enctype="multipart/form-data">
+      <div class="form-row">
+        <div class="col form-group">
+          <label>Título</label>   
+            <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title">
+        </div> <!-- form-group end.// -->
+      </div> <!-- form-row end.// -->
+
+      <div class="form-row">
+        <div class="col form-group">
+          <label>Descrição</label>
+            <textarea class="form-control" [(ngModel)]="noticia.description" name="description" rows="10"></textarea>
+        </div> <!-- form-group end.// -->
+      </div>
+
+      <div class="form-group row">
+          <div class="col-md-3">
+        <label for="photo1">Foto 1</label>
+        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo1" name="photo1" id="photo1">
+      </div>
+      <div class="col-md-3">
+        <label for="photo2">Foto 2</label>
+        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo2" name="photo2">
+     </div>
+     <div class="col-md-3">
+        <label for="photo2">Foto 2</label>
+        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo2" name="photo2">
+     </div>
+     <div class="col-md-3">
+        <label for="photo2">Foto 2</label>
+        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo2" name="photo2">
+     </div>
+     <br><br><br>
+     <div class="container">
+     <small class="text-muted">(Máximo 5 fotos)</small>
+    </div>  
+    </div> <!-- form-group end.// -->
+        <div class="form-group row ">
+            <div class="col-md-3 ">
+            <button type="submit" class="btn btn-primary btn-block " (click)="cadastranoticia()"> Registrar notícia </button>
+        </div>
+          </div> <!-- form-group// -->      
+    </form>
+    </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+    </div> <!-- col.//-->
+    
+    </div> <!-- row.//-->
+    
+    
+    </div> 
+    <!--container end.//-->
+    <router-outlet></router-outlet>

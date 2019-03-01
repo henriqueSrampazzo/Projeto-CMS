@@ -13,7 +13,7 @@ class NoticiaController extends BaseController
 	public function index()
 	{
 		$noticias = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Event')
+			->getRepository('CodeExperts\Entity\Noticia')
 			->findAll();
 
 		$build = SerializerBuilder::create()->build();
@@ -50,6 +50,7 @@ class NoticiaController extends BaseController
 
 	public function save(Request $request)
 	{
+		
 		$data = $request->request->all();
 
 		$noticia = new Noticia();

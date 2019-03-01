@@ -10,19 +10,25 @@ import { ConfirmComponent } from '../make-subscription/confirm/confirm.component
 import { PainelComponent } from './../painel/painel.component';
 import { UserEventsComponent } from '../painel/user-events/user-events.component';
 import { AuthGuard } from '../guard/auth.guard';
+import { NoticiasComponent } from '../noticias/noticias.component'
+import { NoticiaSingleComponent } from '../vernoticias/noticiasingle/noticia-single.component';
+import { VerNoticiasComponent } from '../vernoticias/vernoticias.component';
 
 const appRoutes: Routes = [
   {path: 'event/:slug', component: EventSingleComponent},
+  {path: 'noticia/:slug', component: NoticiaSingleComponent},
   {path: 'signup', component: SignupComponent},
+  {path: 'cadastranoticia', component: NoticiasComponent},
   {path: 'login', component: LoginComponent},
   {path: 'make-subscription', component: MakeSubscriptionComponent},
-  { path: 'make-subscription/confirm', component: ConfirmComponent },
+  {path: 'make-subscription/confirm', component: ConfirmComponent },
   {path: 'painel', component: PainelComponent, children: [
       {path: 'events', component: UserEventsComponent}
     ],
     canActivate: [AuthGuard]
   },
-  {path: '', component: EventsComponent}
+  // {path: '', component: EventsComponent},
+  {path: '', component: VerNoticiasComponent}
 ];
 
 @NgModule({
