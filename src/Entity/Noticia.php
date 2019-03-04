@@ -156,13 +156,16 @@ class Noticia implements Entity
     // } else {
     //     echo "Error uploading file!";
     // }
-
+        if (empty($photo1)) {
+                $photovazia="";
+                $this->photo1=$photovazia;     
+        } else{
        $this->photo1 = $photo1;
        move_uploaded_file($photo1, "/pasta");
         $photomod1;
         $photomod1 = substr($photo1, 12);
-        $this->photo1 = "pasta/".time().mt_rand().$photomod1;
-
+        $this->photo1 = "../../.././assets/".time().mt_rand().$photomod1;
+}
     }
 
 
@@ -186,7 +189,7 @@ class Noticia implements Entity
         $this->photo2 = $photo2;
         $photomod2;
         $photomod2 = substr($photo2, 12);
-        $this->photo2 = "pasta/".time().mt_rand().$photomod2;
+        $this->photo2 = "../../.././assets/".time().mt_rand().$photomod2;
     }
 }
 
@@ -202,11 +205,16 @@ class Noticia implements Entity
      * @param mixed $photo3
      */
     public function setPhoto3($photo3)
-    {
+    {        
+        if (empty($photo3)) {
+        $photovazia="";
+        $this->photo3=$photovazia;     
+        } else{
         $this->photo3 = $photo3;
         $photomod3;
         $photomod3 = substr($photo3, 12);
-        $this->photo3 = "pasta/".time().mt_rand().$photomod3;
+        $this->photo3 = "../../.././assets/".time().mt_rand().$photomod3;
+    }
     }
 
     /**
@@ -222,11 +230,25 @@ class Noticia implements Entity
      */
     public function setPhoto4($photo4)
     {
+
+        if (empty($photo4)) {
+        $photovazia="";
+        $this->photo4=$photovazia;     
+        } else{
+
+
         $this->photo4 = $photo4;
         $photomod4;
         $photomod4 = substr($photo4, 12);
-        $this->photo4 = "pasta/".time().mt_rand().$photomod4;
+        
+        $images  = $_FILES[$photo4]; // pega imformações de todas imagens    
+        // $uploaddir  = './../.././eventos-cel/src/assets'; //endereço onde vai salvar os arquivos
+        // $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+
+
+        $this->photo4 = "../../.././assets/".time().mt_rand().$photomod4;
     }
+}
 
     /**
      * @return mixed
@@ -241,11 +263,16 @@ class Noticia implements Entity
      */
     public function setPhoto5($photo5)
     {
+        if (empty($photo5)) {
+        $photovazia="";
+        $this->photo5=$photovazia;     
+        } else{
         $this->photo5 = $photo5;
         $photomod5;
         $photomod5 = substr($photo5, 12);
-        $this->photo5 = "pasta/".time().mt_rand().$photomod5;
+        $this->photo5 = "../../.././assets/".time().mt_rand().$photomod5;
     }
+}
     /**
      * @return mixed
      */

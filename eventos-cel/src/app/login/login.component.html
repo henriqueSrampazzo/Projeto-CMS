@@ -1,52 +1,32 @@
 <div class="container">
-	<br>
-	<div class="row justify-content-center">
-		<div class="col-md-6">
-			<div class="card">
-				<header class="card-header">
-					<h4 class="card-title mt-2">Acesse sua conta</h4>
-				</header>
-				<article class="card-body">
-					<form>
-						<div class="form-group">
-							<label>Email</label>
-							<input type="email" class="form-control" [(ngModel)]="user.email" name="email">
-						</div>
-						<div class="form-group">
-							<label>Senha</label>
-							<input class="form-control" type="password" [(ngModel)]="user.password" name="password">
-						</div>
-						<div class="form-group">
-							
-							<br>
-
-								<div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-									<br>
-
-							<button type="submit" class="btn btn-primary " (click)="login()"> Entrar </button>
-						</div>
-					</form>
-				</article>
-			</div>
-		</div>
-
-	</div>
-
-
-</div>
-
-
-
-
-
-<!-- <script>
-
-	function onSignIn(googleUser) {
-		var profile = googleUser.getBasicProfile();
-		console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-		console.log('Name: ' + profile.getName());
-		console.log('Image URL: ' + profile.getImageUrl());
-		console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-	}
-</script> -->
+  <br>
+    <div class="row justify-content-center">
+    <div class="col-md-6">
+    <div class="card">
+    <header class="card-header">
+      <h4 class="card-title mt-2">Acesse sua conta</h4>
+    </header>
+    <article class="card-body">
+    <form>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
+      </div> <!-- form-group end.// -->
+      <div class="form-group">
+        <label>Senha</label>
+          <input class="form-control" type="password" [(ngModel)]="user.password" name="password">
+      </div> <!-- form-group end.// -->  
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" (click)="login()"> Entrar  </button>
+        </div> <!-- form-group// -->                                      
+    </form>
+    </article> <!-- card-body end .// -->
+    </div> <!-- card.// -->
+    </div> <!-- col.//-->
+    
+    </div> <!-- row.//-->
+    
+    
+    </div> 
+    <!--container end.//-->
+    

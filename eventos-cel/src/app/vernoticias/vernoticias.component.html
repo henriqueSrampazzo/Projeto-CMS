@@ -1,9 +1,14 @@
-<div class="container">
-
-<div class="row">
-  <div class="col-sm " *ngFor="let noticia of noticias">
+<br><br><br>
+<div class="centralizar">  
+<pagination-controls (pageChange)="p = $event"  maxSize="5" responsive="true" previousLabel="Anterior"
+nextLabel="Próxima"></pagination-controls>
+</div>  
+<div class="centralizar">  
+  <br>
+  <div class="col-sm-3" *ngFor="let noticia of noticias | paginate: { itemsPerPage: 12, totalItems: total, currentPage:p}">
     <app-vernoticia [noticia]="noticia"></app-vernoticia>
   </div>
-</div>
-
+  <br><br><br>
+  <div class="centralizar">  
+      </div>  
 </div>

@@ -13,7 +13,6 @@ import { AuthGuard } from '../guard/auth.guard';
 import { NoticiasComponent } from '../noticias/noticias.component'
 import { NoticiaSingleComponent } from '../vernoticias/noticiasingle/noticia-single.component';
 import { VerNoticiasComponent } from '../vernoticias/vernoticias.component';
-import { ContatoComponent } from '../contato/contato.component';
 
 const appRoutes: Routes = [
   {path: 'event/:slug', component: EventSingleComponent},
@@ -23,9 +22,8 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'make-subscription', component: MakeSubscriptionComponent},
   {path: 'make-subscription/confirm', component: ConfirmComponent },
-  {path: 'contato', component: ContatoComponent},
   {path: 'painel', component: PainelComponent, children: [
-  {path: 'events', component: UserEventsComponent}
+      {path: 'events', component: UserEventsComponent}
     ],
     canActivate: [AuthGuard]
   },

@@ -57,12 +57,10 @@
     }
   },
   "defaults": {
-
     "styleExt": "css",
     "component": {},
-
-    "serve":{
-      "port": 8080 ,
+        "serve": {
+      "port": 8080,
       "host": "lvh.me"
     }
   }

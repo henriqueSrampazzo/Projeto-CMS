@@ -1,12 +1,15 @@
-<br><br><br>
-<div class="card" style="width:18rem">
-  <img class="card-img-top" [src]="noticia?.photo1" alt="Card image cap">
-
-  <div class="card-content white-text">
+<br>
+<div class="centralizar">
+<div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:30rem"> 
+  <img class="card-img-top" [src]="noticia?.photo1" alt="Capa notícia">
+<br>
+  <div class="card-content white-text container centralizaTitle">
     <h5 class="card-title">{{noticia?.title}}</h5>
-    <p class="card-text">{{noticia?.description}}</p>
   </div>
-  <div class="card-action">
+  <br>
+  <div class="card-action centralizar">
     <a class="btn btn-primary" [routerLink]="['noticia', noticia.id]">Ver Notícia</a>
   </div>
+  <br>
+</div>
 </div>

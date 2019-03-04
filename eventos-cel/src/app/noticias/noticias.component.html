@@ -1,7 +1,7 @@
 <div class="container">
   <br>
     <div class="row justify-content-center">
-    <div class="col-md-10">
+    <div class="col-md-12">
     <div class="card">
     <header class="card-header">
       <h4 class="card-title mt-2">Cadastre uma notícia</h4>
@@ -23,22 +23,26 @@
       </div>
 
       <div class="form-group row">
-          <div class="col-md-3">
+          <div class="col-sm-2">
         <label for="photo1">Foto 1</label>
         <input type="file" class="form-control-file" [(ngModel)]="noticia.photo1" name="photo1" id="photo1">
       </div>
-      <div class="col-md-3">
+      <div class="col-sm-2">
         <label for="photo2">Foto 2</label>
         <input type="file" class="form-control-file" [(ngModel)]="noticia.photo2" name="photo2">
      </div>
-     <div class="col-md-3">
-        <label for="photo2">Foto 2</label>
-        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo2" name="photo2">
+     <div class="col-sm-2">
+        <label for="photo2">Foto 3</label>
+        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo3" name="photo3">
      </div>
-     <div class="col-md-3">
-        <label for="photo2">Foto 2</label>
-        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo2" name="photo2">
+     <div class="col-sm-2">
+        <label for="photo2">Foto 4</label>
+        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo4" name="photo4">
      </div>
+     <div class="col-sm-2">
+      <label for="photo2">Foto 5</label>
+      <input type="file" class="form-control-file" [(ngModel)]="noticia.photo5" name="photo5">
+   </div>
      <br><br><br>
      <div class="container">
      <small class="text-muted">(Máximo 5 fotos)</small>

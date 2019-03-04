@@ -1,15 +1,53 @@
-
-
 .back{
+    background-image: linear-gradient(blue);
+}
 
-    /* background-color: rgba(192, 186, 186, 0.678); */
-    background: no-repeat;
-    background-size: cover;
-    background-image: linear-gradient(to bottom ,rgb(55, 59, 67), rgb(255, 248, 248));
-    background-position-y: 55px;
-
+.background{
+    background-color:  #242435;
+}
+.faixadebaixo{
+    background-color:  #00000065;
 }
 
 .espaco{
     padding-top: 27.5%;
+}
+
+.txt{
+    color: white;
+    text-decoration: none;
+}
+
+.txt a{
+    color: white;
+    text-decoration: none;
+}
+
+.desc{
+    margin-left: 25%;
+    margin-right: 25%;
+
+}
+
+@media(max-width:741px){
+.logo{
+    width:75px; 
+    margin-left: 40%;
+}
+}
+@media(min-width:741px){
+    .logo{
+        width:75px; 
+        margin-left: 40%;
+    }
+    }
+    @media(min-width:768px){
+        .logo{
+            width:75px; 
+            margin-left: 46%;
+        }
+        }
+
+.fundoFooter{
+    background-color: #6351ce;
 }

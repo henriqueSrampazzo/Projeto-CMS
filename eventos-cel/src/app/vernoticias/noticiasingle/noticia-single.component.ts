@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpService } from '../../http.service';
 import { StorageService } from '../../storage.service';
 import { Router } from '@angular/router';
-import { VerNoticiaComponent } from '../vernoticia/vernoticia.component';
 
 @Component({
   selector: 'app-noticia-single',
@@ -12,7 +11,7 @@ import { VerNoticiaComponent } from '../vernoticia/vernoticia.component';
 })
 export class NoticiaSingleComponent implements OnInit {
   private noticia: {};
-  @Input() dados: {};
+
 
   constructor(
     private route: ActivatedRoute,
@@ -26,8 +25,6 @@ export class NoticiaSingleComponent implements OnInit {
     this.route.params.subscribe(params => {
         this.httpService.getBy('noticias', params['slug'])
             .subscribe(data => this.noticia = data);
-          
-        
     });
 }
   

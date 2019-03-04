@@ -26,8 +26,7 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { VerNoticiasComponent } from './vernoticias/vernoticias.component';
 import { VerNoticiaComponent } from './vernoticias/vernoticia/vernoticia.component';
 import { NoticiaSingleComponent } from './vernoticias/noticiasingle/noticia-single.component';
-import { ContatoComponent } from './contato/contato.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -45,15 +44,15 @@ import { ContatoComponent } from './contato/contato.component';
     ConfirmComponent,
     PainelComponent,
     UserEventsComponent,
-    NoticiasComponent,
-    ContatoComponent
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,
     MeumoduleModule,
     HttpModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule
   ],
   providers: [HttpService, StorageService, AuthGuard],
   bootstrap: [AppComponent]
