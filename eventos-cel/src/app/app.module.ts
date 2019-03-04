@@ -26,6 +26,8 @@ import { NoticiasComponent } from './noticias/noticias.component';
 import { VerNoticiasComponent } from './vernoticias/vernoticias.component';
 import { VerNoticiaComponent } from './vernoticias/vernoticia/vernoticia.component';
 import { NoticiaSingleComponent } from './vernoticias/noticiasingle/noticia-single.component';
+import { ContatoComponent } from './contato/contato.component';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { NoticiaSingleComponent } from './vernoticias/noticiasingle/noticia-sing
     ConfirmComponent,
     PainelComponent,
     UserEventsComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
