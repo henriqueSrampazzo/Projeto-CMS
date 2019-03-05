@@ -12,6 +12,7 @@ export class ContatoComponent implements OnInit {
 
   private user: Object = {
     
+    nome: '',
     email: '',
     mensagem: ''
   };
@@ -22,9 +23,9 @@ export class ContatoComponent implements OnInit {
   }
 
   signup() {
-    this.http.post('users', this.user)
+    this.http.post('contato', this.user)
              .subscribe(res => {
-               alert('Enviado com sucesso');
+               alert('Mensagem enviada com sucesso!');
              });
   }
 

@@ -1,7 +1,6 @@
 <?php
 
-use Symfony\Component\Routing\Exception\MethodNotAllowedException;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+use Symfony\Component\Routing\Matcher\Dumper\PhpMatcherTrait;
 use Symfony\Component\Routing\RequestContext;
 
 /**
@@ -10,95 +9,20 @@ use Symfony\Component\Routing\RequestContext;
  */
 class ProjectUrlMatcher extends Symfony\Component\Routing\Matcher\UrlMatcher
 {
+    use PhpMatcherTrait;
+
     public function __construct(RequestContext $context)
     {
         $this->context = $context;
-    }
-
-    public function match($pathinfo)
-    {
-        $allow = array();
-        $pathinfo = rawurldecode($pathinfo);
-        $trimmedPathinfo = rtrim($pathinfo, '/');
-        $context = $this->context;
-        $request = $this->request;
-        $requestMethod = $canonicalMethod = $context->getMethod();
-        $scheme = $context->getScheme();
-
-        if ('HEAD' === $requestMethod) {
-            $canonicalMethod = 'GET';
-        }
-
-
-        // just_head
-        if ('/just_head' === $pathinfo) {
-            if ('HEAD' !== $requestMethod) {
-                $allow[] = 'HEAD';
-                goto not_just_head;
-            }
-
-            return array('_route' => 'just_head');
-        }
-        not_just_head:
-
-        // head_and_get
-        if ('/head_and_get' === $pathinfo) {
-            if ('GET' !== $canonicalMethod) {
-                $allow[] = 'GET';
-                goto not_head_and_get;
-            }
-
-            return array('_route' => 'head_and_get');
-        }
-        not_head_and_get:
-
-        // get_and_head
-        if ('/get_and_head' === $pathinfo) {
-            if ('GET' !== $canonicalMethod) {
-                $allow[] = 'GET';
-                goto not_get_and_head;
-            }
-
-            return array('_route' => 'get_and_head');
-        }
-        not_get_and_head:
-
-        // post_and_head
-        if ('/post_and_get' === $pathinfo) {
-            if (!in_array($requestMethod, array('POST', 'HEAD'))) {
-                $allow = array_merge($allow, array('POST', 'HEAD'));
-                goto not_post_and_head;
-            }
-
-            return array('_route' => 'post_and_head');
-        }
-        not_post_and_head:
-
-        if (0 === strpos($pathinfo, '/put_and_post')) {
-            // put_and_post
-            if ('/put_and_post' === $pathinfo) {
-                if (!in_array($requestMethod, array('PUT', 'POST'))) {
-                    $allow = array_merge($allow, array('PUT', 'POST'));
-                    goto not_put_and_post;
-                }
-
-                return array('_route' => 'put_and_post');
-            }
-            not_put_and_post:
-
-            // put_and_get_and_head
-            if ('/put_and_post' === $pathinfo) {
-                if (!in_array($canonicalMethod, array('PUT', 'GET'))) {
-                    $allow = array_merge($allow, array('PUT', 'GET'));
-                    goto not_put_and_get_and_head;
-                }
-
-                return array('_route' => 'put_and_get_and_head');
-            }
-            not_put_and_get_and_head:
-
-        }
-
-        throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
+        $this->staticRoutes = [
+            '/just_head' => [[['_route' => 'just_head'], null, ['HEAD' => 0], null, false, false, null]],
+            '/head_and_get' => [[['_route' => 'head_and_get'], null, ['HEAD' => 0, 'GET' => 1], null, false, false, null]],
+            '/get_and_head' => [[['_route' => 'get_and_head'], null, ['GET' => 0, 'HEAD' => 1], null, false, false, null]],
+            '/post_and_head' => [[['_route' => 'post_and_head'], null, ['POST' => 0, 'HEAD' => 1], null, false, false, null]],
+            '/put_and_post' => [
+                [['_route' => 'put_and_post'], null, ['PUT' => 0, 'POST' => 1], null, false, false, null],
+                [['_route' => 'put_and_get_and_head'], null, ['PUT' => 0, 'GET' => 1, 'HEAD' => 2], null, false, false, null],
+            ],
+        ];
     }
 }

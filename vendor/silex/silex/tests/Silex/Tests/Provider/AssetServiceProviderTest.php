@@ -20,14 +20,14 @@ class AssetServiceProviderTest extends TestCase
     public function testGenerateAssetUrl()
     {
         $app = new Application();
-        $app->register(new AssetServiceProvider(), array(
+        $app->register(new AssetServiceProvider(), [
             'assets.version' => 'v1',
             'assets.version_format' => '%s?version=%s',
-            'assets.named_packages' => array(
-                'css' => array('version' => 'css2', 'base_path' => '/whatever-makes-sense'),
-                'images' => array('base_urls' => array('https://img.example.com')),
-            ),
-        ));
+            'assets.named_packages' => [
+                'css' => ['version' => 'css2', 'base_path' => '/whatever-makes-sense'],
+                'images' => ['base_urls' => ['https://img.example.com']],
+            ],
+        ]);
 
         $this->assertEquals('/foo.png?version=v1', $app['assets.packages']->getUrl('/foo.png'));
         $this->assertEquals('/whatever-makes-sense/foo.css?css2', $app['assets.packages']->getUrl('foo.css', 'css'));
@@ -36,16 +36,10 @@ class AssetServiceProviderTest extends TestCase
 
     public function testJsonManifestVersionStrategy()
     {
-        if (!class_exists('Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy')) {
-            $this->markTestSkipped('JsonManifestVersionStrategy class is not available.');
-
-            return;
-        }
-
         $app = new Application();
-        $app->register(new AssetServiceProvider(), array(
+        $app->register(new AssetServiceProvider(), [
             'assets.json_manifest_path' => __DIR__.'/../Fixtures/manifest.json',
-        ));
+        ]);
 
         $this->assertEquals('/some-random-hash.js', $app['assets.packages']->getUrl('app.js'));
     }

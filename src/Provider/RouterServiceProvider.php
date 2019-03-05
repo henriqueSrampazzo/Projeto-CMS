@@ -55,6 +55,15 @@ class RouterServiceProvider implements ServiceProviderInterface
 	    $app->put('/noticias', 'noticia:update');
 	    $app->delete('/noticias/{id}', 'noticia:delete');
 
+
+
+	    /**
+	     * Contato Routes
+	     */
+	    $app->post('/contato', 'contato:save');
+
+
+
 	    /**
 	     * Subscription
 	     */

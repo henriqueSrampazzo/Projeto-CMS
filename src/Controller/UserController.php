@@ -16,8 +16,8 @@ class UserController extends BaseController
 	public function index()
 	{
 		$users = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\User')
-			->findAll();
+		->getRepository('CodeExperts\Entity\User')
+		->findAll();
 
 		$build = SerializerBuilder::create()->build();
 
@@ -36,8 +36,8 @@ class UserController extends BaseController
 		$id = (int) $id;
 
 		$user = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\User')
-			->find($id);
+		->getRepository('CodeExperts\Entity\User')
+		->find($id);
 
 		$build = SerializerBuilder::create()->build();
 
@@ -57,7 +57,7 @@ class UserController extends BaseController
 
 		$password = new PasswordService();
 		$password = $password->setPassword($data['password'])
-		                     ->generate();
+		->generate();
 
 		$user = new User();
 		$user->setName($data['name']);
@@ -82,8 +82,8 @@ class UserController extends BaseController
 		$data = $request->request->all();
 
 		$user = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\User')
-			->find($data['id']);
+		->getRepository('CodeExperts\Entity\User')
+		->find($data['id']);
 
 		foreach ($data as $key=>$value) {
 			$set = "set" . ucfirst($key);
@@ -92,7 +92,7 @@ class UserController extends BaseController
 
 				$password = new PasswordService();
 				$password = $password->setPassword($data['password'])
-				                     ->generate();
+				->generate();
 
 				$user->setPassword($password);
 
@@ -115,8 +115,8 @@ class UserController extends BaseController
 		$id = (int) $id;
 
 		$user = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\User')
-			->find($id);
+		->getRepository('CodeExperts\Entity\User')
+		->find($id);
 
 		$em = new EMService($this->app['orm.em']);
 
@@ -130,13 +130,13 @@ class UserController extends BaseController
 	public function userEvents(Request $request)
 	{
 		$userData = (new ExtractUser(new Parser()))
-			->extract($request->headers->get('Authorization'));
+		->extract($request->headers->get('Authorization'));
 
 		$doctrine = $this->app['orm.em'];
 
 		$userEvents = $doctrine
-			->getRepository('CodeExperts\Entity\User')
-			->findOneByEmail($userData['username']->getValue());
+		->getRepository('CodeExperts\Entity\User')
+		->findOneByEmail($userData['username']->getValue());
 
 		$build = SerializerBuilder::create()->build();
 

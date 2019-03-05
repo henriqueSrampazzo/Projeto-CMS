@@ -25,7 +25,6 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Routing\RouteCollection;
-use Symfony\Component\WebLink\HttpHeaderSerializer;
 
 /**
  * Application test cases.
@@ -60,12 +59,12 @@ class ApplicationTest extends TestCase
     public function testConstructorInjection()
     {
         // inject a custom parameter
-        $params = array('param' => 'value');
+        $params = ['param' => 'value'];
         $app = new Application($params);
         $this->assertSame($params['param'], $app['param']);
 
         // inject an existing parameter
-        $params = array('locale' => 'value');
+        $params = ['locale' => 'value'];
         $app = new Application($params);
         $this->assertSame($params['locale'], $app['locale']);
     }
@@ -88,7 +87,7 @@ class ApplicationTest extends TestCase
 
         $routes = $app['routes'];
         $this->assertInstanceOf('Symfony\Component\Routing\RouteCollection', $routes);
-        $this->assertEquals(0, count($routes->all()));
+        $this->assertCount(0, $routes->all());
     }
 
     public function testGetRoutesWithRoutes()
@@ -105,9 +104,9 @@ class ApplicationTest extends TestCase
 
         $routes = $app['routes'];
         $this->assertInstanceOf('Symfony\Component\Routing\RouteCollection', $routes);
-        $this->assertEquals(0, count($routes->all()));
+        $this->assertCount(0, $routes->all());
         $app->flush();
-        $this->assertEquals(2, count($routes->all()));
+        $this->assertCount(2, $routes->all());
     }
 
     public function testOnCoreController()
@@ -116,14 +115,14 @@ class ApplicationTest extends TestCase
 
         $app->get('/foo/{foo}', function (\ArrayObject $foo) {
             return $foo['foo'];
-        })->convert('foo', function ($foo) { return new \ArrayObject(array('foo' => $foo)); });
+        })->convert('foo', function ($foo) { return new \ArrayObject(['foo' => $foo]); });
 
         $response = $app->handle(Request::create('/foo/bar'));
         $this->assertEquals('bar', $response->getContent());
 
         $app->get('/foo/{foo}/{bar}', function (\ArrayObject $foo) {
             return $foo['foo'];
-        })->convert('foo', function ($foo, Request $request) { return new \ArrayObject(array('foo' => $foo.$request->attributes->get('bar'))); });
+        })->convert('foo', function ($foo, Request $request) { return new \ArrayObject(['foo' => $foo.$request->attributes->get('bar')]); });
 
         $response = $app->handle(Request::create('/foo/foo/bar'));
         $this->assertEquals('foobar', $response->getContent());
@@ -167,13 +166,13 @@ class ApplicationTest extends TestCase
 
     public function escapeProvider()
     {
-        return array(
-            array('&lt;', '<'),
-            array('&gt;', '>'),
-            array('&quot;', '"'),
-            array("'", "'"),
-            array('abc', 'abc'),
-        );
+        return [
+            ['&lt;', '<'],
+            ['&gt;', '>'],
+            ['&quot;', '"'],
+            ["'", "'"],
+            ['abc', 'abc'],
+        ];
     }
 
     public function testControllersAsMethods()
@@ -234,7 +233,7 @@ class ApplicationTest extends TestCase
 
         $test = $this;
 
-        $middlewareTarget = array();
+        $middlewareTarget = [];
         $beforeMiddleware1 = function (Request $request) use (&$middlewareTarget, $test) {
             $test->assertEquals('/reached', $request->getRequestUri());
             $middlewareTarget[] = 'before_middleware1_triggered';
@@ -277,7 +276,7 @@ class ApplicationTest extends TestCase
 
         $result = $app->handle(Request::create('/reached'));
 
-        $this->assertSame(array('before_middleware1_triggered', 'before_middleware2_triggered', 'route_triggered', 'after_middleware1_triggered', 'after_middleware2_triggered'), $middlewareTarget);
+        $this->assertSame(['before_middleware1_triggered', 'before_middleware2_triggered', 'route_triggered', 'after_middleware1_triggered', 'after_middleware2_triggered'], $middlewareTarget);
         $this->assertEquals('hello', $result->getContent());
     }
 
@@ -337,7 +336,7 @@ class ApplicationTest extends TestCase
     {
         $app = new Application();
 
-        $middlewareTarget = array();
+        $middlewareTarget = [];
         $middleware = function (Request $request) use (&$middlewareTarget) {
             $middlewareTarget[] = 'middleware_triggered';
         };
@@ -353,14 +352,14 @@ class ApplicationTest extends TestCase
 
         $app->handle(Request::create('/foo'));
 
-        $this->assertSame(array('before_triggered', 'middleware_triggered', 'route_triggered'), $middlewareTarget);
+        $this->assertSame(['before_triggered', 'middleware_triggered', 'route_triggered'], $middlewareTarget);
     }
 
     public function testRoutesAfterMiddlewaresTriggeredBeforeSilexAfterFilters()
     {
         $app = new Application();
 
-        $middlewareTarget = array();
+        $middlewareTarget = [];
         $middleware = function (Request $request) use (&$middlewareTarget) {
             $middlewareTarget[] = 'middleware_triggered';
         };
@@ -376,12 +375,12 @@ class ApplicationTest extends TestCase
 
         $app->handle(Request::create('/foo'));
 
-        $this->assertSame(array('route_triggered', 'middleware_triggered', 'after_triggered'), $middlewareTarget);
+        $this->assertSame(['route_triggered', 'middleware_triggered', 'after_triggered'], $middlewareTarget);
     }
 
     public function testFinishFilter()
     {
-        $containerTarget = array();
+        $containerTarget = [];
 
         $app = new Application();
 
@@ -403,7 +402,7 @@ class ApplicationTest extends TestCase
 
         $app->run(Request::create('/foo'));
 
-        $this->assertSame(array('1_routeTriggered', '2_filterAfter', '3_responseSent', '4_filterFinish'), $containerTarget);
+        $this->assertSame(['1_routeTriggered', '2_filterAfter', '3_responseSent', '4_filterFinish'], $containerTarget);
     }
 
     /**
@@ -485,7 +484,7 @@ class ApplicationTest extends TestCase
         $app->get('/after')->bind('third');
         $app->flush();
 
-        $this->assertEquals(array('first', 'second', 'third'), array_keys(iterator_to_array($app['routes'])));
+        $this->assertEquals(['first', 'second', 'third'], array_keys(iterator_to_array($app['routes'])));
     }
 
     /**
@@ -524,7 +523,7 @@ class ApplicationTest extends TestCase
     {
         $app = new Application();
 
-        $response = $app->sendFile(__FILE__, 200, array('Content-Type: application/php'));
+        $response = $app->sendFile(__FILE__, 200, ['Content-Type: application/php']);
         $this->assertInstanceOf('Symfony\Component\HttpFoundation\BinaryFileResponse', $response);
         $this->assertEquals(__FILE__, (string) $response->getFile());
     }
@@ -569,7 +568,7 @@ class ApplicationTest extends TestCase
     public function testViewListenerWithArrayTypeHint()
     {
         $app = new Application();
-        $app->get('/foo', function () { return array('ok'); });
+        $app->get('/foo', function () { return ['ok']; });
         $app->view(function (array $view) {
             return new Response($view[0]);
         });
@@ -582,7 +581,7 @@ class ApplicationTest extends TestCase
     public function testViewListenerWithObjectTypeHint()
     {
         $app = new Application();
-        $app->get('/foo', function () { return (object) array('name' => 'world'); });
+        $app->get('/foo', function () { return (object) ['name' => 'world']; });
         $app->view(function (\stdClass $view) {
             return new Response('Hello '.$view->name);
         });
@@ -608,10 +607,10 @@ class ApplicationTest extends TestCase
     public function testViewListenersCanBeChained()
     {
         $app = new Application();
-        $app->get('/foo', function () { return (object) array('name' => 'world'); });
+        $app->get('/foo', function () { return (object) ['name' => 'world']; });
 
         $app->view(function (\stdClass $view) {
-            return array('msg' => 'Hello '.$view->name);
+            return ['msg' => 'Hello '.$view->name];
         });
 
         $app->view(function (array $view) {
@@ -661,10 +660,6 @@ class ApplicationTest extends TestCase
 
     public function testWebLinkListener()
     {
-        if (!class_exists(HttpHeaderSerializer::class)) {
-            self::markTestSkipped('Symfony WebLink component is required.');
-        }
-
         $app = new Application();
 
         $app->get('/', function () {
