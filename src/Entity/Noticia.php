@@ -75,9 +75,9 @@ class Noticia implements Entity
     /**
      * @JMS\Groups({"list"})
      *
-     * @ORM\Column(name="postDate", type="datetime")
+     * @ORM\Column(name="postdata", type="datetime")
      */
-    private $postDate;
+    private $postdata;
 
 	public function __construct()
 	{
@@ -276,17 +276,17 @@ class Noticia implements Entity
     /**
      * @return mixed
      */
-    public function getPostDate()
+    public function getPostData()
     {
-        return $this->postDate;
+        return $this->postdata;
     }
 
     /**
      * @param mixed $venue
      */
-    public function setPostDate($postDate)
+    public function setPostData($postdata)
     {
-        $this->postDate = $postDate;
+        $this->postdata = $postdata;
     }
 
 }

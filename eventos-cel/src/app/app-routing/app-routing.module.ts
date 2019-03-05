@@ -14,10 +14,11 @@ import { NoticiasComponent } from '../noticias/noticias.component'
 import { NoticiaSingleComponent } from '../vernoticias/noticiasingle/noticia-single.component';
 import { VerNoticiasComponent } from '../vernoticias/vernoticias.component';
 import { ContatoComponent } from '../contato/contato.component';
+import { CadastraEventoComponent } from '../cadastraEvento/cadastraEvento.component';
 
 
 const appRoutes: Routes = [
-  {path: 'event/:slug', component: EventSingleComponent},
+  {path: 'eventos/:slug', component: EventSingleComponent},
   {path: 'noticia/:slug', component: NoticiaSingleComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'cadastranoticia', component: NoticiasComponent},
@@ -25,12 +26,13 @@ const appRoutes: Routes = [
   {path: 'make-subscription', component: MakeSubscriptionComponent},
   {path: 'make-subscription/confirm', component: ConfirmComponent },
   {path: 'contato', component: ContatoComponent},
+  {path: 'cadastraevento', component: CadastraEventoComponent},
   {path: 'painel', component: PainelComponent, children: [
   {path: 'events', component: UserEventsComponent}
     ],
     canActivate: [AuthGuard]
   },
-  // {path: '', component: EventsComponent},
+ {path: 'eventos', component: EventsComponent},
   {path: '', component: VerNoticiasComponent}
 ];
 

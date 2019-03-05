@@ -15,7 +15,7 @@ $dbParams = array(
     'driver'   => 'pdo_mysql',
     'user'     => 'root',
     'password' => '',
-    'dbname'   => 'api_master',
+    'dbname'   => 'db_inovadora_noticias',
     'host'     => '127.0.0.1'
 );
 

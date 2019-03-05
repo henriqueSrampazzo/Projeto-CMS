@@ -1,0 +1,48 @@
+<div class="container">
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card">
+        <header class="card-header">
+          <h4 class="card-title mt-2">Cadastre um evento</h4>
+        </header>
+        <article class="card-body">
+
+          <form enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Título</label>
+                <input type="text" class="form-control" [(ngModel)]="evento.title" name="title">
+              </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Data</label>
+                <input type="text" class="form-control" [(ngModel)]="evento.dataevent" name="dataevent" id="dataevent" >
+              </div> <!-- form-group end.// -->
+              <div class="col form-group">
+                <label for="photo1">Foto</label>
+                <input type="file" class="form-control-file" [(ngModel)]="evento.photo" name="photo" id="photo">
+              </div>
+            </div>
+
+            <!-- <input type="file" class="form-control-file" name="photo1" id="photo1" (change)="inputFileChange($event)"> -->
+            <br>
+            <div class="form-group row ">
+              <div class="col-md-3 ">
+                <button type="submit" class="btn btn-primary btn-block " (click)="cadastraevento()"> Registrar
+                  evento</button>
+              </div>
+            </div> <!-- form-group// -->
+          </form>
+        </article> <!-- card-body end .// -->
+      </div> <!-- card.// -->
+    </div> <!-- col.//-->
+
+  </div> <!-- row.//-->
+
+
+</div>
+<!--container end.//-->
+<router-outlet></router-outlet>

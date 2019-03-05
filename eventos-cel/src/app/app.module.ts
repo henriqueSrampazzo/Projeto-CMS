@@ -28,6 +28,7 @@ import { VerNoticiaComponent } from './vernoticias/vernoticia/vernoticia.compone
 import { NoticiaSingleComponent } from './vernoticias/noticiasingle/noticia-single.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ContatoComponent } from './contato/contato.component';
+import { CadastraEventoComponent } from './cadastraEvento/cadastraEvento.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ContatoComponent } from './contato/contato.component';
     UserEventsComponent,
     NoticiasComponent,
     NoticiasComponent,
-    ContatoComponent
+    ContatoComponent,
+    CadastraEventoComponent
   ],
   imports: [
     BrowserModule,

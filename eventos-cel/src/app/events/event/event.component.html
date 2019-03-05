@@ -1,23 +1,12 @@
 <br><br><br>
 <div class="card" style="width:18rem">
-  <img class="card-img-top" src="../../.././assets/ata.jpg" alt="Card image cap">
+  <img class="card-img-top" [src]="event?.photo" alt="Card image cap">
 
   <div class="card-content white-text">
     <h5 class="card-title">{{event?.title}}</h5>
-    <p class="card-text">{{event?.description}}</p>
+    <p class="card-text">{{evento?.dataevent}}</p>
   </div>
   <div class="card-action">
-    <a class="btn btn-primary" [routerLink]="['event', event.id]">Ver Evento</a>
+    <a class="btn btn-primary" [routerLink]="[event.id]">Ver Evento</a>
   </div>
 </div>
-
-
-
-<!-- <div class="card" style="width: 18rem; ">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text".</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> -->

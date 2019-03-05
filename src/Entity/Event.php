@@ -32,79 +32,17 @@ class Event implements Entity
     /**
      * @JMS\Groups({"list"})
      *
-     * @ORM\Column(name="description", type="string")
+     * @ORM\Column(name="dataevent", type="string")
      */
-    private $description;
+    private $dataevent;
 
     /**
      * @JMS\Groups({"list"})
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="photo", type="text")
      */
-    private $content;
 
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="venue", type="string")
-     */
-    private $venue;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="address", type="string")
-     */
-    private $address;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="start_date", type="string")
-     */
-    private $startDate;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="end_date", type="string")
-     */
-    private $endDate;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="start_time", type="string")
-     */
-    private $startTime;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="end_time", type="string")
-     */
-    private $endTime;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="is_active", type="boolean")
-     */
-    private $isActive;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="created_at", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="updated_at", type="datetime")
-     */
-    private $updatedAt;
+    private $photo;
 
 	/**
 	 * @var ArrayCollection
@@ -155,199 +93,65 @@ class Event implements Entity
     /**
      * @return mixed
      */
-    public function getDescription()
+    public function getDataEvent()
     {
-        return $this->description;
+        return $this->dataevent;
     }
 
     /**
-     * @param mixed $description
+     * @param mixed $dataEvent
      */
-    public function setDescription($description)
+    public function setDataEvent($dataevent)
     {
-        $this->description = $description;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    /**
-     * @param mixed $content
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
+        $this->dataevent = $dataevent;
     }
 
     /**
      * @return mixed
      */
-    public function getVenue()
+    public function getPhoto()
     {
-        return $this->venue;
+        return $this->photo;
     }
 
     /**
-     * @param mixed $venue
+     * @param mixed $photo
      */
-    public function setVenue($venue)
+    public function setPhoto($photo)
     {
-        $this->venue = $venue;
+        if (empty($photo)) {
+                $photovazia="";
+                $this->photo=$photovazia;     
+        } else{
+        $this->photo = $photo;
+        $photomod;
+        $photomod = substr($photo, 12);
+        $this->photo = "../../.././assets/eventos/".time().mt_rand().$photomod;
     }
+}
 
-    /**
-     * @return mixed
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
 
-    /**
-     * @param mixed $address
-     */
-    public function setAddress($address)
-    {
-        $this->address = $address;
-    }
 
-    /**
-     * @return mixed
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
+//	/**
+//	 * @return ArrayCollection
+//	 */
+//	public function getUserCollection()
+//	{
+//		return $this->userCollection;
+//	}
 
-    /**
-     * @param mixed $startDate
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-    }
+//	/**
+//	 * @param ArrayCollection $userCollection
+//	 * @return ArrayCollection/Event
+//	 */
+//	public function setUserCollection($userCollection)
+//	{
+//		if($this->userCollection->contains($userCollection)) {
+//			return;
+//		}
 
-    /**
-     * @return mixed
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
+//		$this->userCollection->add($userCollection);
 
-    /**
-     * @param mixed $endDate
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStartTime()
-    {
-        return $this->startTime;
-    }
-
-    /**
-     * @param mixed $startTime
-     */
-    public function setStartTime($startTime)
-    {
-        $this->startTime = $startTime;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEndTime()
-    {
-        return $this->endTime;
-    }
-
-    /**
-     * @param mixed $endTime
-     */
-    public function setEndTime($endTime)
-    {
-        $this->endTime = $endTime;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * @param mixed $isActive
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param mixed $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-    }
-
-	/**
-	 * @return ArrayCollection
-	 */
-	public function getUserCollection()
-	{
-		return $this->userCollection;
-	}
-
-	/**
-	 * @param ArrayCollection $userCollection
-	 * @return ArrayCollection/Event
-	 */
-	public function setUserCollection($userCollection)
-	{
-		if($this->userCollection->contains($userCollection)) {
-			return;
-		}
-
-		$this->userCollection->add($userCollection);
-
-		return $this;
-	}
+//		return $this;
+//	}
 }

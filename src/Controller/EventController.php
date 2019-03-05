@@ -55,17 +55,8 @@ class EventController extends BaseController
 		$event = new Event();
 
 		$event->setTitle($data['title']);
-		$event->setContent($data['content']);
-		$event->setDescription($data['description']);
-		$event->setVenue($data['venue']);
-		$event->setAddress($data['address']);
-		$event->setStartDate($data['start_date']);
-		$event->setEndDate($data['end_date']);
-		$event->setStartTime($data['start_time']);
-		$event->setEndTime($data['end_time']);
-		$event->setIsActive(true);
-		$event->setCreatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
-		$event->setUpdatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
+		$event->setDataEvent($data['dataevent']);
+	    $event->setPhoto($data['photo']);
 
 		$em = new EMService($this->app['orm.em']);
 

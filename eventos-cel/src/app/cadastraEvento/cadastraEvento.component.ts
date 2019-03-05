@@ -4,32 +4,32 @@ import { HttpService } from '../http.service';
 
 
 @Component({
-  selector: 'app-noticias',
-  templateUrl: './noticias.component.html',
-  styleUrls: ['./noticias.component.css']
+  selector: 'app-cadastraEvento',
+  templateUrl: './cadastraEvento.component.html',
+  styleUrls: ['./cadastraEvento.component.css']
 })
-export class NoticiasComponent implements OnInit {
+export class CadastraEventoComponent implements OnInit {
 
-  private noticia: Object = {
+  private evento: Object = {
     title: '',
-    description: '',
-    photo1: '',
-    photo2: '',
-    photo3: '',
-    photo4: '',
-    photo5: ''
+    dataevent: '',
+    photo: ''
   };
 
-  constructor(private http: HttpService) { }
-
-  ngOnInit() {
+  constructor(private http: HttpService) { 
   }
 
-  cadastranoticia() {
-    this.http.post('noticias', this.noticia)
+  ngOnInit() {
+    
+  }
+
+  cadastraevento() {
+    
+    this.http.post('events', this.evento)
              .subscribe(res => {
                //toastr.success(res.msg, 'Sucesso');
-               alert('Cadastrado com sucesso');
+               alert('Evento cadastrado com sucesso');
+               
              });
   }
 
