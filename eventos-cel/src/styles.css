@@ -48,6 +48,61 @@
         }
         }
 
-.fundoFooter{
-    background-color: #6351ce;
+    .fundoFooter{
+        background-color: #6351ce;
+        /* background-image: linear-gradient(to right,  #800080, #1a1a94); */
+        }
+
+.centralizar{
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+    text-align: center;
+    position: relative !important;
+}
+
+.importante{
+    position: relative !important;
+}
+
+.paginacao{
+    height: 45px;
+    width: 450px;
+    background-color: white;
+    border-radius: 5%;
+    padding-right: 30px;
+    padding-top: 7px;  
+    text-align: center;
+}
+
+.diminuiTexto{
+    max-width: 70%;
+    margin-left: 15%;
+    text-align: justify;
+}
+
+@media(max-width:414px){
+    .diminuiTexto{
+        max-width: 90%;
+        margin-left: 5%;
+        text-align: justify;
+    }
+    
+}
+.btn-primary{
+
+    background-color: rgb(65, 126, 236) !important;
+    border: none !important;
+
+}
+
+.btn-primary:hover{
+
+    background-color: rgb(94, 51, 114) !important;
+    transition: ease-in-out(0.9);
+}
+
+.current{
+
+    background-color: rgb(89, 131, 209) !important;
 }

@@ -1,0 +1,12 @@
+.centralizar{
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+
+.imagem{
+    max-width: 90%;
+    margin-left: 15%;
+    margin-right: 15%;
+    
+}

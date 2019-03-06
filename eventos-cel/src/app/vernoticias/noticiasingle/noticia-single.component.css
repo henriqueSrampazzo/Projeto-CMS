@@ -1,0 +1,11 @@
+.firstLetter{
+    line-height: 1.5;
+}
+
+.firstLetter:first-line{
+    line-height: 1;
+}
+
+.firstLetter:first-letter{
+    font-size: 50px;
+}

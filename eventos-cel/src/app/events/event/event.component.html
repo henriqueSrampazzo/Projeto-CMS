@@ -1,12 +1,15 @@
 <br><br><br>
-<div class="card" style="width:18rem">
-  <img class="card-img-top" [src]="event?.photo" alt="Card image cap">
-
-  <div class="card-content white-text">
+<div class="centralizar">
+<div class=" shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem">
+  <div class="card-content white-text container centralizaTitle">
     <h5 class="card-title">{{event?.title}}</h5>
-    <p class="card-text">{{evento?.dataevent}}</p>
+    <div class="centralizar">
+    <p>Data: {{event?.dataevent | date:'dd/MM/yyyy'}}
+    <br>Hora: {{event?.dataevent | date:'H:mm:ss'}}
+    </p>
   </div>
-  <div class="card-action">
+  </div>
+  <div class="card-action centralizar">
     <a class="btn btn-primary" [routerLink]="[event.id]">Ver Evento</a>
   </div>
-</div>
+</div></div>

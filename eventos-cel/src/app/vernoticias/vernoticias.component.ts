@@ -16,7 +16,5 @@ export class VerNoticiasComponent implements OnInit {
     ngOnInit() {
       this.http.get('noticias')
                .subscribe(res => this.noticias = res);
-               
-              // console.log(this.noticias.length);
     }
 }

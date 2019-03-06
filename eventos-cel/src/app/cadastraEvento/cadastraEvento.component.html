@@ -1,8 +1,8 @@
 <div class="container">
   <br>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center shadow-lg">
     <div class="col-md-12">
-      <div class="card">
+      <div class>
         <header class="card-header">
           <h4 class="card-title mt-2">Cadastre um evento</h4>
         </header>
@@ -19,7 +19,7 @@
             <div class="form-row">
               <div class="col form-group">
                 <label>Data</label>
-                <input type="text" class="form-control" [(ngModel)]="evento.dataevent" name="dataevent" id="dataevent" >
+                <input type="datetime-local" class="form-control" [(ngModel)]="evento.dataevent" name="dataevent" id="dataevent" >
               </div> <!-- form-group end.// -->
               <div class="col form-group">
                 <label for="photo1">Foto</label>

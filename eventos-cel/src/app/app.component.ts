@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   title = 'eventos';
   private pokemon: {} = {};
   private changeMenu = false;
+  private muda = false;
 
   constructor(
     public http: HttpService,
@@ -25,4 +26,5 @@ export class AppComponent implements OnInit {
   hello() {
     alert('App Component');
   }
+
 }

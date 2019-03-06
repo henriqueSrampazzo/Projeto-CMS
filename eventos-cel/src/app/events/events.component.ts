@@ -8,6 +8,7 @@ import { HttpService } from './../http.service';
 })
 export class EventsComponent implements OnInit {
     private events: Array<{}>;
+    p:number = 1;
 
     constructor(public http: HttpService) {}
 

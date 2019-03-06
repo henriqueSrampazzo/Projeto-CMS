@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
                 if (params.to == 'subscription_confirm') {
                   return this.router.navigate(['/make-subscription']);
                 } else {
-                  return this.router.navigate(['/painel']);
+                  return this.router.navigate(['']);
                 }
               });
 
