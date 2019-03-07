@@ -10,11 +10,43 @@
   <link rel="icon" href="./assets/logo2.svg">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id"
+    content="445974938034-4peubcmgingou7lu7riv09jqdtqevua4.apps.googleusercontent.com">
+
 </head>
 
-<body>
+<body class="gradient-lateral">
 
+  <script>
+    // function onSignIn(googleUser) {
+    //   // Useful data for your client-side scripts:
+    //   var profile = googleUser.getBasicProfile();
+    //   console.log("ID: " + profile.getId());
+    //   console.log('Nome completo: ' + profile.getName());
+    //   console.log('Nome: ' + profile.getGivenName());
+    //   console.log('Família: ' + profile.getFamilyName());
+    //   console.log("URL da Imagem: " + profile.getImageUrl());
+    //   console.log("Email: " + profile.getEmail());
 
+    //   // The ID token you need to pass to your backend:
+    //   var id_token = googleUser.getAuthResponse().id_token;
+    //   console.log("ID Token: " + id_token);
+
+    //   console.log(googleUser);
+
+    // }
+
+  </script>
+
+  <script>
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+    }
+  </script>
 
   <br><br><br>
 

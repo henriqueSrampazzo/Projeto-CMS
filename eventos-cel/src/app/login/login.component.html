@@ -1,32 +1,50 @@
 <div class="container">
   <br>
-    <div class="row justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-md-6">
-    <div class="shadow-lg">
-    <header class="card-header">
-      <h4 class="card-title mt-2">Acesse sua conta</h4>
-    </header>
-    <article class="card-body">
-    <form>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
-      </div> <!-- form-group end.// -->
-      <div class="form-group">
-        <label>Senha</label>
-          <input class="form-control" type="password" [(ngModel)]="user.password" name="password">
-      </div> <!-- form-group end.// -->  
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block" (click)="login()"> Entrar  </button>
-        </div> <!-- form-group// -->                                      
-    </form>
-    </article> <!-- card-body end .// -->
-    </div> <!-- card.// -->
+      <div class="shadow-lg back-form">
+        <header class="card-header">
+          <h4 class="card-title mt-2">Acesse sua conta</h4>
+        </header>
+        <article class="card-body">
+          <form>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" [(ngModel)]="user.email" name="email"
+                placeholder="Digite seu email">
+            </div> <!-- form-group end.// -->
+            <div class="form-group">
+              <label>Senha</label>
+              <input class="form-control" type="password" [(ngModel)]="user.password" name="password"
+                placeholder="Digite sua senha">
+            </div> <!-- form-group end.// -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" (click)="login()"> Entrar </button>
+            </div> <!-- form-group// -->
+            <div class="form-group">
+
+
+
+
+              <a href="/login" class="g-signin2"  data-onsuccess="onSignIn">Login</a>
+
+              <br>
+
+              <a href="/login" onclick="signOut();">Sign out</a>
+
+
+
+
+
+            </div> <!-- form-group// -->
+          </form>
+
+        </article> <!-- card-body end .// -->
+      </div> <!-- card.// -->
     </div> <!-- col.//-->
-    
-    </div> <!-- row.//-->
-    
-    
-    </div> 
-    <!--container end.//-->
-    
+
+  </div> <!-- row.//-->
+
+
+</div>
+<!--container end.//-->

@@ -106,3 +106,19 @@
 
     background-color: rgb(89, 131, 209) !important;
 }
+
+.gradient-lateral{
+
+    background-image: radial-gradient(circle, white, rgb(185, 185, 253));
+
+}
+
+.back-form{
+
+    background-color: white;
+}
+
+.block{
+
+    display: block;
+}
