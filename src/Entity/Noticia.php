@@ -143,29 +143,12 @@ class Noticia implements Entity
     /**
      * @param mixed $photo1
      */
+
     public function setPhoto1($photo1)
-    {
-
-
-    // $uploaddir = './pasta';
-    // $uploadfile = $uploaddir.basename($_FILES['photo1'][$photo1]);
-
-    // // Move the uploaded file to the new location on the server. The move_uploaded_file returns true if successful or false if not, hence the if-else statement
-    // if (move_uploaded_file($_FILES['avatar']['tmp_name'], $uploadfile)) {
-    //     echo "File is valid, and was successfully uploaded.";
-    // } else {
-    //     echo "Error uploading file!";
-    // }
-        if (empty($photo1)) {
-                $photovazia="";
-                $this->photo1=$photovazia;     
-        } else{
-       $this->photo1 = $photo1;
-       move_uploaded_file($photo1, "/pasta");
-        $photomod1;
-        $photomod1 = substr($photo1, 12);
-        $this->photo1 = "../../.././assets/".time().mt_rand().$photomod1;
-}
+ {
+    $photomod1 = substr($photo1, 23);
+    $photo2mod = str_replace("> <", "><", $photomod1);
+    $this->photo1= $photo2mod;
     }
 
 

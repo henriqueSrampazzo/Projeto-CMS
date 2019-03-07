@@ -1,5 +1,6 @@
 .firstLetter{
     line-height: 1.5;
+    text-indent: 40px;
 }
 
 .firstLetter:first-line{

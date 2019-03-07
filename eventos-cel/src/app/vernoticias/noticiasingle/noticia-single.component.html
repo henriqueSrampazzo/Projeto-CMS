@@ -1,13 +1,13 @@
 <div>
   <div class="container">
     <br>  
-      <h1>{{noticia?.title}}</h1>
-      <p>
-          {{noticia?.postdate}}
+      <h1 class="centralizar animated pulse">{{noticia?.title}}</h1>
+      <p class="centralizar animated pulse">
+        {{noticia?.postdata | date:'dd/MM/yyyy H:mm:ss'}}
         </p>
         <br>
         <div class="diminuiTexto">
-        <h5 class="firstLetter">
+        <h5 class="firstLetter animated fadeIn">
         {{noticia?.description}}
       </h5>
       <br> <br> <br>
@@ -17,7 +17,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="centralizar wow fadeInLeft">
 <div class="bd-example">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -27,17 +27,17 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img [src]="noticia?.photo1" class="d-block w-75">
+        <img [src]="noticia?.photo1" class="d-block w-100">
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
       <div class="carousel-item">
-        <img [src]="noticia?.photo2" class="d-block w-75">
+        <img [src]="noticia?.photo2" class="d-block w-100">
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
       <div class="carousel-item">
-        <img [src]="noticia?.photo3" class="d-block w-75">
+        <img [src]="noticia?.photo3" class="d-block w-100">
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
