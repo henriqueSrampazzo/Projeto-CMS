@@ -10,8 +10,26 @@ import { HttpService } from '../http.service';
 })
 export class NoticiasComponent implements OnInit {
 
+  image;
+  changeListener($event) : void {
+    this.readThis($event.target);
+    var url1 = document.getElementById('url1').innerHTML;
+    console.log('url: ' +url1);
+  }
+  
+  readThis(inputValue: any): void {
+    var file:File = inputValue.files[0];
+    var myReader:FileReader = new FileReader();
+  
+    myReader.onloadend = (e) => {
+      this.image = myReader.result;
+      console.log('image:'+this.image);
+    }
+    myReader.readAsDataURL(file);
+  }
+
   private noticia: Object = {
-    title: '',
+    title: 'jkhsadjhd',
     description: '',
     photo1: '',
     photo2: '',
@@ -25,6 +43,12 @@ export class NoticiasComponent implements OnInit {
   ngOnInit() {
   }
 
+  confirmaFoto1(){
+    var url1 = document.getElementById('url1').innerHTML;
+    console.log('url confirmada ->'+url1);  
+    this.image = url1;
+  }
+
   cadastranoticia() {
     this.http.post('noticias', this.noticia)
              .subscribe(res => {
@@ -32,18 +56,5 @@ export class NoticiasComponent implements OnInit {
                alert('Cadastrado com sucesso');
              });
   }
-
-  // inputFileChange(event){
-  //   console.log('entrou no evento');
-  //   if(event.target.files && event.target.files[0]){
-  //     const photo1 = event.target.files[0];
-
-  //     const formData = new FormData();
-  //     formData.append('photo1',photo1);
-
-  //     this.http.post('cadastranoticia', formData)
-  //     .subscribe(resposta1 => alert('photo1 enviada.'));
-  //   }
-  // }
 
 }

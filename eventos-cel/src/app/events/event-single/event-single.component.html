@@ -1,12 +1,10 @@
 <div class="container">
-      <h1>{{event?.title}}</h1>
-      <p>
-      {{event?.dataevent | date:'dd/MM/yyyy'}}
-      <br>
-      {{event?.dataevent | date:'H:mm:ss'}}
+      <h1 class="centralizar animated pulse">{{event?.title}}</h1>
+      <p class="centralizar animated pulse">
+      Acontecerá/aconteceu em: {{event?.dataevent | date:'dd/MM/yyyy'}}, às: {{event?.dataevent | date:'H:mm:ss'}}
       </p>
       
 </div>
-<div class="imagem">
+<div class="imagem centralizar animated fadeInLeft">
 <img class="imagem" [src]="event?.photo" alt="Card image cap">
 </div>
