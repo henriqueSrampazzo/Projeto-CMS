@@ -15,11 +15,11 @@ export class SafeHtml {
 }
 
 @Component({
-  selector: 'app-noticia-single',
-  templateUrl: './noticia-single.component.html',
-  styleUrls: ['./noticia-single.component.css']
+  selector: 'app-editar-noticia-single',
+  templateUrl: './editar-noticia-single.component.html',
+  styleUrls: ['./editar-noticia-single.component.css']
 })
-export class NoticiaSingleComponent implements OnInit {
+export class EditarNoticiaSingleComponent implements OnInit {
   private noticia: {};
 
 

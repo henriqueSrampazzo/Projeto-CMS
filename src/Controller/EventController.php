@@ -56,7 +56,11 @@ class EventController extends BaseController
 
 		$event->setTitle($data['title']);
 		$event->setDataEvent($data['dataevent']);
-	    $event->setPhoto($data['photo']);
+	    $event->setPhoto1($data['photo1']);
+	    $event->setPhoto2($data['photo2']);
+	    $event->setPhoto3($data['photo3']);
+	    $event->setPhoto4($data['photo4']);
+	    $event->setPhoto5($data['photo5']);
 
 		$em = new EMService($this->app['orm.em']);
 

@@ -11,25 +11,89 @@ import { HttpService } from '../http.service';
 export class NoticiasComponent implements OnInit {
 
   image;
-  changeListener($event) : void {
+  image2;
+  image3;
+  image4;
+  image5;
+
+  //foto1
+  changeListener($event): void {
     this.readThis($event.target);
-    var url1 = document.getElementById('url1').innerHTML;
-    console.log('url: ' +url1);
   }
-  
+
   readThis(inputValue: any): void {
-    var file:File = inputValue.files[0];
-    var myReader:FileReader = new FileReader();
-  
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
     myReader.onloadend = (e) => {
       this.image = myReader.result;
-      console.log('image:'+this.image);
+       console.log('testando: '+this.image);
+    }
+    myReader.readAsDataURL(file);
+  }
+
+  //foto2
+  changeListener2($event): void {
+    this.readThis2($event.target);
+  }
+
+  readThis2(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
+    myReader.onloadend = (e) => {
+      this.image2 = myReader.result;
+    }
+    myReader.readAsDataURL(file);
+  }
+
+  //foto3
+  changeListener3($event): void {
+    this.readThis3($event.target);
+  }
+
+  readThis3(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
+    myReader.onloadend = (e) => {
+      this.image3 = myReader.result;
+    }
+    myReader.readAsDataURL(file);
+  }
+
+  //foto4
+  changeListener4($event): void {
+    this.readThis4($event.target);
+  }
+
+  readThis4(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
+    myReader.onloadend = (e) => {
+      this.image4 = myReader.result;
+    }
+    myReader.readAsDataURL(file);
+  }
+
+  //foto5
+  changeListener5($event): void {
+    this.readThis5($event.target);
+  }
+
+  readThis5(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
+    myReader.onloadend = (e) => {
+      this.image5 = myReader.result;
     }
     myReader.readAsDataURL(file);
   }
 
   private noticia: Object = {
-    title: 'jkhsadjhd',
+    title: '',
     description: '',
     photo1: '',
     photo2: '',
@@ -43,18 +107,11 @@ export class NoticiasComponent implements OnInit {
   ngOnInit() {
   }
 
-  confirmaFoto1(){
-    var url1 = document.getElementById('url1').innerHTML;
-    console.log('url confirmada ->'+url1);  
-    this.image = url1;
-  }
-
   cadastranoticia() {
     this.http.post('noticias', this.noticia)
-             .subscribe(res => {
-               //toastr.success(res.msg, 'Sucesso');
-               alert('Cadastrado com sucesso');
-             });
+      .subscribe(res => {
+        alert('Cadastrado com sucesso');
+      });
   }
 
 }

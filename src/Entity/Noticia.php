@@ -147,8 +147,8 @@ class Noticia implements Entity
     public function setPhoto1($photo1)
  {
     $photomod1 = substr($photo1, 23);
-    $photo2mod = str_replace("> <", "><", $photomod1);
-    $this->photo1= $photo2mod;
+    $photo1mod1 = str_replace(" ", "+", $photomod1);
+    $this->photo1= $photo1mod1;
     }
 
 
@@ -165,15 +165,9 @@ class Noticia implements Entity
      */
     public function setPhoto2($photo2)
     {
-        if (empty($photo2)) {
-                $photovazia="";
-                $this->photo2=$photovazia;     
-        } else{
-        $this->photo2 = $photo2;
-        $photomod2;
-        $photomod2 = substr($photo2, 12);
-        $this->photo2 = "../../.././assets/".time().mt_rand().$photomod2;
-    }
+    $photomod2 = substr($photo2, 23);
+    $photo2mod2 = str_replace(" ", "+", $photomod2);
+    $this->photo2= $photo2mod2;
 }
 
     /**
@@ -189,15 +183,9 @@ class Noticia implements Entity
      */
     public function setPhoto3($photo3)
     {        
-        if (empty($photo3)) {
-        $photovazia="";
-        $this->photo3=$photovazia;     
-        } else{
-        $this->photo3 = $photo3;
-        $photomod3;
-        $photomod3 = substr($photo3, 12);
-        $this->photo3 = "../../.././assets/".time().mt_rand().$photomod3;
-    }
+    $photomod3 = substr($photo3, 23);
+    $photo3mod3 = str_replace(" ", "+", $photomod3);
+    $this->photo3= $photo3mod3;
     }
 
     /**
@@ -213,24 +201,9 @@ class Noticia implements Entity
      */
     public function setPhoto4($photo4)
     {
-
-        if (empty($photo4)) {
-        $photovazia="";
-        $this->photo4=$photovazia;     
-        } else{
-
-
-        $this->photo4 = $photo4;
-        $photomod4;
-        $photomod4 = substr($photo4, 12);
-        
-        $images  = $_FILES[$photo4]; // pega imformações de todas imagens    
-        // $uploaddir  = './../.././eventos-cel/src/assets'; //endereço onde vai salvar os arquivos
-        // $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-
-
-        $this->photo4 = "../../.././assets/".time().mt_rand().$photomod4;
-    }
+    $photomod4 = substr($photo4, 23);
+    $photo4mod4 = str_replace(" ", "+", $photomod4);
+    $this->photo4= $photo4mod4;
 }
 
     /**
@@ -246,15 +219,9 @@ class Noticia implements Entity
      */
     public function setPhoto5($photo5)
     {
-        if (empty($photo5)) {
-        $photovazia="";
-        $this->photo5=$photovazia;     
-        } else{
-        $this->photo5 = $photo5;
-        $photomod5;
-        $photomod5 = substr($photo5, 12);
-        $this->photo5 = "../../.././assets/".time().mt_rand().$photomod5;
-    }
+    $photomod5 = substr($photo5, 23);
+    $photo5mod5= str_replace(" ", "+", $photomod5);
+    $this->photo5= $photo5mod5;
 }
     /**
      * @return mixed

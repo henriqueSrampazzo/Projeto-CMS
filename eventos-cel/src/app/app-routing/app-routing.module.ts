@@ -15,11 +15,15 @@ import { NoticiaSingleComponent } from '../vernoticias/noticiasingle/noticia-sin
 import { VerNoticiasComponent } from '../vernoticias/vernoticias.component';
 import { ContatoComponent } from '../contato/contato.component';
 import { CadastraEventoComponent } from '../cadastraEvento/cadastraEvento.component';
+import { EditarNoticiaSingleComponent } from '../editarnoticias/editarnoticiasingle/editar-noticia-single.component';
+import { EditarNoticiasComponent } from '../editarnoticias/editarnoticias.component';
 
 
 const appRoutes: Routes = [
   {path: 'eventos/:slug', component: EventSingleComponent},
   {path: 'noticia/:slug', component: NoticiaSingleComponent},
+  {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent},
+  {path: 'editarnoticias', component: EditarNoticiasComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'cadastranoticia', component: NoticiasComponent},
   {path: 'login', component: LoginComponent},

@@ -1,81 +1,96 @@
 <div class="container animated bounceIn">
   <br>
-    <div class="row justify-content-center shadow-lg back-form">
+  <div class="row justify-content-center shadow-lg back-form">
     <div class="col-md-12">
-    <div>
-    <header class="card-header">
-      <h4 class="card-title mt-2">Cadastre uma notícia</h4>
-    </header>
-    <article class="card-body">
+      <div>
+        <header class="card-header">
+          <h4 class="card-title mt-2">Cadastre uma notícia</h4>
+        </header>
+        <article class="card-body">
 
-    <form enctype="multipart/form-data">
-      <div class="form-row">
-        <div class="col form-group">
-          <label>Título</label>   
-            <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title">
-        </div> <!-- form-group end.// -->
-      </div> <!-- form-row end.// -->
+          <form enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Título</label>
+                <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title">
+              </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
 
-      <div class="form-row">
-        <div class="col form-group">
-          <label>Descrição</label>
-            <textarea class="form-control" [(ngModel)]="noticia.description" name="description" rows="10"></textarea>
-        </div> <!-- form-group end.// -->
-      </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Descrição</label>
+                <textarea class="form-control" [(ngModel)]="noticia.description" name="description"
+                  rows="10"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
 
-      <div class="form-group row">
-          <div class="col-sm-2">
-        <label for="photo1">Foto 1</label>
-         <!-- <input type="file" class="form-control-file" name="photo1" id="photo1" (change)="inputFileChange($event)"> -->
-        <input type="file" class="form-control-file" accept="image/*" (change)="changeListener($event)">
-      </div>
-      <div class="col-sm-2">
-        <label for="photo2">Foto 2</label>
-        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo2" name="photo2">
-     </div>
-     <div class="col-sm-2">
-        <label for="photo2">Foto 3</label>
-        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo3" name="photo3">
-     </div>
-     <div class="col-sm-2">
-        <label for="photo2">Foto 4</label>
-        <input type="file" class="form-control-file" [(ngModel)]="noticia.photo4" name="photo4">
-     </div>
-     <div class="col-sm-2">
-      <label for="photo2">Foto 5</label>
-      <input type="file" class="form-control-file" [(ngModel)]="noticia.photo5" name="photo5">
-   </div>
-     <br><br><br>
-     <div class="container">
-     <small class="text-muted">(Máximo 5 fotos)</small>
-    </div>  
-    
-    <textarea class="form-control" [(ngModel)]="noticia.photo1" name="photo1" value="{{image}}"></textarea>
-    
-    <p id="url1">{{image}}</p>
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo1">Foto 1</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticia.photo1" name="photo1" value="{{image}}"
+                  placeholder="Base64 da foto 1"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
 
-    <button class="btn btn-secondary" (click)="confirmaFoto1()">Confirmar</button>
-    </div> <!-- form-group end.// -->
-        <div class="form-group row ">
-            <div class="col-md-3 ">
-            <button type="submit" class="btn btn-primary btn-block " (click)="cadastranoticia()"> Registrar notícia </button>
-        </div>
-          </div> <!-- form-group// -->      
-    </form>
-    </article> <!-- card-body end .// -->
-    </div> <!-- card.// -->
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo2">Foto 2</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener2($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticia.photo2" name="photo2" value="{{image2}}"
+                  placeholder="Base64 da foto 2"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo3">Foto 3</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener3($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticia.photo3" name="photo3" value="{{image3}}"
+                  placeholder="Base64 da foto 3"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo4">Foto 4</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener4($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticia.photo4" name="photo4" value="{{image4}}"
+                  placeholder="Base64 da foto 4"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo5">Foto 5</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener5($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticia.photo5" name="photo5" value="{{image5}}"
+                  placeholder="Base64 da foto 5"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="container">
+              <small class="text-muted">(Máximo 5 fotos)</small>
+            </div>
+            <div class="form-group row ">
+              <div class="col-md-3 ">
+                <button type="submit" class="btn btn-primary btn-block " (click)="cadastranoticia()"> Registrar notícia
+                </button>
+              </div>
+            </div> <!-- form-group// -->
+          </form>
+        </article> <!-- card-body end .// -->
+      </div> <!-- card.// -->
     </div> <!-- col.//-->
-    
-    </div> <!-- row.//-->
-    
-    
-    </div> 
-    <!--container end.//-->
-    <router-outlet></router-outlet>
-    <div *ngIf="image">
-      <h3>Result:</h3>
-      <h4>Base64 encoded:</h4>
-      <p>{{image?.replace("data:image/png;base64,", "")}}</p>
-      <h4>Image:</h4>
-      <img src="{{image}}" alt="">
-    </div>
+
+  </div> <!-- row.//-->
+
+
+</div>
+<!--container end.//-->
+<router-outlet></router-outlet>
