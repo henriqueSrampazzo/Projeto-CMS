@@ -38,14 +38,7 @@ class ContatoController extends BaseController
 
 	}
 
-
-
-
 	public function enviaEmail($nome, $email, $mensagem){
-
-		// $mensagem = utf8_decode("Esse é o tal jogo que é melhor que o god of war 4 de usuário para ter uma ideia de como fazer um orçamento para limpar o nome da empresa para que eu possa fazer um novo anúncio");
-
-		// $email = "usuario@gmail.com";
 
 //Create a new PHPMailer instance
 		$mail = new PHPMailer; 
@@ -57,7 +50,7 @@ class ContatoController extends BaseController
 // 0 = off (for production use)
 // 1 = client messages
 // 2 = client and server messages
-		$mail->SMTPDebug = 1;
+		$mail->SMTPDebug = 0;
 
 //Set the hostname of the mail server
 		$mail->Host = 'smtp.gmail.com';
@@ -104,18 +97,19 @@ class ContatoController extends BaseController
 //$mail->addAttachment('images/phpmailer_mini.png');
 
 //send the message, check for errors
-		if (!$mail->send()) {
-			echo "Mailer Error: " . $mail->ErrorInfo;
+
+		$em = new EMService($this->app['orm.em']);
+
+		if ($mail->send()) {
+
+			return $this->app->json(['msg' => 'Mensagem não enviada! Tente novamente mais tarde'], 401);
+
 		} else {
+
 			echo "Message sent!";
-    //Section 2: IMAP
-    //Uncomment these to save your message in the 'Sent Mail' folder.
-    #if (save_mail($mail)) {
-    #    echo "Message saved!";
-    #}
+
 		}
 
 	}
-
 
 }

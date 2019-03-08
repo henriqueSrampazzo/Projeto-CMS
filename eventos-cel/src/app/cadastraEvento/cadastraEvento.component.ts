@@ -27,8 +27,10 @@ export class CadastraEventoComponent implements OnInit {
     
     this.http.post('events', this.evento)
              .subscribe(res => {
-               //toastr.success(res.msg, 'Sucesso');
-               alert('Evento cadastrado com sucesso');
+
+              swal({title:"Evento cadastrado com sucesso!",
+                     icon:"success", 
+              });
                
              });
   }

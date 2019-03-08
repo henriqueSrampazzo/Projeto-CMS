@@ -41,18 +41,26 @@ export class LoginComponent implements OnInit {
       });
   }
 
-   onSignIn(googleUser) {
-    // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
-    console.log("ID: " + profile.getId());
-    console.log('Nome completo: ' + profile.getName());
-    console.log('Nome: ' + profile.getGivenName());
-    console.log('Família: ' + profile.getFamilyName());
-    console.log("URL da Imagem: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail());
+  dados(){
 
-    // The ID token you need to pass to your backend:
-    var id_token = googleUser.getAuthResponse().id_token;
-    console.log("ID Token: " + id_token);
-   }
+    sessionStorage.getItem('dados');
+
+    console.log('dados');
+
+  }
+
+  // onSignIn(googleUser) {
+  //   // Useful data for your client-side scripts:
+  //   var profile = googleUser.getBasicProfile();
+  //   console.log("ID: " + profile.getId());
+  //   console.log('Nome completo: ' + profile.getName());
+  //   console.log('Nome: ' + profile.getGivenName());
+  //   console.log('Família: ' + profile.getFamilyName());
+  //   console.log("URL da Imagem: " + profile.getImageUrl());
+  //   console.log("Email: " + profile.getEmail());
+
+  //   // The ID token you need to pass to your backend:
+  //   var id_token = googleUser.getAuthResponse().id_token;
+  //   console.log("ID Token: " + id_token);
+  // }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HttpService } from '../http.service';
+import swal from 'sweetalert';
 
 
 @Component({
@@ -52,8 +53,11 @@ export class NoticiasComponent implements OnInit {
   cadastranoticia() {
     this.http.post('noticias', this.noticia)
              .subscribe(res => {
-               //toastr.success(res.msg, 'Sucesso');
-               alert('Cadastrado com sucesso');
+
+              swal({title:"Notícia cadastrada com sucesso!",
+                     icon:"success", 
+              });
+
              });
   }
 

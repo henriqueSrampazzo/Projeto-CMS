@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { HttpService } from './../http.service';
 
-
 @Component({
   selector: 'app-contato',
   templateUrl: './contato.component.html',
@@ -11,7 +10,7 @@ import { HttpService } from './../http.service';
 export class ContatoComponent implements OnInit {
 
   private user: Object = {
-    
+
     nome: '',
     email: '',
     mensagem: ''
@@ -20,13 +19,20 @@ export class ContatoComponent implements OnInit {
   constructor(private http: HttpService) { }
 
   ngOnInit() {
+
   }
 
   signup() {
     this.http.post('contato', this.user)
-             .subscribe(res => {
-               alert('Mensagem enviada com sucesso!');
-             });
+      .subscribe(res => {
+
+        swal({
+          title: "Mensagem enviada com sucesso!",
+          text: "Em breve um administrador entrará em contato com você",
+          icon: "success",
+        });
+
+      });
   }
 
 }
