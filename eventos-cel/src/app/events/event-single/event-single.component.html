@@ -5,6 +5,40 @@
       </p>
       
 </div>
-<div class="imagem centralizar animated fadeInLeft">
-<img class="imagem" [src]="event?.photo" alt="Card image cap">
-</div>
+<div class="gallery container wow bounceInLeft" id="gallery">
+
+            <!-- Grid column -->
+            <div *ngIf="event?.photo1" class="mb-3 pics animation all 2">
+              <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/*;base64,'+event?.photo1)" class="d-block w-100" alt="Card image cap">
+            <!-- The Modal -->
+          
+            </div>
+          
+            <!-- Grid column -->
+          
+            <!-- Grid column -->
+            <div *ngIf="event?.photo2" class="mb-3 pics animation all 1">
+              <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/*;base64,'+event?.photo2)" alt="Card image cap">
+            </div>
+            <!-- Grid column -->
+          
+            <!-- Grid column -->
+            <div *ngIf="event?.photo3" class="mb-3 pics animation all 1">
+              <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+event?.photo3)" alt="Card image cap">
+            </div>
+            <!-- Grid column -->
+          
+            <!-- Grid column -->
+            <div *ngIf="event?.photo4" class="mb-3 pics animation all 2">
+              <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+event?.photo4)" alt="Card image cap">
+            </div>
+            <!-- Grid column -->
+          
+            <!-- Grid column -->
+            <div *ngIf="event?.photo5" class="mb-3 pics animation all 2">
+              <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+event?.photo5)" alt="Card image cap">
+            </div>
+            <!-- Grid column -->
+          
+          </div>
+          <!-- Grid row -->

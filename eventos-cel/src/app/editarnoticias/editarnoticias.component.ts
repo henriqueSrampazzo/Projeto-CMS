@@ -3,11 +3,11 @@ import { HttpService } from '../http.service';
 import { NoticiasComponent } from '../noticias/noticias.component';
 
 @Component({
-  selector: 'app-vernoticias',
-  templateUrl: './vernoticias.component.html',
-  styleUrls: ['./vernoticias.component.css']
+  selector: 'app-editarnoticias',
+  templateUrl: './editarnoticias.component.html',
+  styleUrls: ['./editarnoticias.component.css']
 })
-export class VerNoticiasComponent implements OnInit {
+export class EditarNoticiasComponent implements OnInit {
     private noticias: Array<{}>;
     p:number = 100;
 

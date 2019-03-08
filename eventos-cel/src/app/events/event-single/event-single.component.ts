@@ -1,8 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpService } from './../../http.service';
 import { StorageService } from './../../storage.service';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({name: 'safeHtml'})
+export class SafeHtml {
+  constructor(private sanitizer:DomSanitizer){}
+
+  transform(html) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(html);
+  }
+}
 
 @Component({
   selector: 'app-event-single',
@@ -16,7 +26,8 @@ export class EventSingleComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: HttpService,
     private storage: StorageService,
-    private router: Router
+    private router: Router,
+    private domSanitizer: DomSanitizer
   ) { }
 
   ngOnInit() {

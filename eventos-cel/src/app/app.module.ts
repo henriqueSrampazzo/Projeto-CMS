@@ -29,6 +29,9 @@ import { NoticiaSingleComponent } from './vernoticias/noticiasingle/noticia-sing
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ContatoComponent } from './contato/contato.component';
 import { CadastraEventoComponent } from './cadastraEvento/cadastraEvento.component';
+import { EditarNoticiaSingleComponent } from './editarnoticias/editarnoticiasingle/editar-noticia-single.component';
+import { EditarNoticiaComponent } from './editarnoticias/editarnoticia/editarnoticia.component';
+import { EditarNoticiasComponent } from './editarnoticias/editarnoticias.component';
 
 
 @NgModule({
@@ -48,9 +51,11 @@ import { CadastraEventoComponent } from './cadastraEvento/cadastraEvento.compone
     PainelComponent,
     UserEventsComponent,
     NoticiasComponent,
-    NoticiasComponent,
     ContatoComponent,
-    CadastraEventoComponent
+    CadastraEventoComponent,
+    EditarNoticiaSingleComponent,
+    EditarNoticiaComponent,
+    EditarNoticiasComponent
   ],
   imports: [
     BrowserModule,
