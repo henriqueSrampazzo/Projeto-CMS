@@ -32,6 +32,7 @@ import { CadastraEventoComponent } from './cadastraEvento/cadastraEvento.compone
 import { EditarNoticiaSingleComponent } from './editarnoticias/editarnoticiasingle/editar-noticia-single.component';
 import { EditarNoticiaComponent } from './editarnoticias/editarnoticia/editarnoticia.component';
 import { EditarNoticiasComponent } from './editarnoticias/editarnoticias.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -63,7 +64,9 @@ import { EditarNoticiasComponent } from './editarnoticias/editarnoticias.compone
     HttpModule,
     AppRoutingModule,
     FormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    HttpClientModule
+
   ],
   providers: [HttpService, StorageService, AuthGuard],
   bootstrap: [AppComponent]

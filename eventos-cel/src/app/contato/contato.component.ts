@@ -18,6 +18,8 @@ export class ContatoComponent implements OnInit {
 
   constructor(private http: HttpService) { }
 
+  aguardando = false;
+
   ngOnInit() {
 
   }
@@ -32,7 +34,13 @@ export class ContatoComponent implements OnInit {
           icon: "success",
         });
 
+        this.aguardando = false;
+
       });
+  }
+
+  aguardar(){
+    this.aguardando = true;
   }
 
 }

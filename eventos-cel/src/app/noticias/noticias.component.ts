@@ -28,7 +28,6 @@ export class NoticiasComponent implements OnInit {
 
     myReader.onloadend = (e) => {
       this.image = myReader.result;
-       console.log('testando: '+this.image);
     }
     myReader.readAsDataURL(file);
   }

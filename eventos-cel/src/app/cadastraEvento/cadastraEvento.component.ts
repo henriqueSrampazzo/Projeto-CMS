@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { HttpService } from '../http.service';
 
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-cadastraEvento',
@@ -27,7 +28,6 @@ export class CadastraEventoComponent implements OnInit {
 
     myReader.onloadend = (e) => {
       this.image = myReader.result;
-       console.log('testando: '+this.image);
     }
     myReader.readAsDataURL(file);
   }
@@ -95,7 +95,7 @@ export class CadastraEventoComponent implements OnInit {
   private evento: Object = {
     title: '',
     dataevent: '',
-    photo: '',
+    photo1: '',
     photo2: '',
     photo3: '',
     photo4: '',

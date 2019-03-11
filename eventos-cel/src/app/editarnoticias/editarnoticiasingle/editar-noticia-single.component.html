@@ -1,56 +1,95 @@
-<div>
-  <div class="container">
-    <br>  
-      <h1 class="centralizar animated pulse">{{noticia?.title}}</h1>
-      <p class="centralizar animated pulse">
-        {{noticia?.postdata | date:'dd/MM/yyyy H:mm:ss'}}
-        </p>
-        <br>
-        <div class="diminuiTexto">
-        <h5 class="firstLetter animated fadeIn">
-        {{noticia?.description}}
-      </h5>
-      <br> <br> <br>
-    </div>
-    
-    <!-- <img class="card-img-top" [src]="noticia?.photo1" alt="Card image cap"> -->
-  </div>
+<div class="container animated bounceIn">
+  <br>
+  <div class="row justify-content-center shadow-lg back-form">
+    <div class="col-md-12">
+      <div>
+        <header class="card-header">
+          <h4 class="card-title mt-2">Cadastre uma notícia</h4>
+        </header>
+        <article class="card-body">
+
+          <form enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Título</label>
+                <input type="text" class="form-control" [(ngModel)]="noticiaeditada.title" name="title" value="{{noticia?.title}}">
+              </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Descrição</label>
+                <textarea class="form-control" [(ngModel)]="noticiaeditada.description" name="description"
+                  rows="10" value="{{noticia?.description}}"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo1">Foto 1</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticiaeditada.photo1" name="photo1" value="{{image}}"
+                  placeholder="Base64 da foto 1"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo2">Foto 2</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener2($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticiaeditada.photo2" name="photo2" value="{{image2}}"
+                  placeholder="Base64 da foto 2"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo3">Foto 3</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener3($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticiaeditada.photo3" name="photo3" value="{{image3}}"
+                  placeholder="Base64 da foto 3"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo4">Foto 4</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener4($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticiaeditada.photo4" name="photo4" value="{{image4}}"
+                  placeholder="Base64 da foto 4"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <label for="photo5">Foto 5</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener5($event)">
+                <br>
+                <textarea class="form-control" [(ngModel)]="noticiaeditada.photo5" name="photo5" value="{{image5}}"
+                  placeholder="Base64 da foto 5"></textarea>
+              </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="container">
+              <small class="text-muted">(Máximo 5 fotos)</small>
+            </div>
+            <div class="form-group row ">
+              <div class="col-md-3 ">
+                <button type="submit" class="btn btn-primary btn-block " (click)="editanoticia()"> Editar notícia
+                </button>
+              </div>
+            </div> <!-- form-group// -->
+          </form>
+        </article> <!-- card-body end .// -->
+      </div> <!-- card.// -->
+    </div> <!-- col.//-->
+
+  </div> <!-- row.//-->
+
+
 </div>
-<!-- Grid row -->
-<div class="gallery container wow bounceInLeft" id="gallery">
-
-  <!-- Grid column -->
-  <div *ngIf="noticia?.photo1" class="mb-3 pics animation all 2">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo1)" class="d-block w-100" alt="Card image cap">
-  <!-- The Modal -->
-
-  </div>
-
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-  <div *ngIf="noticia?.photo2" class="mb-3 pics animation all 1">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo2)" alt="Card image cap">
-  </div>
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-  <div *ngIf="noticia?.photo3" class="mb-3 pics animation all 1">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo3)" alt="Card image cap">
-  </div>
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-  <div *ngIf="noticia?.photo4" class="mb-3 pics animation all 2">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo4)" alt="Card image cap">
-  </div>
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-  <div *ngIf="noticia?.photo5" class="mb-3 pics animation all 2">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo5)" alt="Card image cap">
-  </div>
-  <!-- Grid column -->
-
-</div>
-<!-- Grid row -->
+<!--container end.//-->
