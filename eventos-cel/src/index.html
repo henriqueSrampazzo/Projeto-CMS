@@ -21,22 +21,20 @@
 
   <script>
     function onSignIn(googleUser) {
-      // Useful data for your client-side scripts:
-      // var profile = googleUser.getBasicProfile();
-      // console.log("ID: " + profile.getId());
-      // console.log('Nome completo: ' + profile.getName());
-      // console.log('Nome: ' + profile.getGivenName());
-      // console.log('Família: ' + profile.getFamilyName());
-      // console.log("URL da Imagem: " + profile.getImageUrl());
-      // console.log("Email: " + profile.getEmail());
 
-      // // The ID token you need to pass to your backend:
-      // var id_token = googleUser.getAuthResponse().id_token;
-      // console.log("ID Token: " + id_token);
+      let profile = googleUser.getBasicProfile();
 
-      var dadosUsuario = JSON.stringify(googleUser);
-      
-    sessionStorage.setItem('dados', dadosUsuario);
+      let email = profile.getEmail();
+      let id = profile.getId();
+      let id_token = googleUser.getAuthResponse().id_token;
+
+      let token = JSON.stringify(id_token);
+      let idPerfil = JSON.stringify(id);
+      let emailPerfil = JSON.stringify(email);
+
+      sessionStorage.setItem('email', emailPerfil);
+      sessionStorage.setItem('id', idPerfil);
+      sessionStorage.setItem('token', token);
 
     }
 
@@ -46,9 +44,14 @@
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
-        console.log('User signed out.');
+
+        sessionStorage.removeItem('email');
+        sessionStorage.removeItem('id');
+        sessionStorage.removeItem('token');
+
       });
     }
+
   </script>
 
   <br><br><br>
@@ -57,7 +60,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
   <script>
-  new WOW().init();
+    new WOW().init();
   </script>
 
 </body>

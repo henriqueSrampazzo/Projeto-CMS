@@ -11,8 +11,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   private user: Object = {
-    'email': '',
-    'password': ''
+
+    'email': '1',
+    'password': '1',
+
+    // 'email':JSON.parse(sessionStorage.getItem('token')),
+    // 'password':JSON.parse(sessionStorage.getItem('id')),
+
   };
 
   constructor(
@@ -20,9 +25,16 @@ export class LoginComponent implements OnInit {
     private storage: StorageService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
 
+    console.log('email  : ' + this.user['email']);
+    console.log('id ' + this.user['id']);
+    console.log('token  : ' + this.user['token']);
+
+
+  }
   ngOnInit() {
+
   }
 
   login() {
@@ -41,26 +53,4 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  dados(){
-
-    sessionStorage.getItem('dados');
-
-    console.log('dados');
-
-  }
-
-  // onSignIn(googleUser) {
-  //   // Useful data for your client-side scripts:
-  //   var profile = googleUser.getBasicProfile();
-  //   console.log("ID: " + profile.getId());
-  //   console.log('Nome completo: ' + profile.getName());
-  //   console.log('Nome: ' + profile.getGivenName());
-  //   console.log('Família: ' + profile.getFamilyName());
-  //   console.log("URL da Imagem: " + profile.getImageUrl());
-  //   console.log("Email: " + profile.getEmail());
-
-  //   // The ID token you need to pass to your backend:
-  //   var id_token = googleUser.getAuthResponse().id_token;
-  //   console.log("ID Token: " + id_token);
-  // }
 }
