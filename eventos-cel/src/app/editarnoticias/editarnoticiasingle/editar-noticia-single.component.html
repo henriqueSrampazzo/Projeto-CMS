@@ -9,6 +9,14 @@
         <article class="card-body">
 
           <form enctype="multipart/form-data">
+            
+            <div class="form-row">
+              <div class="col form-group">
+                <label>ID</label>
+                <input type="text" class="form-control" [(ngModel)]="noticiaeditada.title" name="title" value="{{noticia?.id}}" disabled name="id_edit">
+              </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
             <div class="form-row">
               <div class="col form-group">
                 <label>Título</label>

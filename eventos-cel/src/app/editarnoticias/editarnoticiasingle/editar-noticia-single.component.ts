@@ -7,9 +7,14 @@ import { StorageService } from '../../storage.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
-@Pipe({name: 'safeHtml'})
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map'
+import { HttpClient } from '@angular/common/http';
+import { NoticiaSingleComponent } from '../../vernoticias/noticiasingle/noticia-single.component';
+
+@Pipe({ name: 'safeHtml' })
 export class SafeHtml {
-  constructor(private sanitizer:DomSanitizer){}
+  constructor(private sanitizer: DomSanitizer) { }
 
   transform(html) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(html);
@@ -24,7 +29,7 @@ export class SafeHtml {
 export class EditarNoticiaSingleComponent implements OnInit {
   private noticia: {};
 
-  id;
+  id_edit;
   image;
   image2;
   image3;
@@ -34,6 +39,7 @@ export class EditarNoticiaSingleComponent implements OnInit {
   //foto1
   changeListener($event): void {
     this.readThis($event.target);
+
   }
 
   readThis(inputValue: any): void {
@@ -44,7 +50,7 @@ export class EditarNoticiaSingleComponent implements OnInit {
       this.image = myReader.result;
     }
     myReader.readAsDataURL(file);
-    this.id = (this.noticia['id']);
+    
   }
 
   //foto2
@@ -107,7 +113,21 @@ export class EditarNoticiaSingleComponent implements OnInit {
     myReader.readAsDataURL(file);
   }
 
+//id
+readThis6(inputValue: any): void {
+  var file: File = inputValue.files[0];
+  var myReader: FileReader = new FileReader();
+
+  myReader.onloadend = (e) => {
+    this.id_edit = myReader.result;
+  }
+  myReader.readAsDataURL(file);
+
+  console.log(this.id_edit);
+}
+
   private noticiaeditada: Object = {
+    id: '',
     title: '',
     description: '',
     photo1: '',
@@ -129,32 +149,30 @@ export class EditarNoticiaSingleComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-        this.httpService.getBy('noticias', params['slug'])
-            .subscribe(data => this.noticia = data);
-            
+      this.httpService.getBy('noticias', params['slug'])
+        .subscribe(data => this.noticia = data);
+    
     });
-}
 
-editanoticia() {
-  this.http.post(`noticias`, this.noticiaeditada)
-           .subscribe(res => {
+  }
 
-            swal({title:"Notícia editada com sucesso!",
-                   icon:"success", 
-            });
+  editanoticia() {
+    this.http.post('noticiasedit', this.noticiaeditada)
+      .subscribe(res => {
+        swal({
+          title: "Notícia editada com sucesso!",
+          icon: "success",
+        });
+      });
+  }
 
-           });
-console.log(this.id);
-           
-}
-  
   subscribe(noticia_id) {
     this.storage.set('noticia', noticia_id);
 
-    if(this.storage.get('token') != undefined) {
+    if (this.storage.get('token') != undefined) {
       this.router.navigate(['/make-subscription']);
     } else {
-      this.router.navigate(['/login'], {'queryParams': {'to': 'subscription_confirm'}});
+      this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
     }
   }
 

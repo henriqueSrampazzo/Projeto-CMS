@@ -52,7 +52,7 @@ class RouterServiceProvider implements ServiceProviderInterface
 	    $app->get('/noticias', 'noticia:index');
 	    $app->get('/noticias/{id}', 'noticia:get');
 	    $app->post('/noticias', 'noticia:save');//->before($verifyToken);
-	    $app->put('/noticias', 'noticia:update');
+	    $app->post('/noticiasedit', 'noticia:update');
 	    $app->delete('/noticias/{id}', 'noticia:delete');
 
 
