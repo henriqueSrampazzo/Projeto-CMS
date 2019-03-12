@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Pipe } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-
 import { HttpService } from '../../http.service';
 import { StorageService } from '../../storage.service';
 import { Router } from '@angular/router';
@@ -10,7 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { HttpClient } from '@angular/common/http';
-import { NoticiaSingleComponent } from '../../vernoticias/noticiasingle/noticia-single.component';
+import { EventSingleComponent } from '../../events/event-single/event-single.component';
 
 @Pipe({ name: 'safeHtml' })
 export class SafeHtml {
@@ -22,12 +21,12 @@ export class SafeHtml {
 }
 
 @Component({
-  selector: 'app-editar-noticia-single',
-  templateUrl: './editar-noticia-single.component.html',
-  styleUrls: ['./editar-noticia-single.component.css']
+  selector: 'app-editar-event-single',
+  templateUrl: './editar-event-single.component.html',
+  styleUrls: ['./editar-event-single.component.css']
 })
-export class EditarNoticiaSingleComponent implements OnInit {
-  private noticia: {};
+export class EditarEventSingleComponent implements OnInit {
+  private event: {};
 
   image;
   image2;
@@ -49,7 +48,7 @@ export class EditarNoticiaSingleComponent implements OnInit {
       this.image = myReader.result;
     }
     myReader.readAsDataURL(file);
-
+    
   }
 
   //foto2
@@ -112,15 +111,15 @@ export class EditarNoticiaSingleComponent implements OnInit {
     myReader.readAsDataURL(file);
   }
 
-  private noticiaeditada: Object = {
-    id: null,
-    title: null,
-    description: null,
-    photo1: null,
-    photo2: null,
-    photo3: null,
-    photo4: null,
-    photo5: null
+  private eventeditado: Object = {
+    id:null,
+    title:null,
+    dataevent:null,
+    photo1:null,
+    photo2:null,
+    photo3:null,
+    photo4:null,
+    photo5:null
   };
 
 
@@ -135,69 +134,69 @@ export class EditarNoticiaSingleComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.httpService.getBy('noticias', params['slug'])
-        .subscribe(data => this.noticia = data);
+      this.httpService.getBy('events', params['slug'])
+        .subscribe(data => this.event = data);
     });
   }
 
-  editanoticia() {
+  editaevent() {
+    
+    this.eventeditado['id'] = this.event['id'];
+    
+    this.eventeditado['photo1'] = this.image;
+    this.eventeditado['photo2'] = this.image2;
+    this.eventeditado['photo3'] = this.image3;
+    this.eventeditado['photo4'] = this.image4;
+    this.eventeditado['photo5'] = this.image5;
 
-    this.noticiaeditada['id'] = this.noticia['id'];
-
-    this.noticiaeditada['photo1'] = this.image;
-    this.noticiaeditada['photo2'] = this.image2;
-    this.noticiaeditada['photo3'] = this.image3;
-    this.noticiaeditada['photo4'] = this.image4;
-    this.noticiaeditada['photo5'] = this.image5;
-
-    this.http.post('noticiasedit', this.noticiaeditada)
+    this.http.post('eventosedit', this.eventeditado)
       .subscribe(res => {
         swal({
-          title: "Notícia editada com sucesso!",
+          title: "Evento editado com sucesso!",
           icon: "success",
         });
       });
   }
 
-
-  confirmdelete() {
+  confirmdelete(){
     swal({
-      title: "Deseja mesmo deletar essa notícia?",
+      title: "Deseja mesmo deletar esse evento?",
       icon: "warning",
       dangerMode: true,
       buttons: ['Cancelar', 'Ok']
     })
-      .then((willDelete) => {
-        if (willDelete) {
-          this.deletanoticia();
-          swal("Notícia deletada com sucesso", {
-            icon: "success",
-          });
-          this.router.navigate(['editarnoticias/']);
-        } else {
-
-        }
-      });
+    .then((willDelete) => {
+      if (willDelete) {
+        this.deletaevent();
+        swal("Evento deletado com sucesso", {
+          icon: "success",
+        });
+        this.router.navigate(['editareventos/']);
+      } else {
+        
+      }
+    });
   }
 
-  deletanoticia() {
+  deletaevent() {
+    
+    this.eventeditado['id'] = this.event['id'];
+    
+    var id_del = this.eventeditado['id'];
 
-    this.noticiaeditada['id'] = this.noticia['id'];
-
-    var id_del = this.noticiaeditada['id'];
-
-    this.http.post(`noticias/`+id_del, this.noticiaeditada)
+    this.http.post(`events/`+id_del, this.eventeditado)
       .subscribe(res => {
         swal({
-          title: "Notícia deletada com sucesso!",
+          title: "Evento deletado com sucesso!",
           icon: "success",
         });
       });
   }
 
   cancelar(){
-    this.router.navigate(['editarnoticias/']);
+    this.router.navigate(['editareventos/']);
   }
+
   // subscribe(noticia_id) {
   //   this.storage.set('noticia', noticia_id);
 

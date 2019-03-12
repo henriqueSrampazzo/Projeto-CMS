@@ -33,6 +33,9 @@ import { EditarNoticiaSingleComponent } from './editarnoticias/editarnoticiasing
 import { EditarNoticiaComponent } from './editarnoticias/editarnoticia/editarnoticia.component';
 import { EditarNoticiasComponent } from './editarnoticias/editarnoticias.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditarEventSingleComponent } from './editarevents/editareventsingle/editar-event-single.component';
+import { EditarEventsComponent } from './editarevents/editarevents.component';
+import { EditarEventComponent } from './editarevents/editarevent/editarevent.component';
 
 
 @NgModule({
@@ -56,7 +59,10 @@ import { HttpClientModule } from '@angular/common/http';
     CadastraEventoComponent,
     EditarNoticiaSingleComponent,
     EditarNoticiaComponent,
-    EditarNoticiasComponent
+    EditarNoticiasComponent,
+    EditarEventSingleComponent,
+    EditarEventComponent,
+    EditarEventsComponent
   ],
   imports: [
     BrowserModule,

@@ -2,73 +2,75 @@
   <br>
   <div class="row justify-content-center shadow-lg back-form">
     <div class="col-md-12">
-      <div class>
+      
         <header class="card-header">
           <h4 class="card-title mt-2">Cadastre um evento</h4>
         </header>
         <article class="card-body">
 
-          <form enctype="multipart/form-data">
+          <form enctype="multipart/form-data" #f=ngForm>
 
             <div class="form-row">
               <div class="col-md-8 form-group">
-                <label>Título</label>
-                <input type="text" class="form-control" [(ngModel)]="evento.title" name="title">
+                <label>Título *</label>
+                <input type="text" class="form-control" [(ngModel)]="evento.title" name="title" required #title=ngModel>
+                <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
+                    Título é obrigatório!
+                  </div>
               </div> <!-- form-group end.// -->
               <div class="col-md-4 form-group">
-                <label>Data</label>
+                <label>Data *</label>
                 <input type="datetime-local" class="form-control" [(ngModel)]="evento.dataevent" name="dataevent"
-                  id="dataevent">
+                  id="dataevent" required #dataevent=ngModel>
+                  <div *ngIf="!dataevent.valid && dataevent.touched" class="alert alert-danger" role="alert">
+                      Data é obrigatória!
+                    </div>
               </div> <!-- form-group end.// -->
             </div> <!-- form-row end.// -->
 
-            <div class="form-row">
-              <div class="col-md-6 form-group">
-                <label for="photo1">Foto 1</label>
-                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener($event)">
-                <br>
-                <textarea class="form-control" [(ngModel)]="evento.photo1" name="photo1" value="{{image}}"
-                  placeholder="Base64 da foto 1"></textarea>
+            <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="photo1">Foto 1</label>
+                  <input type="file" class="form-control-file" accept="image/*" (change)="changeListener($event)">
+                </div> <!-- form-group end.// -->
+                <div class="col-md-6">
+                  <label for="photo2">Foto 2</label>
+                  <input type="file" class="form-control-file" accept="image/*" (change)="changeListener2($event)">
+                </div> <!-- form-group end.// -->
+              </div>
+  
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="photo3">Foto 3</label>
+                  <input type="file" class="form-control-file" accept="image/*" (change)="changeListener3($event)">
+                </div> <!-- form-group end.// -->
+                <div class="col-md-6">
+                  <label for="photo4">Foto 4</label>
+                  <input type="file" class="form-control-file" accept="image/*" (change)="changeListener4($event)">
+                </div> <!-- form-group end.// -->
+              </div>
+  
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <label for="photo5">Foto 5</label>
+                  <input type="file" class="form-control-file" accept="image/*" (change)="changeListener5($event)">
+                </div> <!-- form-group end.// -->
+                <div class="col-md-6">
+                    <br>
+                    <div class="alert alert-warning" role="alert">
+                        Recomenda-se fazer upload de pelo menos uma foto! <small>(máximo 5)</small>
+                      </div>
+                  </div>
               </div>
 
-              <div class="col-md-6 form-group">
-                <label for="photo2">Foto 2</label>
-                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener2($event)">
-                <br>
-                <textarea class="form-control" [(ngModel)]="evento.photo2" name="photo2" value="{{image2}}"
-                  placeholder="Base64 da foto 2"></textarea>
-              </div>
-
-              <div class="col-sm-6">
-                <label for="photo3">Foto 3</label>
-                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener3($event)">
-                <br>
-                <textarea class="form-control" [(ngModel)]="evento.photo3" name="photo3" value="{{image3}}"
-                  placeholder="Base64 da foto 3"></textarea>
-              </div>
-
-              <div class="col-sm-6">
-                <label for="photo4">Foto 4</label>
-                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener4($event)">
-                <br>
-                <textarea class="form-control" [(ngModel)]="evento.photo4" name="photo4" value="{{image4}}"
-                  placeholder="Base64 da foto 4"></textarea>
-              </div>
-
-              <div class="col-sm-6">
-                <label for="photo5">Foto 5</label>
-                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener5($event)">
-                <br>
-                <textarea class="form-control" [(ngModel)]="evento.photo5" name="photo5" value="{{image5}}"
-                  placeholder="Base64 da foto 5"></textarea>
-              </div> <!-- form-group end.// -->
-
-              <div class="col-sm-6">
-                  <button type="submit" class="btn btn-primary estiloBotao" (click)="cadastraevento()"> Registrar
+              <div class="container centralizar">
+                  <div class="col-md-3 row-group">
+                  <button type="submit" class="btn btn-primary estiloBotao" (click)="cadastraevento()" [disabled]="f.invalid"> Registrar
                     evento</button>
                 </div>
+                </div>
 
-            </div>
+           
           </form>
         </article> <!-- card-body end .// -->
       </div> <!-- card.// -->
@@ -77,6 +79,5 @@
   </div> <!-- row.//-->
 
 
-</div>
 <!--container end.//-->
 <router-outlet></router-outlet>
