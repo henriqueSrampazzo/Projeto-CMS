@@ -105,12 +105,16 @@ export class CadastraEventoComponent implements OnInit {
   constructor(private http: HttpService) { 
   }
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   cadastraevento() {
     
+    this.evento['photo1'] = this.image;
+    this.evento['photo2'] = this.image2;
+    this.evento['photo3'] = this.image3;
+    this.evento['photo4'] = this.image4;
+    this.evento['photo5'] = this.image5;
+
     this.http.post('events', this.evento)
              .subscribe(res => {
 

@@ -1,0 +1,99 @@
+<div class="container animated bounceIn">
+  <br>
+  <div class="row justify-content-center shadow-lg back-form">
+    <div class="col-md-12">
+      <div>
+        <header class="card-header">
+          <h4 class="card-title mt-2">Edite um evento</h4>
+        </header>
+        <article class="card-body">
+
+          <form enctype="multipart/form-data" #f=ngForm>
+
+            <div class="form-row">
+              <div class="col form-group">
+                <label>ID</label>
+                <input type="text" class="form-control" name="id_edit" value="{{event?.id}}" disabled>
+              </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Título</label>
+                <input type="text" class="form-control" [(ngModel)]="eventeditado.title" name="title"
+                  value="{{event?.title}}" required #title=ngModel>
+                  <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
+                      Título é obrigatório!
+                    </div>
+              </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Data</label>
+                <input type="datetime-local" class="form-control" [(ngModel)]="eventeditado.dataevent" name="dataevent"
+                  value="{{event?.dataevent}}" id="dataevent" required #dataevent=ngModel>
+                  <div *ngIf="!dataevent.valid && dataevent.touched" class="alert alert-danger" role="alert">
+                      Data é obrigatória!
+                    </div>
+              </div>
+            </div> <!-- form-group end.// -->
+
+            <hr>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="photo1">Foto 1</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener($event)">
+              </div> <!-- form-group end.// -->
+              <div class="col-md-6">
+                  <label for="photo2">Foto 2</label>
+                  <input type="file" class="form-control-file" accept="image/*" (change)="changeListener2($event)">
+                </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="photo3">Foto 3</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener3($event)">
+              </div> <!-- form-group end.// -->
+              <div class="col-md-6">
+                  <label for="photo4">Foto 4</label>
+                  <input type="file" class="form-control-file" accept="image/*" (change)="changeListener4($event)">
+                </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="photo5">Foto 5</label>
+                <input type="file" class="form-control-file" accept="image/*" (change)="changeListener5($event)">
+              </div> <!-- form-group end.// -->
+              <div class="col-md-6">
+                  <br>
+                  <div class="alert alert-warning" role="alert">
+                      Recomenda-se fazer upload de pelo menos uma foto! <small>(máximo 5)</small>
+                    </div>
+                </div>
+          </div>
+          <br>
+          <hr>
+          <br>
+            <div class="container centralizar">
+              <div class="col-md-4 row-group">
+                <button type="submit" class="btn btn-primary btn-block " (click)="editaevent()" [disabled]="f.invalid"> Editar evento
+                </button>
+                <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()"> Deletar evento
+                  </button>
+                <button type="submit" class="btn btn-secondary btn-block" (click)="cancelar()">Cancelar edição</button>
+              </div>
+            </div>
+          </form>
+        </article> <!-- card-body end .// -->
+      </div> <!-- card.// -->
+    </div> <!-- col.//-->
+
+  </div> <!-- row.//-->
+
+
+</div>
+<!--container end.//-->

@@ -17,6 +17,8 @@ import { ContatoComponent } from '../contato/contato.component';
 import { CadastraEventoComponent } from '../cadastraEvento/cadastraEvento.component';
 import { EditarNoticiaSingleComponent } from '../editarnoticias/editarnoticiasingle/editar-noticia-single.component';
 import { EditarNoticiasComponent } from '../editarnoticias/editarnoticias.component';
+import { EditarEventSingleComponent } from '../editarevents/editareventsingle/editar-event-single.component';
+import { EditarEventsComponent } from '../editarevents/editarevents.component';
 
 
 const appRoutes: Routes = [
@@ -24,6 +26,8 @@ const appRoutes: Routes = [
   {path: 'noticia/:slug', component: NoticiaSingleComponent},
   {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent},
   {path: 'editarnoticias', component: EditarNoticiasComponent},
+  {path: 'editareventos/:slug', component: EditarEventSingleComponent},
+  {path: 'editareventos', component: EditarEventsComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'cadastranoticia', component: NoticiasComponent},
   {path: 'login', component: LoginComponent},

@@ -1,0 +1,18 @@
+.centralizar{
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+
+.centralizaTitle{
+    text-align: center; 
+    font-weight: bold;
+}
+
+button {
+    border: 1px #AAA solid;
+    padding: 4px 10px;
+}
+.hide {
+    display: none;
+}

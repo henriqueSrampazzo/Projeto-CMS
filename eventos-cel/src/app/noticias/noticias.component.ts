@@ -106,15 +106,19 @@ export class NoticiasComponent implements OnInit {
 
   ngOnInit() {
   }
-
   cadastranoticia() {
+    
+    this.noticia['photo1'] = this.image;
+    this.noticia['photo2'] = this.image2;
+    this.noticia['photo3'] = this.image3;
+    this.noticia['photo4'] = this.image4;
+    this.noticia['photo5'] = this.image5;
+
     this.http.post('noticias', this.noticia)
              .subscribe(res => {
-
               swal({title:"Notícia cadastrada com sucesso!",
                      icon:"success", 
               });
-
              });
   }
 

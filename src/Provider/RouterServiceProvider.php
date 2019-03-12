@@ -43,8 +43,8 @@ class RouterServiceProvider implements ServiceProviderInterface
 	    $app->get('/events', 'event:index');
 	    $app->get('/events/{id}', 'event:get');
 	    $app->post('/events', 'event:save');//->before($verifyToken);
-	    $app->put('/events', 'event:update');
-	    $app->delete('/events/{id}', 'event:delete');
+	    $app->post('/eventosedit', 'event:update');
+	    $app->post('/events/{id}', 'event:delete');
 
 	    /**
 	     * Noticias Routes
@@ -53,7 +53,7 @@ class RouterServiceProvider implements ServiceProviderInterface
 	    $app->get('/noticias/{id}', 'noticia:get');
 	    $app->post('/noticias', 'noticia:save');//->before($verifyToken);
 	    $app->post('/noticiasedit', 'noticia:update');
-	    $app->delete('/noticias/{id}', 'noticia:delete');
+	    $app->post('/noticias/{id}', 'noticia:delete');
 
 
 
