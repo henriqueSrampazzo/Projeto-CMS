@@ -79,6 +79,13 @@ class Noticia implements Entity
      */
     private $postdata;
 
+    /**
+     * @JMS\Groups({"list"})
+     *
+     * @ORM\Column(name="id_user", type="string")
+     */
+    private $id_user;
+
 	public function __construct()
 	{
 		
@@ -237,6 +244,23 @@ class Noticia implements Entity
     public function setPostData($postdata)
     {
         $this->postdata = $postdata;
+    }
+
+    
+    /**
+     * @return mixed
+     */
+    public function getIdUser()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * @param mixed $id_user
+     */
+    public function setIdUser($id_user)
+    {
+        $this->id_user = $id_user;
     }
 
 }

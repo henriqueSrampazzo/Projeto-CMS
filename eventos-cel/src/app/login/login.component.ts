@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+
+  option = 'Entre';
+
+  email=null;
 
   private user: Object = {
 
-    'email': '1',
-    'password': '1',
+    // 'email': '1',
+    // 'password': '1',
 
-    // 'email':JSON.parse(sessionStorage.getItem('token')),
+     'email': ''
     // 'password':JSON.parse(sessionStorage.getItem('id')),
 
   };
@@ -38,6 +44,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.user['email'] = JSON.parse(sessionStorage.getItem('email'));
+    console.log(this.user['email']);
     this.http.post('auth/login', this.user)
       .subscribe(res => {
         this.storage.set('token', res.token);
@@ -46,11 +54,13 @@ export class LoginComponent implements OnInit {
           if (params.to == 'subscription_confirm') {
             return this.router.navigate(['/make-subscription']);
           } else {
-            return this.router.navigate(['']);
+            return this. router.navigate(['']);
           }
         });
 
       });
+
+      this.option = 'Logado';
   }
 
 }

@@ -64,7 +64,7 @@ class UserController extends BaseController
 		$user->setEmail($data['email']);
 		$user->setUsername($data['username']);
 		$user->setPassword($password);
-		$user->setIsActive(true);
+		$user->setNivel('user');
 		$user->setCreatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
 		$user->setUpdatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
 

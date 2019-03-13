@@ -99,12 +99,14 @@ export class NoticiasComponent implements OnInit {
     photo2: '',
     photo3: '',
     photo4: '',
-    photo5: ''
+    photo5: '',
+    id_user: JSON.parse(sessionStorage.getItem('email'))
   };
 
   constructor(private http: HttpService) { }
 
   ngOnInit() {
+    console.log('email: '+this.noticia['id_user']);
   }
   cadastranoticia() {
     

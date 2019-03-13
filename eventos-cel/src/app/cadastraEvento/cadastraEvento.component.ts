@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 
 import swal from 'sweetalert';
+import { StorageService } from '../storage.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cadastraEvento',
@@ -16,6 +18,8 @@ export class CadastraEventoComponent implements OnInit {
   image3;
   image4;
   image5;
+
+  private id_usuario: {};
 
   //foto1
   changeListener($event): void {
@@ -99,13 +103,21 @@ export class CadastraEventoComponent implements OnInit {
     photo2: '',
     photo3: '',
     photo4: '',
-    photo5: ''
+    photo5: '',
+    id_user: JSON.parse(sessionStorage.getItem('email'))
   };
 
-  constructor(private http: HttpService) { 
-  }
+  constructor(
+    public http: HttpService,
+    private httpService: HttpService,
+    private storage: StorageService,
+    private router: Router,
+    private route: ActivatedRoute
+    ) {}
 
-  ngOnInit() {}
+  ngOnInit() { 
+    console.log('email: '+this.evento['id_user']);
+  }
 
   cadastraevento() {
     
@@ -117,12 +129,21 @@ export class CadastraEventoComponent implements OnInit {
 
     this.http.post('events', this.evento)
              .subscribe(res => {
-
               swal({title:"Evento cadastrado com sucesso!",
                      icon:"success", 
-              });
-               
+              });    
              });
   }
+
+    subscribe(noticia_id) {
+    this.storage.set('noticia', noticia_id);
+
+    if (this.storage.get('token') != undefined) {
+      this.router.navigate(['/make-subscription']);
+    } else {
+      this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
+    }
+  }
+
 
 }

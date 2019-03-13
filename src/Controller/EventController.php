@@ -1,6 +1,5 @@
 <?php
 namespace CodeExperts\Controller;
-
 use CodeExperts\Entity\Event;
 use CodeExperts\Service\EMService;
 use JMS\Serializer\SerializationContext;
@@ -15,6 +14,25 @@ class EventController extends BaseController
 		$events = $this->app['orm.em']
 			->getRepository('CodeExperts\Entity\Event')
 			->findAll();
+
+		$build = SerializerBuilder::create()->build();
+
+		$response  = new Response($build->serialize(
+			$events,
+			'json',
+			SerializationContext::create()->setGroups(array('list'))), 200);
+
+		$response->headers->set('Content-Type', 'application/json');
+
+		return $response;
+	}
+
+	public function meusEventos()
+	{
+		$email = 'mateuspetry@inovadora.com.br';
+		$events = $this->app['orm.em']
+			->getRepository('CodeExperts\Entity\Event')
+			->findBy(array('id_user' => $email));
 
 		$build = SerializerBuilder::create()->build();
 
@@ -61,6 +79,7 @@ class EventController extends BaseController
 	    $event->setPhoto3($data['photo3']);
 	    $event->setPhoto4($data['photo4']);
 	    $event->setPhoto5($data['photo5']);
+	    $event->setIdUser($data['id_user']);
 
 		$em = new EMService($this->app['orm.em']);
 
