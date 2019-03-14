@@ -12,12 +12,10 @@ export class LoginComponent implements OnInit {
 
   private user: Object = {
 
-    'email': '1',
-    'password': '1',
-
-    // 'email':JSON.parse(sessionStorage.getItem('token')),
-    // 'password':JSON.parse(sessionStorage.getItem('id')),
-
+    'email': JSON.parse(sessionStorage.getItem('email')),
+    'idEm': JSON.parse(sessionStorage.getItem('id')),
+    'token': JSON.parse(sessionStorage.getItem('token')),
+    'password': ''
   };
 
   constructor(
@@ -27,30 +25,48 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
 
-    console.log('email  : ' + this.user['email']);
-    console.log('id ' + this.user['id']);
-    console.log('token  : ' + this.user['token']);
-
+    console.log('email: ' + this.user['email']);
+    console.log('id: ' + this.user['idEm']);
+    console.log('token: ' + this.user['token']);
 
   }
-  ngOnInit() {
 
+  ngOnInit() {
   }
 
   login() {
     this.http.post('auth/login', this.user)
       .subscribe(res => {
-        this.storage.set('token', res.token);
-        this.route.queryParams.subscribe(params => {
 
-          if (params.to == 'subscription_confirm') {
-            return this.router.navigate(['/make-subscription']);
-          } else {
-            return this.router.navigate(['']);
-          }
+        swal({
+          title: "Login realizado com sucesso!",
+          icon: "success",
         });
 
+        return this.router.navigate(['']);
+
       });
+      swal({
+        title: "Usuário ou senha incorretos!",
+        text: "Verifique e tente novamente",
+        icon: "error",
+      });
+  }
+  onSignIn(googleUser) {
+
+    let profile = googleUser.getBasicProfile();
+    let id_token = googleUser.getAuthResponse().id_token;
+
+    let email = profile.getEmail();
+    let id = profile.getId();
+    let nomeCompleto = profile.getName();
+    let nome = profile.getGivenName();
+
+    let emailPerfil = JSON.stringify(email);
+    let idPerfil = JSON.stringify(id);
+    let nomeCompletoPerfil = JSON.stringify(nomeCompleto);
+    let nomePerfil = JSON.stringify(nome);
+    let token = JSON.stringify(id_token);
   }
 
 }
