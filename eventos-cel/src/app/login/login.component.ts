@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailValidator } from '@angular/forms';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -34,9 +35,7 @@ export class LoginComponent implements OnInit {
     console.log('token: ' + this.user['id_token']);
 
   }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login() {
     this.user['email'] = JSON.parse(sessionStorage.getItem('email'));

@@ -11,13 +11,13 @@
           <form enctype="multipart/form-data" #f=ngForm>
 
             <div class="form-row">
-              <div class="col-md-8 form-group">
+              <!-- <div class="col-md-8 form-group">
                 <label>Título *</label>
                 <input type="text" class="form-control" [(ngModel)]="evento.title" name="title" required #title=ngModel>
                 <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
                     Título é obrigatório!
                   </div>
-              </div> <!-- form-group end.// -->
+              </div> form-group end.// -->
               <div class="col-md-4 form-group">
                 <label>Data *</label>
                 <input type="datetime-local" class="form-control" [(ngModel)]="evento.dataevent" name="dataevent"

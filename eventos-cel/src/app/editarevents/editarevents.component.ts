@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { HttpService } from '../http.service';
 
 @Component({
@@ -7,16 +7,20 @@ import { HttpService } from '../http.service';
   styleUrls: ['./editarevents.component.css']
 })
 export class EditarEventsComponent implements OnInit {
+  
+    //@Input() email: String;
+
     private events: Array<{}>;
     p:number = 100;
-    email = 'mateuspetry@indora.com.br';
 
     constructor(public http: HttpService) {}
 
     ngOnInit() {
-      this.http.get('events')
-               .subscribe(res => this.events = res);
-              
+      var email =  JSON.parse(sessionStorage.getItem('email'));
+
+      this.http.post('pegaEmail',email).subscribe(res => this.events = res);
+
+      console.log('Email: '+email);          
     }
     
 }
