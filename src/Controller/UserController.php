@@ -62,12 +62,9 @@ class UserController extends BaseController
 		$user = new User();
 		$user->setName($data['name']);
 		$user->setEmail($data['email']);
-		$user->setIdEm($data['idEm']);
-		$user->setUsername($data['username']);
+		$user->setNivel($data['nivel']);
 		$user->setPassword($password);
-		$user->setNivel('user');
 		$user->setCreatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
-		$user->setUpdatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
 
 		$em = new EMService($this->app['orm.em']);
 

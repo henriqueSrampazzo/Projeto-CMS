@@ -36,25 +36,10 @@ class User implements Entity
      */
     private $email;
 
-     /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="idEm", type="string")
-     */ 
-     
-     private $idEm;
-
     /**
      * @ORM\Column(name="password", type="string")
      */
     private $password;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="username", type="string")
-     */
-    private $username;
 
     /**
      * @ORM\Column(name="nivel", type="string")
@@ -67,13 +52,6 @@ class User implements Entity
      * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
-
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="updated_at", type="datetime")
-     */
-    private $updatedAt;
 
 	/**
 	 * @var ArrayCollection
@@ -117,7 +95,6 @@ class User implements Entity
     {
         $this->name = $name;
     }
-
     /**
      * @return mixed
      */
@@ -133,30 +110,6 @@ class User implements Entity
     {
         $this->email = $email;
     }
-
-
-
-
-
-    /**
-     * @return mixed
-     */
-    public function getIdEm()
-    {
-        return $this->idEm;
-    }
-
-    /**
-     * @param mixed $idEm
-     */
-    public function setIdEm($idEm)
-    {
-        $this->idEm = $idEm;
-    }
-
-
-
-
 
     /**
      * @return mixed
@@ -177,29 +130,13 @@ class User implements Entity
     /**
      * @return mixed
      */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getNivel()
     {
         return $this->nivel;
     }
 
     /**
-     * @param mixed $isActive
+     * @param mixed $nivel
      */
     public function setNivel($nivel)
     {
@@ -220,22 +157,6 @@ class User implements Entity
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param mixed $updatedAt
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
     }
 
 	/**

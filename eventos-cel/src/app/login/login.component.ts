@@ -11,7 +11,6 @@ import { EmailValidator } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   
-
   option = 'Entre';
 
   email=null;
@@ -20,7 +19,7 @@ export class LoginComponent implements OnInit {
 
     'email': JSON.parse(sessionStorage.getItem('email')),
     'idEm': JSON.parse(sessionStorage.getItem('id')),
-    'token': JSON.parse(sessionStorage.getItem('token')),
+    'id_token': JSON.parse(sessionStorage.getItem('token')),
     'password': ''
   };
 
@@ -32,8 +31,7 @@ export class LoginComponent implements OnInit {
   ) {
 
     console.log('email: ' + this.user['email']);
-    console.log('id: ' + this.user['idEm']);
-    console.log('token: ' + this.user['token']);
+    console.log('token: ' + this.user['id_token']);
 
   }
 
@@ -42,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.user['email'] = JSON.parse(sessionStorage.getItem('email'));
-    console.log(this.user['email']);
+
     this.http.post('auth/login', this.user)
       .subscribe(res => {
 
@@ -50,6 +48,7 @@ export class LoginComponent implements OnInit {
           title: "Login realizado com sucesso!",
           icon: "success",
         });
+        this.storage.set('token', res.token);
 
         return this.router.navigate(['']);
 
@@ -61,22 +60,6 @@ export class LoginComponent implements OnInit {
       });
 
       this.option = 'Logado';
-  }
-  onSignIn(googleUser) {
-
-    let profile = googleUser.getBasicProfile();
-    let id_token = googleUser.getAuthResponse().id_token;
-
-    let email = profile.getEmail();
-    let id = profile.getId();
-    let nomeCompleto = profile.getName();
-    let nome = profile.getGivenName();
-
-    let emailPerfil = JSON.stringify(email);
-    let idPerfil = JSON.stringify(id);
-    let nomeCompletoPerfil = JSON.stringify(nomeCompleto);
-    let nomePerfil = JSON.stringify(nome);
-    let token = JSON.stringify(id_token);
   }
 
 }

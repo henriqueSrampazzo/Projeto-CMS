@@ -28,24 +28,16 @@
 
       let profile = googleUser.getBasicProfile();
       let id_token = googleUser.getAuthResponse().id_token;
-
       let email = profile.getEmail();
-      let id = profile.getId();
       let nomeCompleto = profile.getName();
-      let nome = profile.getGivenName();
 
       let emailPerfil = JSON.stringify(email);
-      let idPerfil = JSON.stringify(id);
       let nomeCompletoPerfil = JSON.stringify(nomeCompleto);
-      let nomePerfil = JSON.stringify(nome);
       let token = JSON.stringify(id_token);
 
       sessionStorage.setItem('email', emailPerfil);
-      sessionStorage.setItem('id', idPerfil);
       sessionStorage.setItem('nomeCompleto', nomeCompletoPerfil);
-      sessionStorage.setItem('nome', nomePerfil);
       sessionStorage.setItem('token', token);
-
     }
 
   </script>
@@ -56,7 +48,6 @@
       auth2.signOut().then(function () {
 
         sessionStorage.removeItem('email');
-        sessionStorage.removeItem('id');
         sessionStorage.removeItem('nomeCompleto');
         sessionStorage.removeItem('nome');
         sessionStorage.removeItem('token');
