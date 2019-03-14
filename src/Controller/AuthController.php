@@ -21,9 +21,7 @@ class AuthController
 	public function login(Request $request)
 	{
 		 $data = $request->request->all();
-
-		 #validations
-
+		 
 		 $user = $this->app['orm.em']
 		 	->getRepository('CodeExperts\Entity\User')
 		 	->findOneByEmail($data['email']);
@@ -34,11 +32,21 @@ class AuthController
 		 		401);
 		 }
 
-		 // $passwdService = new PasswordService();
+		 if(!$user
+		    || $data['idEm'] != $user->getIdEm()) {
+		 	return $this->app->json(['msg' => 'Usuário ou senha incorretos!'],
+		 		401);
+		 }
+
+		 $passwdService = new PasswordService();
 
 		 // if(!$passwdService->isValidPassword($data['password'], $user->getPassword())) {
 		 // 	return $this->app->json(['msg' => 'Usuário ou senha incorretos!'], 401);
 		 // }
+
+		 
+
+
 
 		 $jwt = $this->app['jwt'];
 

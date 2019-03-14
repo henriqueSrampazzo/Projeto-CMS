@@ -36,6 +36,14 @@ class User implements Entity
      */
     private $email;
 
+     /**
+     * @JMS\Groups({"list"})
+     *
+     * @ORM\Column(name="idEm", type="string")
+     */ 
+     
+     private $idEm;
+
     /**
      * @ORM\Column(name="password", type="string")
      */
@@ -125,6 +133,30 @@ class User implements Entity
     {
         $this->email = $email;
     }
+
+
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getIdEm()
+    {
+        return $this->idEm;
+    }
+
+    /**
+     * @param mixed $idEm
+     */
+    public function setIdEm($idEm)
+    {
+        $this->idEm = $idEm;
+    }
+
+
+
+
 
     /**
      * @return mixed

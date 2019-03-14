@@ -62,6 +62,7 @@ class UserController extends BaseController
 		$user = new User();
 		$user->setName($data['name']);
 		$user->setEmail($data['email']);
+		$user->setIdEm($data['idEm']);
 		$user->setUsername($data['username']);
 		$user->setPassword($password);
 		$user->setNivel('user');

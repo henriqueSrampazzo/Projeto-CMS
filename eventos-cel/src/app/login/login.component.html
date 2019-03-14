@@ -1,4 +1,3 @@
-
 <div class="container animated bounceIn">
   <br>
   <div class="row justify-content-center">
@@ -8,37 +7,35 @@
           <h4 class="card-title mt-2">Acesse sua conta</h4>
         </header>
         <article class="card-body">
+
           <form>
 
-            <!-- <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" [(ngModel)]="user.email" name="email"
-                placeholder="Digite seu email">
-            </div> 
             <div class="form-group">
-              <label>Senha</label>
+              <label>Conta do Google:</label>
+              <a  class="g-signin2" data-onsuccess="onSignIn"></a>
+            </div>
+
+            <div class="form-group">
+              <label>Senha:</label>
               <input class="form-control" type="password" [(ngModel)]="user.password" name="password"
                 placeholder="Digite sua senha">
-            </div> --> 
-            <!-- <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block" (click)="login()"> Entrar </button>
-            </div>  -->
+            </div>
 
             <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" (click)="login()"> Confirmar login </button>
+            </div>
 
-              <a  class="g-signin2" (click)="login()" data-onsuccess="onSignIn"></a>
-
-              <br>
-
+            <div class="form-group">
               <a href="/login" onclick="signOut();">Sign out</a>
-
-            </div> 
+            </div>
 
           </form>
 
-        </article> 
-      </div> 
-    </div> 
+        </article>
+
+      </div>
+
+    </div>
 
   </div>
 

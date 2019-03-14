@@ -14,7 +14,8 @@ export class SignupComponent implements OnInit {
     name: '',
     email: '',
     username: '',
-    password: ''
+    password: '',
+    idEm:'01010'
   };
 
   constructor(private http: HttpService) { }

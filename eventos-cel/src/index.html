@@ -19,21 +19,31 @@
 
 <body class="gradient-lateral">
 
+  <!-- <br><br><br>
+  <a class="g-signin2" data-onsuccess="onSignIn" ></a> -->
+
   <script>
+
     function onSignIn(googleUser) {
 
       let profile = googleUser.getBasicProfile();
+      let id_token = googleUser.getAuthResponse().id_token;
 
       let email = profile.getEmail();
       let id = profile.getId();
-      let id_token = googleUser.getAuthResponse().id_token;
+      let nomeCompleto = profile.getName();
+      let nome = profile.getGivenName();
 
-      let token = JSON.stringify(id_token);
-      let idPerfil = JSON.stringify(id);
       let emailPerfil = JSON.stringify(email);
+      let idPerfil = JSON.stringify(id);
+      let nomeCompletoPerfil = JSON.stringify(nomeCompleto);
+      let nomePerfil = JSON.stringify(nome);
+      let token = JSON.stringify(id_token);
 
       sessionStorage.setItem('email', emailPerfil);
       sessionStorage.setItem('id', idPerfil);
+      sessionStorage.setItem('nomeCompleto', nomeCompletoPerfil);
+      sessionStorage.setItem('nome', nomePerfil);
       sessionStorage.setItem('token', token);
 
     }
@@ -47,6 +57,8 @@
 
         sessionStorage.removeItem('email');
         sessionStorage.removeItem('id');
+        sessionStorage.removeItem('nomeCompleto');
+        sessionStorage.removeItem('nome');
         sessionStorage.removeItem('token');
 
       });
