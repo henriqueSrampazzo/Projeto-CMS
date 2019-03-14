@@ -27,12 +27,22 @@ class EventController extends BaseController
 		return $response;
 	}
 
-	public function meusEventos()
+	public function pegaEmail(Request $request)
 	{
-		$email = 'mateuspetry@inovadora.com.br';
+		$email = $request->request->all();
+		$emailfinal = (array) $email;
+
+		for ($i=0; $i < 100; $i++) { 
+			$email = "$email"."$emailfinal[$i]";
+		};
+
+		$email = substr($email, 5);
+
+		
+
 		$events = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Event')
-			->findBy(array('id_user' => $email));
+		->getRepository('CodeExperts\Entity\Event')
+		->findBy(array('id_user' => $email));
 
 		$build = SerializerBuilder::create()->build();
 
@@ -44,7 +54,27 @@ class EventController extends BaseController
 		$response->headers->set('Content-Type', 'application/json');
 
 		return $response;
+		return $this->app->json(['msg' => $email],200);
 	}
+
+	// public function meusEventos()
+	// {
+
+	// 	$events = $this->app['orm.em']
+	// 		->getRepository('CodeExperts\Entity\Event')
+	// 		->findBy(array('id_user' => $email));
+
+	// 	$build = SerializerBuilder::create()->build();
+
+	// 	$response  = new Response($build->serialize(
+	// 		$events,
+	// 		'json',
+	// 		SerializationContext::create()->setGroups(array('list'))), 200);
+
+	// 	$response->headers->set('Content-Type', 'application/json');
+
+	// 	return $response;
+	// }
 
 	public function get($id)
 	{
@@ -84,7 +114,7 @@ class EventController extends BaseController
 		$em = new EMService($this->app['orm.em']);
 
 		if(!$em->create($event)) {
-			return $this->app->json(['msg' => 'Error to created a new event'], 401);
+			return $this->app->json(['msg' => 'Error to create a new event'], 401);
 		}
 
 		return $this->app->json(['msg' => 'Event created with success'], 200);

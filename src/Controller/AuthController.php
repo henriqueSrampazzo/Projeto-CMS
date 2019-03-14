@@ -48,6 +48,7 @@ class AuthController
 		 	'username' => $user->getEmail()
 		 ]);
 
-		return $this->app->json(['token' => (string) $jwt->generateToken()], 200);
+	return $this->app->json(['token' => (string) $jwt->generateToken()], 200);
+
 	}
 }

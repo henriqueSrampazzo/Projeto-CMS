@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailValidator } from '@angular/forms';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { EmailValidator } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   
+  //@Output()
 
   option = 'Entre';
 
@@ -39,14 +41,12 @@ export class LoginComponent implements OnInit {
 
 
   }
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   login() {
     this.user['email'] = JSON.parse(sessionStorage.getItem('email'));
     console.log(this.user['email']);
-    this.http.post('auth/login', this.user)
+      this.http.post('auth/login', this.user)
       .subscribe(res => {
         this.storage.set('token', res.token);
         this.route.queryParams.subscribe(params => {
@@ -57,7 +57,6 @@ export class LoginComponent implements OnInit {
             return this. router.navigate(['']);
           }
         });
-
       });
 
       this.option = 'Logado';

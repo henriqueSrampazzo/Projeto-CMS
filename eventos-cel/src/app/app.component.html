@@ -7,8 +7,8 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-link" routerLink="eventos" routerLinkActive="active">Eventos</a>
-      <a class="nav-link" routerLink="editarnoticias" routerLinkActive="active" *ngIf="!changeMenu">Editar Noticias</a>
-      <a class="nav-link" routerLink="editareventos" routerLinkActive="active" *ngIf="!changeMenu">Editar Eventos</a>
+      <a class="nav-link" routerLink="editarnoticias" routerLinkActive="active" *ngIf="changeMenu">Editar Noticias</a>
+      <a class="nav-link" routerLink="editareventos" routerLinkActive="active" *ngIf="changeMenu">Editar Eventos</a>
       <a class="nav-link" routerLink="cadastranoticia" *ngIf="changeMenu" routerLinkActive="active">Cadastrar
         Notícia</a>
       <a class="nav-link" routerLink="cadastraevento" *ngIf="changeMenu" routerLinkActive="active">Cadastrar
