@@ -19,7 +19,6 @@ export class SafeHtml {
 export class EditarEventComponent implements OnInit {
 
   @Input() event: {};
-  dados: Array<any>;
 
   constructor(private domSanitizer: DomSanitizer) { }
 

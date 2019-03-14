@@ -197,14 +197,14 @@ export class EditarEventSingleComponent implements OnInit {
     this.router.navigate(['editareventos/']);
   }
 
-  // subscribe(noticia_id) {
-  //   this.storage.set('noticia', noticia_id);
+  subscribe(noticia_id) {
+    this.storage.set('noticia', noticia_id);
 
-  //   if (this.storage.get('token') != undefined) {
-  //     this.router.navigate(['/make-subscription']);
-  //   } else {
-  //     this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
-  //   }
-  // }
+    if (this.storage.get('token') != undefined) {
+      this.router.navigate(['/make-subscription']);
+    } else {
+      this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
+    }
+  }
 
 }

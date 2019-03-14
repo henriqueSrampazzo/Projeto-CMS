@@ -40,9 +40,9 @@ class AuthController
 
 		 $passwdService = new PasswordService();
 
-		 if(!$passwdService->isValidPassword($data['password'], $user->getPassword())) {
-		 	return $this->app->json(['msg' => 'Usuário ou senha incorretos!'], 401);
-		 }
+		 // if(!$passwdService->isValidPassword($data['password'], $user->getPassword())) {
+		 // 	return $this->app->json(['msg' => 'Usuário ou senha incorretos!'], 401);
+		 // }
 
 		 
 

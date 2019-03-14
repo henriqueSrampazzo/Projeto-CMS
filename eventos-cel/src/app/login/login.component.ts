@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmailValidator } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
+
+  option = 'Entre';
+
+  email=null;
 
   private user: Object = {
 
@@ -35,6 +41,8 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.user['email'] = JSON.parse(sessionStorage.getItem('email'));
+    console.log(this.user['email']);
     this.http.post('auth/login', this.user)
       .subscribe(res => {
 
@@ -51,6 +59,8 @@ export class LoginComponent implements OnInit {
         text: "Verifique e tente novamente",
         icon: "error",
       });
+
+      this.option = 'Logado';
   }
   onSignIn(googleUser) {
 

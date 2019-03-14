@@ -62,6 +62,7 @@ class NoticiaController extends BaseController
 		$noticia->setPhoto3($data['photo3']);
 		$noticia->setPhoto4($data['photo4']);
 		$noticia->setPhoto5($data['photo5']);
+		$noticia->setIdUser($data['id_user']);
 		$noticia->setPostData(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
 
 		$em = new EMService($this->app['orm.em']);

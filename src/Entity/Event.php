@@ -70,6 +70,14 @@ class Event implements Entity
      * @ORM\Column(name="photo5", type="text")
      */
     private $photo5;
+
+    /**
+     * @JMS\Groups({"list"})
+     *
+     * @ORM\Column(name="id_user", type="string")
+     */
+    private $id_user;
+
 	/**
 	 * @var ArrayCollection
 	 * @ORM\ManyToMany(targetEntity="User", inversedBy="eventCollection", cascade={"ALL"})
@@ -226,6 +234,22 @@ class Event implements Entity
     $photo5mod5= str_replace(" ", "+", $photomod5);
     $this->photo5= $photo5mod5;
 }
+
+    /**
+     * @return mixed
+     */
+    public function getIdUser()
+    {
+        return $this->id_user;
+    }
+
+    /**
+     * @param mixed $id_user
+     */
+    public function setIdUser($id_user)
+    {
+        $this->id_user = $id_user;
+    }
 
 
 

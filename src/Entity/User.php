@@ -57,9 +57,9 @@ class User implements Entity
     private $username;
 
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\Column(name="nivel", type="string")
      */
-    private $isActive;
+    private $nivel;
 
     /**
      * @JMS\Groups({"list"})
@@ -193,17 +193,17 @@ class User implements Entity
     /**
      * @return mixed
      */
-    public function getIsActive()
+    public function getNivel()
     {
-        return $this->isActive;
+        return $this->nivel;
     }
 
     /**
      * @param mixed $isActive
      */
-    public function setIsActive($isActive)
+    public function setNivel($nivel)
     {
-        $this->isActive = $isActive;
+        $this->nivel = $nivel;
     }
 
     /**

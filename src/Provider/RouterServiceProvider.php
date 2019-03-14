@@ -41,6 +41,7 @@ class RouterServiceProvider implements ServiceProviderInterface
 	     * Events Routes
 	     */
 	    $app->get('/events', 'event:index');
+	    $app->get('/events', 'event:meusEventos');
 	    $app->get('/events/{id}', 'event:get');
 	    $app->post('/events', 'event:save');//->before($verifyToken);
 	    $app->post('/eventosedit', 'event:update');
@@ -54,8 +55,6 @@ class RouterServiceProvider implements ServiceProviderInterface
 	    $app->post('/noticias', 'noticia:save');//->before($verifyToken);
 	    $app->post('/noticiasedit', 'noticia:update');
 	    $app->post('/noticias/{id}', 'noticia:delete');
-
-
 
 	    /**
 	     * Contato Routes
