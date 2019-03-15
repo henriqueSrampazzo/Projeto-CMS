@@ -1,5 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { HttpService } from '../http.service';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-editarevents',
@@ -13,10 +14,11 @@ export class EditarEventsComponent implements OnInit {
     private events: Array<{}>;
     p:number = 100;
 
-    constructor(public http: HttpService) {}
+    constructor(public http: HttpService,private storage: StorageService) {}
 
     ngOnInit() {
-      var email =  'henrique@inovadora.com.br';
+      //var email =  JSON.parse(sessionStorage.getItem('email'));
+      var email = this.storage.get('token');
 
       this.http.post('pegaEmail',email).subscribe(res => this.events = res);
 

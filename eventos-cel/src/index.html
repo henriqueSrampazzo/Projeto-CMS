@@ -38,6 +38,8 @@
       sessionStorage.setItem('email', emailPerfil);
       sessionStorage.setItem('nomeCompleto', nomeCompletoPerfil);
       sessionStorage.setItem('token', token);
+
+      //window.location.reload();
     }
 
   </script>
@@ -50,6 +52,7 @@
         sessionStorage.removeItem('email');
         sessionStorage.removeItem('nomeCompleto');
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('password');
 
       });
     }

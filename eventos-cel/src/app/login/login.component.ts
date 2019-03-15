@@ -14,13 +14,12 @@ export class LoginComponent implements OnInit {
   
   option = 'Entre';
 
-  email=null;
+  email;
 
   private user: Object = {
-
-    'email': JSON.parse(sessionStorage.getItem('email')),
-    'idEm': JSON.parse(sessionStorage.getItem('id')),
-    'id_token': JSON.parse(sessionStorage.getItem('token')),
+    'email': JSON.parse(sessionStorage.getItem('email') || "[]"),
+    'idEm': JSON.parse(sessionStorage.getItem('id') || "[]"),
+    'id_token': JSON.parse(sessionStorage.getItem('token') || "[]"),
     'password': ''
   };
 
@@ -49,9 +48,15 @@ export class LoginComponent implements OnInit {
           icon: "success",
         });
         this.storage.set('token', res.token);
+       
+        var emailResponse = this.storage.get('token');
+
+        console.log('Email Response: '+emailResponse);
+
+        sessionStorage.setItem('password', this.user['password']);
 
         return this.router.navigate(['']);
-
+        
       });
       swal({
         title: "Usuário ou senha incorretos!",

@@ -45,6 +45,7 @@ class RouterServiceProvider implements ServiceProviderInterface
 	    $app->get('/events/{id}', 'event:get');
 	    $app->post('/events', 'event:save');//->before($verifyToken);
 	    $app->post('/pegaEmail', 'event:pegaEmail');
+	    $app->post('/verificaSenha', 'event:verificaSenha');
 	    $app->post('/eventosedit', 'event:update');
 	    $app->post('/events/{id}', 'event:delete');
 

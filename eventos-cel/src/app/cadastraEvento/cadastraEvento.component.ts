@@ -104,7 +104,9 @@ export class CadastraEventoComponent implements OnInit {
     photo3: '',
     photo4: '',
     photo5: '',
-    id_user: JSON.parse(sessionStorage.getItem('email'))
+    id_user: this.storage.get('token'),
+    nome_user: JSON.parse(sessionStorage.getItem('nomeCompleto')),
+    eventpassword: ''
   };
 
   constructor(
@@ -144,6 +146,4 @@ export class CadastraEventoComponent implements OnInit {
       this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
     }
   }
-
-
 }

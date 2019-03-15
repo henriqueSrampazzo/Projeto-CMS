@@ -53,7 +53,7 @@ class AuthController
 
 		$client = new \Google_Client(['client_id' => $CLIENT_ID]);
 
-		$payload = $client->verifyIdToken($id_token);
+	// 	$payload = $client->verifyIdToken($id_token);
 
 		if ($payload) {
 
