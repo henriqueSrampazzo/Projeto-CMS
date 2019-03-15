@@ -39,8 +39,8 @@
             <div class="form-group">
               <label>Deixe sua mensagem:</label>
               <textarea class="form-control" name="mensagem" [(ngModel)]="user.mensagem" rows="5"
-                placeholder="Digite aqui sugestões, propostas, críticas ou elogios. (Máx 500 caracteres)" required
-                maxlength="500" #mensagem="ngModel"></textarea>
+                placeholder="Digite aqui sugestões, propostas, críticas ou elogios. Ou se preferir, peça aos nossos administradores para se tornar um publicador. (Máx 500 caracteres)"
+                required maxlength="500" #mensagem="ngModel"></textarea>
 
               <div *ngIf="!mensagem.valid && mensagem.touched" class="alert alert-danger" role="alert">
                 A mensagem é obrigatória!
@@ -50,7 +50,8 @@
             </div>
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block" (click)="signup()" (click)="aguardar()" [disabled]="f.invalid"> Enviar
+              <button type="submit" class="btn btn-primary btn-block" (click)="signup()" (click)="aguardar()"
+                [disabled]="f.invalid"> Enviar
               </button>
               <br>
               <p class="form-group centralizar" *ngIf="aguardando">Aguarde...</p>

@@ -14,19 +14,30 @@
               <div class="col form-group">
                 <label>ID</label>
                 <input type="text" class="form-control" name="id_edit" value="{{event?.id}}" disabled>
-              </div> <!-- form-group end.// -->
-            </div> <!-- form-row end.// -->
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="col form-group">
+                <label>Senha do evento</label>
+                <input type="password" class="form-control" [(ngModel)]="eventeditado.eventpassword" name="title"
+                 required #eventpassword=ngModel>
+                  <div *ngIf="!eventpassword.valid && eventpassword.touched" class="alert alert-danger" role="alert">
+                      Senha é obrigatória!
+                    </div>
+              </div>
+            </div> 
 
             <div class="form-row">
               <div class="col form-group">
                 <label>Título</label>
                 <input type="text" class="form-control" [(ngModel)]="eventeditado.title" name="title"
-                  value="{{event?.title}}" required #title=ngModel>
+                required #title=ngModel>
                   <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
                       Título é obrigatório!
                     </div>
-              </div> <!-- form-group end.// -->
-            </div> <!-- form-row end.// -->
+              </div>
+            </div> 
 
             <div class="form-row">
               <div class="col form-group">

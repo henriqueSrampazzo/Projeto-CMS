@@ -78,6 +78,18 @@ class Event implements Entity
      */
     private $id_user;
 
+    /**
+     * @JMS\Groups({"list"})
+     *
+     * @ORM\Column(name="nome_user", type="string")
+     */
+    private $nome_user;
+
+    /**
+     * @ORM\Column(name="eventpassword", type="string")
+     */
+    private $eventpassword;
+
 	/**
 	 * @var ArrayCollection
 	 * @ORM\ManyToMany(targetEntity="User", inversedBy="eventCollection", cascade={"ALL"})
@@ -249,6 +261,38 @@ class Event implements Entity
     public function setIdUser($id_user)
     {
         $this->id_user = $id_user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomeUser()
+    {
+        return $this->nome_user;
+    }
+
+    /**
+     * @param mixed $nome_user
+     */
+    public function setNomeUser($nome_user)
+    {
+        $this->nome_user = $nome_user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEventPassword()
+    {
+        return $this->eventpassword;
+    }
+
+    /**
+     * @param mixed $eventpassword
+     */
+    public function setEventPassword($eventpassword)
+    {
+        $this->eventpassword = $eventpassword;
     }
 
 

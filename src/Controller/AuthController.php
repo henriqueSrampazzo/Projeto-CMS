@@ -5,7 +5,7 @@ use CodeExperts\Service\PasswordService;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 
-		require './../vendor/google/apiclient/src/Google/Client.php';
+		// require './../vendor/google/apiclient/src/Google/Client.php';
 
 
 
@@ -50,46 +50,46 @@ class AuthController
 			'username' => $user->getEmail()
 		]);
 
-		$this->validaToken($data['id_token']);
+		// $this->validaToken($data['id_token']);
 
 
-	return $this->app->json(['token' => (string) $jwt->generateToken()], 200);
-
-	}
-
-
-
-
-
-
-	public function validaToken($id_token){
-
-		$CLIENT_ID = '445974938034-4peubcmgingou7lu7riv09jqdtqevua4.apps.googleusercontent.com';
-
-		$client = new Google_Client(['client_id' => $CLIENT_ID]);
-
-
-
-
-
-
-
-		$payload = $client->verifyIdToken($id_token);
-
-		if ($payload) {
-			$userid = $payload['sub'];
-
-			return $this->app->json(['msg' => 'token válido'], 200);
-
-		  // If request specified a G Suite domain:
-		  //$domain = $payload['hd'];
-		} else {
-
-		  // Invalid ID token
-			return $this->app->json(['msg' => 'Token inválido'], 200);
-
-		}
+		return $this->app->json(['token' => (string) $data['email']], 200);
 
 	}
+
+
+
+
+
+
+	// public function validaToken($id_token){
+
+	// 	$CLIENT_ID = '445974938034-4peubcmgingou7lu7riv09jqdtqevua4.apps.googleusercontent.com';
+
+	// 	$client = new Google_Client(['client_id' => $CLIENT_ID]);
+
+
+
+
+
+
+
+	// 	$payload = $client->verifyIdToken($id_token);
+
+	// 	if ($payload) {
+	// 		$userid = $payload['sub'];
+
+	// 		return $this->app->json(['msg' => 'token válido'], 200);
+
+	// 	  // If request specified a G Suite domain:
+	// 	  //$domain = $payload['hd'];
+	// 	} else {
+
+	// 	  // Invalid ID token
+	// 		return $this->app->json(['msg' => 'Token inválido'], 200);
+
+	// 	}
+
+	// }
 
 }

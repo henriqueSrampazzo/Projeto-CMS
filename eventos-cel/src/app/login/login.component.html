@@ -4,15 +4,14 @@
     <div class="col-md-6">
       <div class="shadow-lg back-form">
         <header class="card-header">
-          <h4 class="card-title mt-2">Acesse sua conta</h4>
+          <h4 class="card-title mt-2">Acesse sua conta (exclusivo para autores e administradores)</h4>
         </header>
         <article class="card-body">
 
           <form>
-
             <div class="form-group">
               <label>Conta do Google:</label>
-              <a  class="g-signin2" data-onsuccess="onSignIn"></a>
+              <a class="g-signin2" data-onsuccess="onSignIn"></a>
             </div>
 
             <div class="form-group">
@@ -26,7 +25,9 @@
             </div>
 
             <div class="form-group">
-              <a href="/login" class="btn btn-primary btn-block" onclick="signOut();">Sair</a>
+              <a href="/login" class="btn btn-danger btn-block" onclick="signOut();">Sair</a>
+              <br>
+               <small class="centralizar">Deseja se tornar um autor? Entre em&nbsp;<a routerLink="../contato" routerLinkActive="active">contato&nbsp;</a> com nossos administradores.</small>
             </div>
 
           </form>
