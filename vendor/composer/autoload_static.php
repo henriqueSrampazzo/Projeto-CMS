@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf150ef0f8552341cf8c660ddf4faf496
+class ComposerStaticInit390fbf7b584706297c87c47caf056f5b
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -312,25 +312,8 @@ class ComposerStaticInitf150ef0f8552341cf8c660ddf4faf496
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
-        'Google_AccessToken_Revoke' => __DIR__ . '/..' . '/google/apiclient/src/Google/AccessToken/Revoke.php',
-        'Google_AccessToken_Verify' => __DIR__ . '/..' . '/google/apiclient/src/Google/AccessToken/Verify.php',
-        'Google_AuthHandler_AuthHandlerFactory' => __DIR__ . '/..' . '/google/apiclient/src/Google/AuthHandler/AuthHandlerFactory.php',
-        'Google_AuthHandler_Guzzle5AuthHandler' => __DIR__ . '/..' . '/google/apiclient/src/Google/AuthHandler/Guzzle5AuthHandler.php',
-        'Google_AuthHandler_Guzzle6AuthHandler' => __DIR__ . '/..' . '/google/apiclient/src/Google/AuthHandler/Guzzle6AuthHandler.php',
-        'Google_Client' => __DIR__ . '/..' . '/google/apiclient/src/Google/Client.php',
-        'Google_Collection' => __DIR__ . '/..' . '/google/apiclient/src/Google/Collection.php',
-        'Google_Exception' => __DIR__ . '/..' . '/google/apiclient/src/Google/Exception.php',
-        'Google_Http_Batch' => __DIR__ . '/..' . '/google/apiclient/src/Google/Http/Batch.php',
-        'Google_Http_MediaFileUpload' => __DIR__ . '/..' . '/google/apiclient/src/Google/Http/MediaFileUpload.php',
-        'Google_Http_REST' => __DIR__ . '/..' . '/google/apiclient/src/Google/Http/REST.php',
-        'Google_Model' => __DIR__ . '/..' . '/google/apiclient/src/Google/Model.php',
-        'Google_Service' => __DIR__ . '/..' . '/google/apiclient/src/Google/Service.php',
         'Google_Service_Exception' => __DIR__ . '/..' . '/google/apiclient/src/Google/Service/Exception.php',
         'Google_Service_Resource' => __DIR__ . '/..' . '/google/apiclient/src/Google/Service/Resource.php',
-        'Google_Task_Exception' => __DIR__ . '/..' . '/google/apiclient/src/Google/Task/Exception.php',
-        'Google_Task_Retryable' => __DIR__ . '/..' . '/google/apiclient/src/Google/Task/Retryable.php',
-        'Google_Task_Runner' => __DIR__ . '/..' . '/google/apiclient/src/Google/Task/Runner.php',
-        'Google_Utils_UriTemplate' => __DIR__ . '/..' . '/google/apiclient/src/Google/Utils/UriTemplate.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
@@ -798,10 +781,10 @@ class ComposerStaticInitf150ef0f8552341cf8c660ddf4faf496
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf150ef0f8552341cf8c660ddf4faf496::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf150ef0f8552341cf8c660ddf4faf496::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitf150ef0f8552341cf8c660ddf4faf496::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitf150ef0f8552341cf8c660ddf4faf496::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit390fbf7b584706297c87c47caf056f5b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit390fbf7b584706297c87c47caf056f5b::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit390fbf7b584706297c87c47caf056f5b::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit390fbf7b584706297c87c47caf056f5b::$classMap;
 
         }, null, ClassLoader::class);
     }

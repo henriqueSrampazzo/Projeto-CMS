@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login() {
+
     this.user['email'] = JSON.parse(sessionStorage.getItem('email'));
 
     this.http.post('auth/login', this.user)

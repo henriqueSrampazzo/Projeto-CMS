@@ -16,7 +16,7 @@ export class EditarEventsComponent implements OnInit {
     constructor(public http: HttpService) {}
 
     ngOnInit() {
-      var email =  JSON.parse(sessionStorage.getItem('email'));
+      var email =  'henrique@inovadora.com.br';
 
       this.http.post('pegaEmail',email).subscribe(res => this.events = res);
 

@@ -4,47 +4,70 @@
     <div class="col-md-6">
       <div class="shadow-lg back-form">
         <header class="card-header">
-          <h4 class="card-title mt-2">Cadastre-se</h4>
+          <h4 class="card-title mt-2">Cadastro de Administrador e Autor</h4>
         </header>
         <article class="card-body">
-          <form>
+
+          <form #f=ngForm>
 
             <div class="form-row">
               <div class="col form-group">
                 <label>Nome</label>
-                <input type="text" class="form-control" [(ngModel)]="user.name" name="name">
-              </div> <!-- form-group end.// -->
+                <input type="text" class="form-control" [(ngModel)]="user.name" name="name" placeholder="Digite o nome"
+                  required #nome=ngModel maxlength="100">
+
+                <div *ngIf="!nome.valid && nome.touched" class="alert alert-danger" role="alert">
+                  Nome é obrigatório!
+                </div>
+
+              </div>
               <div class="col form-group">
 
                 <label> Nível do usuário</label>
 
-              <select class="form-control" name="singleSelect" [(ngModel)]="user.nivel">
-                <option value="admin">Admin</option>
-                <option value="autor">Autor</option>
-              </select>
+                <select class="form-control" name="singleSelect" [(ngModel)]="user.nivel" #nivel="ngModel" required>
+                  <option value="admin" >Admin</option>
+                  <option value="autor">Autor</option>
+                </select>
 
-              </div> <!-- form-group end.// -->
-            </div> <!-- form-row end.// -->
+                <div *ngIf="!nivel.valid && nivel.touched" class="alert alert-danger" role="alert">
+                    Selecione uma opção!
+                  </div>
+
+              </div>
+            </div>
 
             <div class="form-group">
               <label>Email</label>
-              <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
-            </div> <!-- form-group end.// -->
+              <input type="email" class="form-control" [(ngModel)]="user.email" name="email"
+                placeholder="Digite o email" required email #email="ngModel" maxlength="50">
+
+              <div *ngIf="!email.valid && email.touched" class="alert alert-danger" role="alert">
+                Email inválido!
+              </div>
+
+            </div>
             <div class="form-group">
               <label>Senha</label>
-              <input class="form-control" type="password" [(ngModel)]="user.password" name="password">
-            </div> <!-- form-group end.// -->
+              <input class="form-control" type="password" [(ngModel)]="user.password" name="password" required
+              placeholder="Digite a senha" #password=ngModel maxlength="100">
+
+              <div *ngIf="!password.valid && password.touched" class="alert alert-danger" role="alert">
+                Senha é obrigatório!
+              </div>
+
+            </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block" (click)="signup()"> Registrar </button>
-            </div> <!-- form-group// -->
+              <button type="submit" class="btn btn-primary btn-block" (click)="signup()" [disabled]="f.invalid">
+                Cadastrar </button>
+            </div>
           </form>
-        </article> <!-- card-body end .// -->
-      </div> <!-- card.// -->
-    </div> <!-- col.//-->
+        </article>
+      </div>
+    </div>
 
-  </div> <!-- row.//-->
-
+  </div>
 
 </div>
-<!--container end.//-->
+
 <router-outlet></router-outlet>
