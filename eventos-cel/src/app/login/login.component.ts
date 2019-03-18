@@ -1,8 +1,11 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { EmailValidator } from '@angular/forms';
+import { environment } from '../../environments/environment';
+import { PegaVariavelService } from '../pegaVariavel.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +13,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  emailGlobal: string = '';
+
+  email;
 
   private user: Object = {
     'email': JSON.parse(sessionStorage.getItem('email') || "[]"),
@@ -21,15 +27,24 @@ export class LoginComponent implements OnInit {
     private http: HttpService,
     private storage: StorageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private pegaVariavel : PegaVariavelService
   ) {
 
     console.log('email: ' + this.user['email']);
     console.log('token: ' + this.user['id_token']);
 
   }
+  ngOnInit() {
+    this.pegaVariavel.eventEmailGlobal.subscribe(
+    event => this.setEmailGlobal(event)
+    );
+  }
 
-  ngOnInit() { }
+  setEmailGlobal(globalEmail: string) {
+    this.emailGlobal = globalEmail;
+  }
+
 
   login() {
 
@@ -37,8 +52,13 @@ export class LoginComponent implements OnInit {
 
       .subscribe(res => {
 
-        var lula = res.msg;
-        console.log(lula);
+        // var lula = res.msg;
+        // console.log(lula);
+        // swal({
+        //   title: "Login realizado com sucesso!",
+        //   icon: "success",
+        // });
+
 
         Swal.fire({
           title: 'Logado com sucesso!',
@@ -48,8 +68,12 @@ export class LoginComponent implements OnInit {
         })
 
         this.storage.set('token', res.token);
-        return this.router.navigate(['']);
 
+        var globalEmail = res.token;
+
+        this.pegaVariavel.setEmailGlobal(globalEmail);
+
+        return this.router.navigate(['']);
       });
 
     this.alerta();

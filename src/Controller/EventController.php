@@ -37,9 +37,7 @@ class EventController extends BaseController
 			$email = "$email"."$emailfinal[$i]";
 		};
 
-		$email = substr($email, 5);
-
-		
+		$email = substr($email, 5);		
 
 		$events = $this->app['orm.em']
 		->getRepository('CodeExperts\Entity\Event')
@@ -56,35 +54,6 @@ class EventController extends BaseController
 
 		return $response;
 		return $this->app->json(['msg' => $email],200);
-	}
-
-		public function verificaSenha(Request $request)
-	{
-		$data = $request->request->all();
-
-		$event = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\Event')
-		->findOneByIdUser($data['eventpassword']);
-
-				if(!$event || $data['eventpassword'] != $event->getIdUser()) {
-			return $this->app->json(['msg' => 'Usuário ou senha incorretos!'],
-				401);
-		}
-
-		$passwdService = new PasswordService();
-
-		if(!$passwdService->isValidPassword($data['eventpassword'], $event->getEventPassword())) {
-			return $this->app->json(['msg' => 'Senha incorreta'], 401);
-		}
-
-		$jwt = $this->app['jwt'];
-
-		$jwt->setApplication($this->app);
-
-
-
-		return $this->app->json(['token' => (string) $data['eventpassword']], 200);
-
 	}
 
 	// public function meusEventos()
@@ -145,7 +114,6 @@ class EventController extends BaseController
 	    $event->setPhoto5($data['photo5']);
 	    $event->setIdUser($data['id_user']);
 	    $event->setNomeUser($data['nome_user']);
-	    $event->setEventPassword($password);
 
 		$em = new EMService($this->app['orm.em']);
 

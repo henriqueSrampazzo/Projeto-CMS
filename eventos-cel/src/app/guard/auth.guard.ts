@@ -1,4 +1,4 @@
-import { StorageService } from './../storage.service';
+import { StorageService } from '../storage.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -19,6 +19,9 @@ export class AuthGuard implements CanActivate {
         this.router.navigate(['/login']);
         return false;
       }
+      // if(){
+        
+      // }
 
       return true;
   }

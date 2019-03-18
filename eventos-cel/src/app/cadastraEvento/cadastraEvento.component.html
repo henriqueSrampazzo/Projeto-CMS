@@ -63,14 +63,6 @@
                   </div>
               </div>
 
-                <div class="col-md-12 form-group row">
-                <label>Senha para o evento*</label><small>(essa será a senha requisitada quando for editar ou excluir seu evento)</small>
-                <input type="password" class="form-control" [(ngModel)]="evento.eventpassword" name="eventpassword" required #eventpassword=ngModel>
-                <div *ngIf="!eventpassword.valid && eventpassword.touched" class="alert alert-danger" role="alert">
-                    Senha é obrigatória!
-                </div>
-              </div>
-
               <div class="container centralizar">
                   <div class="col-md-3 row-group">
                   <button type="submit" class="btn btn-primary estiloBotao" (click)="cadastraevento()" [disabled]="f.invalid"> Registrar

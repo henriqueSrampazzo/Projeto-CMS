@@ -9,7 +9,6 @@ import { MakeSubscriptionComponent } from '../make-subscription/make-subscriptio
 import { ConfirmComponent } from '../make-subscription/confirm/confirm.component';
 import { PainelComponent } from './../painel/painel.component';
 import { UserEventsComponent } from '../painel/user-events/user-events.component';
-import { AuthGuard } from '../guard/auth.guard';
 import { NoticiasComponent } from '../noticias/noticias.component'
 import { NoticiaSingleComponent } from '../vernoticias/noticiasingle/noticia-single.component';
 import { VerNoticiasComponent } from '../vernoticias/vernoticias.component';
@@ -19,6 +18,7 @@ import { EditarNoticiaSingleComponent } from '../editarnoticias/editarnoticiasin
 import { EditarNoticiasComponent } from '../editarnoticias/editarnoticias.component';
 import { EditarEventSingleComponent } from '../editarevents/editareventsingle/editar-event-single.component';
 import { EditarEventsComponent } from '../editarevents/editarevents.component';
+import { AuthGuard } from '../guard/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -26,8 +26,11 @@ const appRoutes: Routes = [
   {path: 'noticia/:slug', component: NoticiaSingleComponent},
   {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent},
   {path: 'editarnoticias', component: EditarNoticiasComponent},
-  {path: 'editareventos/:slug', component: EditarEventSingleComponent},
-  {path: 'editareventos', component: EditarEventsComponent},
+  {path: 'editareventos/:slug', component: EditarEventSingleComponent,
+  canActivate : [AuthGuard]},
+  {path: 'editareventos', component: EditarEventsComponent,
+  canActivate : [AuthGuard]
+},
   {path: 'signup', component: SignupComponent},
   {path: 'cadastranoticia', component: NoticiasComponent},
   {path: 'login', component: LoginComponent},

@@ -112,7 +112,6 @@ export class EditarEventSingleComponent implements OnInit {
   }
 
   private eventeditado: Object = {
-    eventpassword: null,
     id:null,
     title:null,
     dataevent:null,
@@ -122,18 +121,6 @@ export class EditarEventSingleComponent implements OnInit {
     photo4:null,
     photo5:null
   };
-
-  private eventeditado2: Object = {
-    id:null,
-    title:null,
-    dataevent:null,
-    photo1:null,
-    photo2:null,
-    photo3:null,
-    photo4:null,
-    photo5:null
-  };
-
 
   constructor(
     private route: ActivatedRoute,
@@ -151,18 +138,7 @@ export class EditarEventSingleComponent implements OnInit {
     });
   }
 
-  verificasenha(){
-    this.http.post('verificaSenha', this.eventeditado)
-    .subscribe(res => {
-     swal({title:"Enviou senha",
-            icon:"success", 
-     });    
-    });
-  }
-
   editaevent() {
-    
-    this.verificasenha();
 
     this.eventeditado['id'] = this.event['id']; 
     this.eventeditado['photo1'] = this.image;
@@ -171,16 +147,7 @@ export class EditarEventSingleComponent implements OnInit {
     this.eventeditado['photo4'] = this.image4;
     this.eventeditado['photo5'] = this.image5;
 
-    this.eventeditado2['id'] = this.event['id'];
-    this.eventeditado2['title'] = this.eventeditado['title'];
-    this.eventeditado2['dataevent'] = this.eventeditado['dataevent'];
-    this.eventeditado2['photo1'] = this.eventeditado['photo1'];
-    this.eventeditado2['photo2'] = this.eventeditado['photo2'];
-    this.eventeditado2['photo3'] = this.eventeditado['photo3'];
-    this.eventeditado2['photo4'] = this.eventeditado['photo4'];
-    this.eventeditado2['photo5'] = this.eventeditado['photo5'];
-
-    this.http.post('eventosedit', this.eventeditado2)
+    this.http.post('eventosedit', this.eventeditado)
       .subscribe(res => {
         swal({
           title: "Evento editado com sucesso!",

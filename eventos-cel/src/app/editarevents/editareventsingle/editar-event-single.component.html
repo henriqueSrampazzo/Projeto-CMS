@@ -19,20 +19,9 @@
 
             <div class="form-row">
               <div class="col form-group">
-                <label>Senha do evento</label>
-                <input type="password" class="form-control" [(ngModel)]="eventeditado.eventpassword" name="title"
-                 required #eventpassword=ngModel>
-                  <div *ngIf="!eventpassword.valid && eventpassword.touched" class="alert alert-danger" role="alert">
-                      Senha é obrigatória!
-                    </div>
-              </div>
-            </div> 
-
-            <div class="form-row">
-              <div class="col form-group">
                 <label>Título</label>
                 <input type="text" class="form-control" [(ngModel)]="eventeditado.title" name="title"
-                required #title=ngModel>
+                required #title=ngModel value="{{event?.title}}">
                   <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
                       Título é obrigatório!
                     </div>
@@ -48,7 +37,7 @@
                       Data é obrigatória!
                     </div>
               </div>
-            </div> <!-- form-group end.// -->
+            </div>
 
             <hr>
 
@@ -56,29 +45,29 @@
               <div class="col-md-6">
                 <label for="photo1">Foto 1</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener($event)">
-              </div> <!-- form-group end.// -->
+              </div>
               <div class="col-md-6">
                   <label for="photo2">Foto 2</label>
                   <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener2($event)">
-                </div> <!-- form-group end.// -->
+                </div>
             </div>
 
             <div class="form-group row">
               <div class="col-md-6">
                 <label for="photo3">Foto 3</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener3($event)">
-              </div> <!-- form-group end.// -->
+              </div>
               <div class="col-md-6">
                   <label for="photo4">Foto 4</label>
                   <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener4($event)">
-                </div> <!-- form-group end.// -->
+                </div>
             </div>
 
             <div class="form-group row">
               <div class="col-md-6">
                 <label for="photo5">Foto 5</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener5($event)">
-              </div> <!-- form-group end.// -->
+              </div>
               <div class="col-md-6">
                   <br>
                   <div class="alert alert-warning" role="alert">
@@ -99,12 +88,9 @@
               </div>
             </div>
           </form>
-        </article> <!-- card-body end .// -->
-      </div> <!-- card.// -->
-    </div> <!-- col.//-->
-
-  </div> <!-- row.//-->
-
-
+        </article>
+      </div>
+    </div>
+  </div>
 </div>
-<!--container end.//-->
+
