@@ -31,6 +31,7 @@
     "sweetalert": "^2.1.2",
     "sweetalert2": "^8.2.6",
     "tether": "^1.4.5",
+    "ts-md5": "^1.2.4",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

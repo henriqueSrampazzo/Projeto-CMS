@@ -1,9 +1,10 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailValidator } from '@angular/forms';
 import { environment } from '../../environments/environment';
+import { PegaVariavelService } from '../pegaVariavel.service';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  option = 'Entre';
+  emailGlobal: string = '';
 
   email;
 
@@ -27,14 +27,23 @@ export class LoginComponent implements OnInit {
     private http: HttpService,
     private storage: StorageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private pegaVariavel : PegaVariavelService
   ) {
 
     console.log('email: ' + this.user['email']);
     console.log('token: ' + this.user['id_token']);
 
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.pegaVariavel.eventEmailGlobal.subscribe(
+    event => this.setEmailGlobal(event)
+    );
+  }
+
+  setEmailGlobal(globalEmail: string) {
+    this.emailGlobal = globalEmail;
+  }
 
   login() {
 
@@ -48,23 +57,20 @@ export class LoginComponent implements OnInit {
           icon: "success",
         });
         this.storage.set('token', res.token);
-       
-        var emailResponse = this.storage.get('token');
-
-        console.log('Email Response: '+emailResponse);
 
         sessionStorage.setItem('password', this.user['password']);
 
+        var globalEmail = res.token;
+
+        this.pegaVariavel.setEmailGlobal(globalEmail);
+
         return this.router.navigate(['']);
-        
       });
       swal({
         title: "Usuário ou senha incorretos!",
         text: "Verifique e tente novamente",
         icon: "error",
       });
-
-      this.option = 'Logado';
   }
 
 }

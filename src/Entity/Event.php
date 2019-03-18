@@ -85,11 +85,6 @@ class Event implements Entity
      */
     private $nome_user;
 
-    /**
-     * @ORM\Column(name="eventpassword", type="string")
-     */
-    private $eventpassword;
-
 	/**
 	 * @var ArrayCollection
 	 * @ORM\ManyToMany(targetEntity="User", inversedBy="eventCollection", cascade={"ALL"})
@@ -278,24 +273,6 @@ class Event implements Entity
     {
         $this->nome_user = $nome_user;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getEventPassword()
-    {
-        return $this->eventpassword;
-    }
-
-    /**
-     * @param mixed $eventpassword
-     */
-    public function setEventPassword($eventpassword)
-    {
-        $this->eventpassword = $eventpassword;
-    }
-
-
 
 //	/**
 //	 * @return ArrayCollection

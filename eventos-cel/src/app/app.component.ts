@@ -22,6 +22,10 @@ export class AppComponent implements OnInit {
     this.storage.emmitLogin.subscribe(
         change => this.changeMenu = change
     );
+
+    // if(this.storage.get('token')){
+    //   this.changeMenu = !this.changeMenu;
+    // }
   }
   hello() {
     alert('App Component');

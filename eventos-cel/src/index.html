@@ -49,10 +49,9 @@
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
 
-        sessionStorage.removeItem('email');
-        sessionStorage.removeItem('nomeCompleto');
-        sessionStorage.removeItem('token');
-        sessionStorage.removeItem('password');
+        sessionStorage.clear();
+
+        localStorage.clear();
 
       });
     }

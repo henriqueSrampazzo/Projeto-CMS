@@ -36,6 +36,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditarEventSingleComponent } from './editarevents/editareventsingle/editar-event-single.component';
 import { EditarEventsComponent } from './editarevents/editarevents.component';
 import { EditarEventComponent } from './editarevents/editarevent/editarevent.component';
+import { PegaVariavelService } from './pegaVariavel.service'
 
 
 @NgModule({
@@ -74,7 +75,7 @@ import { EditarEventComponent } from './editarevents/editarevent/editarevent.com
     HttpClientModule
 
   ],
-  providers: [HttpService, StorageService, AuthGuard],
+  providers: [HttpService, StorageService, AuthGuard, PegaVariavelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
