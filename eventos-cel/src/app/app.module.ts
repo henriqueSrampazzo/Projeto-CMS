@@ -36,8 +36,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditarEventSingleComponent } from './editarevents/editareventsingle/editar-event-single.component';
 import { EditarEventsComponent } from './editarevents/editarevents.component';
 import { EditarEventComponent } from './editarevents/editarevent/editarevent.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,

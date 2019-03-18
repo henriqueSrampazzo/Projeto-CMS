@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { HttpService } from './../http.service';
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,15 +18,18 @@ export class SignupComponent implements OnInit {
 
   constructor(private http: HttpService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   signup() {
+
     this.http.post('users', this.user)
-             .subscribe(res => {
-               //toastr.success(res.msg, 'Sucesso');
-               alert('Cadastrado com sucesso');
-             });
+      .subscribe(res => {
+
+        swal({
+          title: "Usuário cadastrado com sucesso!",
+          icon: "success",
+        });
+      });
   }
 
 }

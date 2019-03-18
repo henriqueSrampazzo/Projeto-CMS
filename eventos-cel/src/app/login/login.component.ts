@@ -2,8 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmailValidator } from '@angular/forms';
-import { environment } from '../../environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +10,9 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  option = 'Entre';
-
-  email;
 
   private user: Object = {
     'email': JSON.parse(sessionStorage.getItem('email') || "[]"),
-    'idEm': JSON.parse(sessionStorage.getItem('id') || "[]"),
     'id_token': JSON.parse(sessionStorage.getItem('token') || "[]"),
     'password': ''
   };
@@ -34,37 +28,51 @@ export class LoginComponent implements OnInit {
     console.log('token: ' + this.user['id_token']);
 
   }
-  ngOnInit() {}
+
+  ngOnInit() { }
 
   login() {
 
-    this.user['email'] = JSON.parse(sessionStorage.getItem('email'));
-
     this.http.post('auth/login', this.user)
+
       .subscribe(res => {
 
-        swal({
-          title: "Login realizado com sucesso!",
-          icon: "success",
-        });
+        var lula = res.msg;
+        console.log(lula);
+
+        Swal.fire({
+          title: 'Logado com sucesso!',
+          type: 'success',
+          showConfirmButton: false,
+          timer: 1500
+        })
+
         this.storage.set('token', res.token);
-       
-        var emailResponse = this.storage.get('token');
-
-        console.log('Email Response: '+emailResponse);
-
-        sessionStorage.setItem('password', this.user['password']);
-
         return this.router.navigate(['']);
-        
-      });
-      swal({
-        title: "Usuário ou senha incorretos!",
-        text: "Verifique e tente novamente",
-        icon: "error",
+
       });
 
-      this.option = 'Logado';
+    this.alerta();
+  }
+
+  alerta() {
+
+    Swal.fire({
+      title: 'Verificando...',
+      type: 'info',
+      timer: 1500,
+      showConfirmButton: false,
+
+    }).then(() => {
+      Swal.fire({
+        title: 'Usuário ou senha incorretos!',
+        text: "Verifique e tente novamente",
+        type: 'error',
+        timer: 2000,
+        showConfirmButton: true,
+      });
+    });
+
   }
 
 }
