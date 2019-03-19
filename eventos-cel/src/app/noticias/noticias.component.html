@@ -12,22 +12,23 @@
             <div class="form-row">
               <div class="col form-group">
                 <label>Título *</label>
-                <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title" id="title" required #title=ngModel>
+                <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title" id="title" required
+                  #title=ngModel>
                 <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
-                    Título é obrigatório!
-                  </div>
-              </div> <!-- form-group end.// -->
-            </div> <!-- form-row end.// -->
+                  Título é obrigatório!
+                </div>
+              </div>
+            </div>
 
             <div class="form-row">
               <div class="col form-group">
                 <label>Descrição *</label>
-                <textarea class="form-control" [(ngModel)]="noticia.description" name="description"
-                  rows="10" required #description=ngModel></textarea>
-                  <div *ngIf="!description.valid && description.touched" class="alert alert-danger" role="alert">
-                      Descrição é obrigatória!
-                    </div>
-              </div> <!-- form-group end.// -->
+                <textarea class="form-control" [(ngModel)]="noticia.description" name="description" rows="10" required
+                  #description=ngModel></textarea>
+                <div *ngIf="!description.valid && description.touched" class="alert alert-danger" role="alert">
+                  Descrição é obrigatória!
+                </div>
+              </div>
             </div>
 
             <div class="form-group row">
@@ -35,55 +36,63 @@
                 <label for="photo1">Foto 1</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener($event)">
 
-              </div> <!-- form-group end.// -->
+              </div>
               <div class="col-md-6">
                 <label for="photo2">Foto 2</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener2($event)">
-              </div> <!-- form-group end.// -->
+              </div>
             </div>
 
             <div class="form-group row">
               <div class="col-md-6">
                 <label for="photo3">Foto 3</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener3($event)">
-              </div> <!-- form-group end.// -->
+              </div>
               <div class="col-md-6">
                 <label for="photo4">Foto 4</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener4($event)">
-              </div> <!-- form-group end.// -->
+              </div>
             </div>
 
             <div class="form-group row">
               <div class="col-md-6">
                 <label for="photo5">Foto 5</label>
                 <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener5($event)">
-              </div> <!-- form-group end.// -->
+              </div>
               <br><br>
 
               <div class="col-md-6">
                 <br>
                 <div class="alert alert-warning" role="alert">
-                    Recomenda-se fazer upload de pelo menos uma foto! <small>(máximo 5)</small>
-                  </div>
+                  Recomenda-se fazer upload de pelo menos uma foto! <small>(máximo 5)</small>
+                </div>
               </div>
             </div>
             <br>
             <hr>
 
+            <div class="form-row">
+              <div class="col-md-12 form-group">
+                <label>Senha para a notícia *</label>
+                <input type="password" class="form-control" [(ngModel)]="noticia.noticiapassword" name="noticiapassword"
+                  required #noticiapassword=ngModel>
+                <div *ngIf="!noticiapassword.valid && noticiapassword.touched" class="alert alert-danger" role="alert">
+                  Senha é obrigatória!
+                </div>
+              </div>
+            </div>
+
             <div class="container centralizar">
               <div class="col-md-3 row-group">
-                <button type="submit" class="btn btn-primary btn-block " (click)="cadastranoticia()" [disabled]="f.invalid"> Registrar notícia
+                <button type="submit" class="btn btn-primary btn-block " (click)="cadastranoticia()"
+                  [disabled]="f.invalid"> Registrar notícia
                 </button>
               </div>
-            </div> <!-- form-group// -->
+            </div>
           </form>
-        </article> <!-- card-body end .// -->
-      </div> <!-- card.// -->
-    </div> <!-- col.//-->
-
-  </div> <!-- row.//-->
-
-
+        </article>
+      </div>
+    </div>
+  </div>
 </div>
-<!--container end.//-->
 <router-outlet></router-outlet>

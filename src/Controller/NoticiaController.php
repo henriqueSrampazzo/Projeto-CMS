@@ -28,6 +28,34 @@ class NoticiaController extends BaseController
 		return $response;
 	}
 
+	public function pegaEmailNoticia(Request $request)
+	{
+		$email = $request->request->all();
+		$emailfinal = (array) $email;
+
+		for ($i=0; $i < 100; $i++) { 
+			$email = "$email"."$emailfinal[$i]";
+		};
+
+		$email = substr($email, 5);		
+
+		$noticias = $this->app['orm.em']
+		->getRepository('CodeExperts\Entity\Noticia')
+		->findBy(array('id_user' => $email));
+
+		$build = SerializerBuilder::create()->build();
+
+		$response  = new Response($build->serialize(
+			$noticias,
+			'json',
+			SerializationContext::create()->setGroups(array('list'))), 200);
+
+		$response->headers->set('Content-Type', 'application/json');
+
+		return $response;
+		return $this->app->json(['msg' => $email],200);
+	}
+
 	public function get($id)
 	{
 		$id = (int) $id;
@@ -65,6 +93,7 @@ class NoticiaController extends BaseController
 		$noticia->setIdUser($data['id_user']);
 		$noticia->setNomeUser($data['nome_user']);
 		$noticia->setPostData(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
+		$noticia->setNoticiaPassword($data['noticiapassword']);
 
 		$em = new EMService($this->app['orm.em']);
 

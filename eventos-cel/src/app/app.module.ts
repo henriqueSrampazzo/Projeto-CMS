@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { MeucomponentComponent } from './meucomponent/meucomponent.component';
 import { MeumoduleModule } from './meucomponent/meumodule/meumodule.module';
 
-
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { HttpService } from './http.service';

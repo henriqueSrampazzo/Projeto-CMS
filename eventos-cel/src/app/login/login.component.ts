@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   emailGlobal: string = '';
   email;
 
+  checado = false;
+
   private user: Object = {
     'email': JSON.parse(sessionStorage.getItem('email') || "[]"),
     'id_token': JSON.parse(sessionStorage.getItem('token') || "[]"),

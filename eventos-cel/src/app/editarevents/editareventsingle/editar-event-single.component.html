@@ -19,7 +19,7 @@
 
             <div class="form-row">
               <div class="col form-group">
-                <label>Título</label>
+                <label>Título *</label>
                 <input type="text" class="form-control" [(ngModel)]="eventeditado.title" name="title"
                 required #title=ngModel value="{{event?.title}}">
                   <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
@@ -30,7 +30,7 @@
 
             <div class="form-row">
               <div class="col form-group">
-                <label>Data</label>
+                <label>Data *</label>
                 <input type="datetime-local" class="form-control" [(ngModel)]="eventeditado.dataevent" name="dataevent"
                   value="{{event?.dataevent}}" id="dataevent" required #dataevent=ngModel>
                   <div *ngIf="!dataevent.valid && dataevent.touched" class="alert alert-danger" role="alert">
@@ -74,6 +74,16 @@
                       Recomenda-se fazer upload de pelo menos uma foto! <small>(máximo 5)</small>
                     </div>
                 </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-12 form-group">
+              <label>Senha própria do evento *</label>
+              <input type="password" class="form-control" [(ngModel)]="senha.eventpassword" name="eventpassword"
+                required #eventpassword=ngModel>
+              <div *ngIf="!eventpassword.valid && eventpassword.touched" class="alert alert-danger" role="alert">
+                Senha é obrigatória!
+              </div>
+            </div>
           </div>
           <br>
           <hr>

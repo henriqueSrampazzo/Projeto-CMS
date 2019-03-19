@@ -56,25 +56,6 @@ class EventController extends BaseController
 		return $this->app->json(['msg' => $email],200);
 	}
 
-	// public function meusEventos()
-	// {
-
-	// 	$events = $this->app['orm.em']
-	// 		->getRepository('CodeExperts\Entity\Event')
-	// 		->findBy(array('id_user' => $email));
-
-	// 	$build = SerializerBuilder::create()->build();
-
-	// 	$response  = new Response($build->serialize(
-	// 		$events,
-	// 		'json',
-	// 		SerializationContext::create()->setGroups(array('list'))), 200);
-
-	// 	$response->headers->set('Content-Type', 'application/json');
-
-	// 	return $response;
-	// }
-
 	public function get($id)
 	{
 		$id = (int) $id;
@@ -114,6 +95,7 @@ class EventController extends BaseController
 	    $event->setPhoto5($data['photo5']);
 	    $event->setIdUser($data['id_user']);
 	    $event->setNomeUser($data['nome_user']);
+	    $event->setEventPassword($data['eventpassword']);
 
 		$em = new EMService($this->app['orm.em']);
 
