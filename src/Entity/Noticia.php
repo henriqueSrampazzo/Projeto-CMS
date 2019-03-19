@@ -93,6 +93,13 @@ class Noticia implements Entity
      */
     private $nome_user;
 
+    /**
+     * @JMS\Groups({"list"})
+     *
+     * @ORM\Column(name="noticiapassword", type="string")
+     */
+    private $noticiapassword;
+
 	public function __construct()
 	{
 		
@@ -284,6 +291,22 @@ class Noticia implements Entity
     public function setNomeUser($nome_user)
     {
         $this->nome_user = $nome_user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNoticiaPassword()
+    {
+        return $this->noticiapassword;
+    }
+
+    /**
+     * @param mixed $noticiapassword
+     */
+    public function setNoticiaPassword($noticiapassword)
+    {
+        $this->noticiapassword = md5($noticiapassword);
     }
 
 }

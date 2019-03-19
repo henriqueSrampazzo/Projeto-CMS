@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
 
   email;
 
+  checado = false;
+
   private user: Object = {
     'email': JSON.parse(sessionStorage.getItem('email') || "[]"),
     'id_token': JSON.parse(sessionStorage.getItem('token') || "[]"),
@@ -51,14 +53,6 @@ export class LoginComponent implements OnInit {
     this.http.post('auth/login', this.user)
 
       .subscribe(res => {
-
-        // var lula = res.msg;
-        // console.log(lula);
-        // swal({
-        //   title: "Login realizado com sucesso!",
-        //   icon: "success",
-        // });
-
 
         Swal.fire({
           title: 'Logado com sucesso!',

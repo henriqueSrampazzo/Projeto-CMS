@@ -85,6 +85,13 @@ class Event implements Entity
      */
     private $nome_user;
 
+    /**
+     * @JMS\Groups({"list"})
+     *
+     * @ORM\Column(name="eventpassword", type="string")
+     */
+    private $eventpassword;
+
 	/**
 	 * @var ArrayCollection
 	 * @ORM\ManyToMany(targetEntity="User", inversedBy="eventCollection", cascade={"ALL"})
@@ -274,26 +281,20 @@ class Event implements Entity
         $this->nome_user = $nome_user;
     }
 
-//	/**
-//	 * @return ArrayCollection
-//	 */
-//	public function getUserCollection()
-//	{
-//		return $this->userCollection;
-//	}
+    /**
+     * @return mixed
+     */
+    public function getEventPassword()
+    {
+        return $this->eventpassword;
+    }
 
-//	/**
-//	 * @param ArrayCollection $userCollection
-//	 * @return ArrayCollection/Event
-//	 */
-//	public function setUserCollection($userCollection)
-//	{
-//		if($this->userCollection->contains($userCollection)) {
-//			return;
-//		}
+    /**
+     * @param mixed $eventpassword
+     */
+    public function setEventPassword($eventpassword)
+    {
+        $this->eventpassword = md5($eventpassword);
+    }
 
-//		$this->userCollection->add($userCollection);
-
-//		return $this;
-//	}
 }

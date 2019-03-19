@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Pipe } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-
 import { HttpService } from '../../http.service';
 import { StorageService } from '../../storage.service';
 import { Router } from '@angular/router';
@@ -11,6 +10,9 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { HttpClient } from '@angular/common/http';
 import { NoticiaSingleComponent } from '../../vernoticias/noticiasingle/noticia-single.component';
+
+import {Md5} from 'ts-md5/dist/md5';
+import * as md5 from 'js-md5';
 
 @Pipe({ name: 'safeHtml' })
 export class SafeHtml {
@@ -112,6 +114,10 @@ export class EditarNoticiaSingleComponent implements OnInit {
     myReader.readAsDataURL(file);
   }
 
+  private senha: Object = {
+    eventpassword: null,
+  };
+
   private noticiaeditada: Object = {
     id: null,
     title: null,
@@ -142,6 +148,8 @@ export class EditarNoticiaSingleComponent implements OnInit {
 
   editanoticia() {
 
+    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])){
+
     this.noticiaeditada['id'] = this.noticia['id'];
 
     this.noticiaeditada['photo1'] = this.image;
@@ -157,10 +165,17 @@ export class EditarNoticiaSingleComponent implements OnInit {
           icon: "success",
         });
       });
+    }
+
+    swal({
+      title: "Senha incorreta!",
+      icon: "error",
+    });
+
   }
 
-
   confirmdelete() {
+    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])){
     swal({
       title: "Deseja mesmo deletar essa notícia?",
       icon: "warning",
@@ -175,9 +190,16 @@ export class EditarNoticiaSingleComponent implements OnInit {
           });
           this.router.navigate(['editarnoticias/']);
         } else {
-
         }
       });
+    }
+
+    else{
+      swal({
+        title: "Senha incorreta!",
+        icon: "error",
+      });
+      }
   }
 
   deletanoticia() {
@@ -198,14 +220,5 @@ export class EditarNoticiaSingleComponent implements OnInit {
   cancelar(){
     this.router.navigate(['editarnoticias/']);
   }
-  // subscribe(noticia_id) {
-  //   this.storage.set('noticia', noticia_id);
-
-  //   if (this.storage.get('token') != undefined) {
-  //     this.router.navigate(['/make-subscription']);
-  //   } else {
-  //     this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
-  //   }
-  // }
 
 }

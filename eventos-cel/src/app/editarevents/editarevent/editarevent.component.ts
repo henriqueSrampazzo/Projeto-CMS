@@ -16,6 +16,7 @@ export class SafeHtml {
   templateUrl: './editarevent.component.html',
   styleUrls: ['./editarevent.component.css']
 })
+
 export class EditarEventComponent implements OnInit {
 
   @Input() event: {};

@@ -76,6 +76,18 @@
             </div>
             <br>
             <hr>
+
+            <div class="form-row">
+              <div class="col-md-12 form-group">
+                <label>Senha própria do evento *</label>
+                <input type="password" class="form-control" [(ngModel)]="senha.noticiapassword" name="noticiapassword"
+                  required #noticiapassword=ngModel>
+                <div *ngIf="!noticiapassword.valid && noticiapassword.touched" class="alert alert-danger" role="alert">
+                  Senha é obrigatória!
+                </div>
+              </div>
+            </div>
+
             <br>
             <div class="container centralizar">
                 <div class="col-md-3 row-group">

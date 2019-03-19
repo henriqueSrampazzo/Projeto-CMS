@@ -11,6 +11,9 @@ import 'rxjs/add/operator/map'
 import { HttpClient } from '@angular/common/http';
 import { EventSingleComponent } from '../../events/event-single/event-single.component';
 
+import {Md5} from 'ts-md5/dist/md5';
+import * as md5 from 'js-md5';
+
 @Pipe({ name: 'safeHtml' })
 export class SafeHtml {
   constructor(private sanitizer: DomSanitizer) { }
@@ -27,7 +30,7 @@ export class SafeHtml {
 })
 export class EditarEventSingleComponent implements OnInit {
   private event: {};
-
+ 
   image;
   image2;
   image3;
@@ -111,6 +114,10 @@ export class EditarEventSingleComponent implements OnInit {
     myReader.readAsDataURL(file);
   }
 
+  private senha: Object = {
+    eventpassword: null,
+  };
+
   private eventeditado: Object = {
     id:null,
     title:null,
@@ -119,7 +126,7 @@ export class EditarEventSingleComponent implements OnInit {
     photo2:null,
     photo3:null,
     photo4:null,
-    photo5:null
+    photo5:null,
   };
 
   constructor(
@@ -140,6 +147,8 @@ export class EditarEventSingleComponent implements OnInit {
 
   editaevent() {
 
+     if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])){
+       
     this.eventeditado['id'] = this.event['id']; 
     this.eventeditado['photo1'] = this.image;
     this.eventeditado['photo2'] = this.image2;
@@ -154,9 +163,18 @@ export class EditarEventSingleComponent implements OnInit {
           icon: "success",
         });
       });
+     }
+
+     swal({
+      title: "Senha incorreta!",
+      icon: "error",
+    });
+
   }
 
+  
   confirmdelete(){
+    if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])){
     swal({
       title: "Deseja mesmo deletar esse evento?",
       icon: "warning",
@@ -171,9 +189,16 @@ export class EditarEventSingleComponent implements OnInit {
         });
         this.router.navigate(['editareventos/']);
       } else {
-        
       }
     });
+  }
+
+  else{
+  swal({
+    title: "Senha incorreta!",
+    icon: "error",
+  });
+  }
   }
 
   deletaevent() {
@@ -193,16 +218,6 @@ export class EditarEventSingleComponent implements OnInit {
 
   cancelar(){
     this.router.navigate(['editareventos/']);
-  }
-
-  subscribe(noticia_id) {
-    this.storage.set('noticia', noticia_id);
-
-    if (this.storage.get('token') != undefined) {
-      this.router.navigate(['/make-subscription']);
-    } else {
-      this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
-    }
   }
 
 }

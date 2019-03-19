@@ -101,7 +101,8 @@ export class NoticiasComponent implements OnInit {
     photo4: '',
     photo5: '',
     id_user: JSON.parse(sessionStorage.getItem('email')),
-    nome_user: JSON.parse(sessionStorage.getItem('nomeCompleto'))
+    nome_user: JSON.parse(sessionStorage.getItem('nomeCompleto')),
+    noticiapassword: ''
   };
 
   constructor(private http: HttpService) { }

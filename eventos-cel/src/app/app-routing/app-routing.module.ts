@@ -24,20 +24,17 @@ import { AuthGuard } from '../guard/auth.guard';
 const appRoutes: Routes = [
   {path: 'eventos/:slug', component: EventSingleComponent},
   {path: 'noticia/:slug', component: NoticiaSingleComponent},
-  {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent},
-  {path: 'editarnoticias', component: EditarNoticiasComponent},
-  {path: 'editareventos/:slug', component: EditarEventSingleComponent,
-  canActivate : [AuthGuard]},
-  {path: 'editareventos', component: EditarEventsComponent,
-  canActivate : [AuthGuard]
-},
+  {path: 'editarnoticias', component: EditarNoticiasComponent, canActivate: [AuthGuard]},
+  {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent, canActivate: [AuthGuard]},
+  {path: 'editareventos', component: EditarEventsComponent, canActivate: [AuthGuard]},
+  {path: 'editareventos/:slug', component: EditarEventSingleComponent, canActivate: [AuthGuard]},
   {path: 'signup', component: SignupComponent},
-  {path: 'cadastranoticia', component: NoticiasComponent},
+  {path: 'cadastranoticia', component: NoticiasComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'make-subscription', component: MakeSubscriptionComponent},
   {path: 'make-subscription/confirm', component: ConfirmComponent },
   {path: 'contato', component: ContatoComponent},
-  {path: 'cadastraevento', component: CadastraEventoComponent},
+  {path: 'cadastraevento', component: CadastraEventoComponent, canActivate: [AuthGuard]},
   {path: 'painel', component: PainelComponent, children: [
   {path: 'events', component: UserEventsComponent}
     ],
