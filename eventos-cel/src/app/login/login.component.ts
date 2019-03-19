@@ -13,8 +13,8 @@ import { PegaVariavelService } from '../pegaVariavel.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  
   emailGlobal: string = '';
-
   email;
 
   private user: Object = {
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private storage: StorageService,
     private route: ActivatedRoute,
     private router: Router,
-    private pegaVariavel : PegaVariavelService
+    private pegaVariavel: PegaVariavelService
   ) {
 
     console.log('email: ' + this.user['email']);
@@ -37,29 +37,50 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
     this.pegaVariavel.eventEmailGlobal.subscribe(
-    event => this.setEmailGlobal(event)
+      event => this.setEmailGlobal(event)
     );
+
+    if (sessionStorage.length == 0) {
+
+      Swal.fire({
+        title: 'Faça Login com sua conta do Google',
+        type: 'warning',
+        showCancelButton: true,
+        cancelButtonText: '<a href="/" style=" text-decoration:none;color: white">Voltar</a>',
+        confirmButtonColor: 'white',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '<a class="g-signin2" data-onsuccess="onSignIn">Login</a>',
+      }).then((result) => {
+
+        if (result.value) {
+
+          Swal.fire({
+            title: 'Atenção',
+            type: 'info',
+            text: 'Seu e-mail será usado para fazer login',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: false,
+            confirmButtonText: '<a href="/login"style="text-decoration:none; color: white">Aceitar</a> ',
+            cancelButtonText: '<a href="/login" style="text-decoration:none; color: white">Cancelar</a>',
+          })
+        }
+      })
+    }
   }
 
   setEmailGlobal(globalEmail: string) {
     this.emailGlobal = globalEmail;
   }
 
-
   login() {
 
     this.http.post('auth/login', this.user)
 
       .subscribe(res => {
-
-        // var lula = res.msg;
-        // console.log(lula);
-        // swal({
-        //   title: "Login realizado com sucesso!",
-        //   icon: "success",
-        // });
-
-
+        
+        console.log(res);
+        
         Swal.fire({
           title: 'Logado com sucesso!',
           type: 'success',
@@ -74,6 +95,7 @@ export class LoginComponent implements OnInit {
         this.pegaVariavel.setEmailGlobal(globalEmail);
 
         return this.router.navigate(['']);
+
       });
 
     this.alerta();

@@ -9,10 +9,8 @@
         <article class="card-body">
 
           <form>
-            <div class="form-group">
-              <label>Conta do Google:</label>
-              <a class="abcRioButtonContentWrapper" data-onsuccess="onSignIn "></a>
-            </div>
+
+            <a class="g-signin2 google" data-onsuccess="onSignIn">Login</a>
 
             <div class="form-group">
               <label>Senha:</label>
@@ -27,7 +25,8 @@
             <div class="form-group">
               <a href="/login" class="btn btn-danger btn-block" onclick="signOut();">Sair</a>
               <br>
-               <small class="centralizar">Deseja se tornar um autor? Entre em&nbsp;<a routerLink="../contato" routerLinkActive="active">contato&nbsp;</a> com nossos administradores.</small>
+              <small class="centralizar">Deseja se tornar um autor? Entre em&nbsp;<a routerLink="../contato"
+                  routerLinkActive="active">contato&nbsp;</a> com nossos administradores.</small>
             </div>
 
           </form>
