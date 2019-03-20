@@ -5,6 +5,9 @@ export class PegaVariavelService {
   eventEmailGlobal = new EventEmitter<any>();
   private emailGlobal: string = '';
 
+  userNivelGlobal = new EventEmitter<any>();
+  private userNivel: string = '';
+
   constructor() {
   }
   getEmailGlobal() {
@@ -13,5 +16,13 @@ export class PegaVariavelService {
   setEmailGlobal(val: string) {
     this.emailGlobal = val;
     this.eventEmailGlobal.emit(val);
+  }
+
+  getUserNivel() {
+    return this.userNivel;
+  }
+  setUserNivel(val: string) {
+    this.userNivel = val;
+    this.userNivelGlobal.emit(val);
   }
 }

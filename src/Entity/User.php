@@ -50,6 +50,13 @@ class User implements Entity
      */
     private $createdAt;
 
+    /**
+     * @JMS\Groups({"list"})
+     *
+     * @ORM\Column(name="adminpassword", type="string")
+     */
+    private $adminpassword;
+
 	/**
 	 * @var ArrayCollection
 	 * @ORM\ManyToMany(targetEntity="Event", mappedBy="userCollection")
@@ -162,4 +169,32 @@ class User implements Entity
 
 		return $this;
 	}
+
+    /**
+     * @return mixed
+     */
+    public function getAdminPassword()
+    {
+        return $this->adminpassword;
+    }
+
+    /**
+     * @param mixed $adminpassword
+     */
+    public function setAdminPassword($adminpassword)
+    {
+        $this->adminpassword = md5($adminpassword);
+    }
+        public function setAdminPasswordVazio($adminpassword)
+    {
+        $letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'];
+        $tamanho = count($letras);
+
+        for ($i=0; $i < 10; $i++) { 
+            $selecionaletra = rand(0,$tamanho);
+            $letra = $letras[$selecionaletra];
+            $senhagerada = $senhagerada.rand(0,9).$letra;
+        }
+        $this->adminpassword = md5($senhagerada);
+    }
 }

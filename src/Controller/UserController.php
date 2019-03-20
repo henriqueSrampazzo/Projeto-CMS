@@ -60,6 +60,13 @@ class UserController extends BaseController
 		$user->setNivel($data['nivel']);
 		$user->setCreatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
 
+		if ($data['nivel']=='admin') {
+			$user->setAdminPassword($data['adminpassword']);
+		}
+		else{
+			$user->setAdminPasswordVazio($data['adminpassword']);
+		}
+
 		$em = new EMService($this->app['orm.em']);
 
 		if(!$em->create($user)) {

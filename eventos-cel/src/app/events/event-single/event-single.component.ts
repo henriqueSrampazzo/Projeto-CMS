@@ -37,14 +37,4 @@ export class EventSingleComponent implements OnInit {
     });
   }
 
-  subscribe(event_id) {
-    this.storage.set('event', event_id);
-
-    if(this.storage.get('token') != undefined) {
-      this.router.navigate(['/make-subscription']);
-    } else {
-      this.router.navigate(['/login'], {'queryParams': {'to': 'subscription_confirm'}});
-    }
-  }
-
 }
