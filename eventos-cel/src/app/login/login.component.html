@@ -12,12 +12,11 @@
 
             <a class="g-signin2 google" data-onsuccess="onSignIn">Login</a>
 
-            <div class="form-group">
-              <label>Senha:</label>
-              <input class="form-control" type="password" [(ngModel)]="user.password" name="password"
-                placeholder="Digite sua senha">
-            </div>
+            <div class="centralizar ">
+              <label>Após logar na sua conta do Google clique em Confirmar Login</label>
 
+            </div>
+            <br>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block" (click)="login()"> Confirmar login </button>
             </div>
@@ -27,6 +26,7 @@
               <br>
               <small class="centralizar">Deseja se tornar um autor? Entre em&nbsp;<a routerLink="../contato"
                   routerLinkActive="active">contato&nbsp;</a> com nossos administradores.</small>
+              <br>
             </div>
 
           </form>

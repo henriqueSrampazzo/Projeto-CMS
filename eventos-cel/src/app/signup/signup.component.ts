@@ -12,7 +12,6 @@ export class SignupComponent implements OnInit {
   private user: Object = {
     name: '',
     email: '',
-    password: '',
     nivel: ''
   };
 

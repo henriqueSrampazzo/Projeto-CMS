@@ -1,11 +1,11 @@
 <?php
 namespace CodeExperts\Controller;
 
-use CodeExperts\Service\PasswordService;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
+use CodeExperts\Entity\User;
 
- require_once __DIR__  .'/../../vendor/autoload.php';
+require_once __DIR__  .'/../../vendor/autoload.php';
 
 class AuthController
 {
@@ -29,13 +29,7 @@ class AuthController
 		->findOneByEmail($data['email']);
 
 		if(!$user || $data['email'] != $user->getEmail()) {
-			return $this->app->json(['msg' => 'error'],401);
-		}
-
-		$passwdService = new PasswordService();
-
-		if(!$passwdService->isValidPassword($data['password'], $user->getPassword())) {
-			return $this->app->json(['msg' => 'error'], 401);
+			return $this->app->json(['msg' => 'e n c'],401);
 		}
 
 		$id_token = $data['id_token'];
@@ -43,20 +37,26 @@ class AuthController
 
 		$client = new \Google_Client(['client_id' => $CLIENT_ID]);
 
-	 	$payload = $client->verifyIdToken($id_token);
+		$payload = $client->verifyIdToken($id_token);
 
 		if ($payload) {
 
 			$userid = $payload['sub'];
 
-			return $this->app->json(['token' => (string) $data['email']], 200);
+			if($user->getNivel()=="admin") {
+
+				$nivel='admin';
+			}
+			else if($user->getNivel()=="autor") {
+
+				$nivel='autor';
+			}
+
+			return $this->app->json(['token' => (string) $data['email'],'msg'=>'t v','nivel'=>(string)$nivel], 200);
 
 		} else {
 
-			return $this->app->json(['msg' => 'error'], 401);
+			return $this->app->json(['msg' => 't i'], 401);
 		}
-
-		//return $this->app->json(['token' => (string) $jwt->generateToken()], 200);
 	}
-
 }

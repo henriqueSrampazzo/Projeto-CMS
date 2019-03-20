@@ -4,7 +4,6 @@ namespace CodeExperts\Controller;
 use CodeExperts\Entity\User;
 use CodeExperts\Security\ExtractUser;
 use CodeExperts\Service\EMService;
-use CodeExperts\Service\PasswordService;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use Lcobucci\JWT\Parser;
@@ -55,15 +54,10 @@ class UserController extends BaseController
 	{
 		$data = $request->request->all();
 
-		$password = new PasswordService();
-		$password = $password->setPassword($data['password'])
-		->generate();
-
 		$user = new User();
 		$user->setName($data['name']);
 		$user->setEmail($data['email']);
 		$user->setNivel($data['nivel']);
-		$user->setPassword($password);
 		$user->setCreatedAt(new \DateTime("now", new \DateTimeZone("America/Sao_Paulo")));
 
 		$em = new EMService($this->app['orm.em']);

@@ -26,14 +26,14 @@
                 <label> Nível do usuário</label>
 
                 <select class="form-control" name="singleSelect" [(ngModel)]="user.nivel" #nivel="ngModel" required>
-                  <option value="admin" >Admin</option>
+                  <option value="admin">Admin</option>
                   <option value="autor">Autor</option>
                 </select>
 
                 <div *ngIf="!nivel.valid && nivel.touched" class="alert alert-danger" role="alert">
-                    Selecione uma opção!
-                  </div>
-
+                  Selecione uma opção!
+                </div>
+                
               </div>
             </div>
 
@@ -47,16 +47,7 @@
               </div>
 
             </div>
-            <div class="form-group">
-              <label>Senha</label>
-              <input class="form-control" type="password" [(ngModel)]="user.password" name="password" required
-              placeholder="Digite a senha" #password=ngModel maxlength="100">
 
-              <div *ngIf="!password.valid && password.touched" class="alert alert-danger" role="alert">
-                Senha é obrigatório!
-              </div>
-
-            </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block" (click)="signup()" [disabled]="f.invalid">
                 Cadastrar </button>

@@ -11,7 +11,6 @@ import 'rxjs/add/operator/map'
 import { HttpClient } from '@angular/common/http';
 import { EventSingleComponent } from '../../events/event-single/event-single.component';
 
-import {Md5} from 'ts-md5/dist/md5';
 import * as md5 from 'js-md5';
 
 @Pipe({ name: 'safeHtml' })

@@ -35,13 +35,10 @@ class User implements Entity
      * @ORM\Column(name="email", type="string")
      */
     private $email;
-
+    
     /**
-     * @ORM\Column(name="password", type="string")
-     */
-    private $password;
-
-    /**
+     * @JMS\Groups({"list"})
+     *
      * @ORM\Column(name="nivel", type="string")
      */
     private $nivel;
@@ -109,22 +106,6 @@ class User implements Entity
     public function setEmail($email)
     {
         $this->email = $email;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param mixed $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
     }
 
     /**

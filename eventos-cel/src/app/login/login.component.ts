@@ -3,8 +3,7 @@ import { HttpService } from './../http.service';
 import { StorageService } from './../storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { EmailValidator } from '@angular/forms';
-import { environment } from '../../environments/environment';
+import swal from 'sweetalert';
 import { PegaVariavelService } from '../pegaVariavel.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { PegaVariavelService } from '../pegaVariavel.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
+
   emailGlobal: string = '';
   email;
 
@@ -31,12 +30,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private pegaVariavel: PegaVariavelService
-  ) {
+  ) { }
 
-    console.log('email: ' + this.user['email']);
-    console.log('token: ' + this.user['id_token']);
-
-  }
   ngOnInit() {
     this.pegaVariavel.eventEmailGlobal.subscribe(
       event => this.setEmailGlobal(event)
@@ -47,26 +42,43 @@ export class LoginComponent implements OnInit {
       Swal.fire({
         title: 'Faça Login com sua conta do Google',
         type: 'warning',
+        showCloseButton: true,
         showCancelButton: true,
-        cancelButtonText: '<a href="/" style=" text-decoration:none;color: white">Voltar</a>',
-        confirmButtonColor: 'white',
+        focusConfirm: false,
+        cancelButtonText: '<a style="color: white">Voltar</a>',
         cancelButtonColor: '#d33',
-        confirmButtonText: '<a class="g-signin2" data-onsuccess="onSignIn">Login</a>',
+        confirmButtonColor: '#ffffff00',
+        confirmButtonText: '<a class="g-signin2 tst " data-onsuccess="onSignIn"></a>',
       }).then((result) => {
 
         if (result.value) {
 
-          Swal.fire({
-            title: 'Atenção',
-            type: 'info',
-            text: 'Seu e-mail será usado para fazer login',
-            showCloseButton: true,
-            showCancelButton: true,
-            focusConfirm: false,
-            confirmButtonText: '<a href="/login"style="text-decoration:none; color: white">Aceitar</a> ',
-            cancelButtonText: '<a href="/login" style="text-decoration:none; color: white">Cancelar</a>',
+          swal({
+            title: 'Seu e-mail será usado para fazer login',
+            icon: 'info',
+            text: 'Clique em OK para confirmar',
+            dangerMode: true,
+            buttons: ['Cancelar', 'Ok']
           })
+
+            .then((willDelete) => {
+
+              if (willDelete) {
+                window.location.reload();
+
+              } else {
+
+                this.router.navigate(['/']);
+
+              }
+
+            });
+        } else {
+
+          this.router.navigate(['/']);
+
         }
+
       })
     }
   }
@@ -80,9 +92,9 @@ export class LoginComponent implements OnInit {
     this.http.post('auth/login', this.user)
 
       .subscribe(res => {
-        
-        console.log(res);
-        
+
+        //console.log(res);
+
         Swal.fire({
           title: 'Logado com sucesso!',
           type: 'success',
@@ -108,15 +120,15 @@ export class LoginComponent implements OnInit {
     Swal.fire({
       title: 'Verificando...',
       type: 'info',
-      timer: 1500,
+      timer: 2000,
       showConfirmButton: false,
 
     }).then(() => {
       Swal.fire({
-        title: 'Usuário ou senha incorretos!',
-        text: "Verifique e tente novamente",
+        title: 'Algo errado aconteceu!',
+        text: "Verifique sua conta e tente novamente",
         type: 'error',
-        timer: 2000,
+        timer: 2500,
         showConfirmButton: true,
       });
     });

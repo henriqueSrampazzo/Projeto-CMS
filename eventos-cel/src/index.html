@@ -10,7 +10,6 @@
   <link rel="icon" href="../src/assets/favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta name="google-signin-client_id"
@@ -27,16 +26,15 @@
       let profile = googleUser.getBasicProfile();
       let id_token = googleUser.getAuthResponse().id_token;
       let email = profile.getEmail();
-      let nomeCompleto = profile.getName();
 
-      let emailPerfil = JSON.stringify(email);
-      let nomeCompletoPerfil = JSON.stringify(nomeCompleto);
       let token = JSON.stringify(id_token);
+      let emailPerfil = JSON.stringify(email);
 
-      sessionStorage.setItem('email', emailPerfil);
-      sessionStorage.setItem('nomeCompleto', nomeCompletoPerfil);
       sessionStorage.setItem('token', token);
+      sessionStorage.setItem('email', emailPerfil);
+
     }
+
   </script>
 
   <script>
@@ -58,9 +56,11 @@
   <app-root></app-root>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-  <script src='https://www.google.com/recaptcha/api.js'></script>
+
   <script>
+
     new WOW().init();
+
   </script>
 
 </body>
