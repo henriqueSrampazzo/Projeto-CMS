@@ -18,17 +18,14 @@ export class AppComponent implements OnInit {
     public storage: StorageService
   ) {}
 
-  ngOnInit() {
+   ngOnInit() {
     this.storage.emmitLogin.subscribe(
         change => this.changeMenu = change
     );
 
-    // if(this.storage.get('token')){
-    //   this.changeMenu = !this.changeMenu;
-    // }
-  }
-  hello() {
-    alert('App Component');
+  // if(this.storage.get('token')){
+  //   this.changeMenu = true;
+  // }
   }
 
 }

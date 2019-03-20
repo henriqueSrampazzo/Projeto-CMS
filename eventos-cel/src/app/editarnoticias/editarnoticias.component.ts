@@ -3,6 +3,8 @@ import { HttpService } from '../http.service';
 import { NoticiasComponent } from '../noticias/noticias.component';
 import { StorageService } from '../storage.service';
 import { PegaVariavelService } from '../pegaVariavel.service';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'; 
 
 @Component({
   selector: 'app-editarnoticias',
@@ -19,7 +21,8 @@ import { PegaVariavelService } from '../pegaVariavel.service';
   constructor(
     public http: HttpService,
     private storage: StorageService,
-    private pegaVariavel: PegaVariavelService
+    private pegaVariavel: PegaVariavelService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +36,22 @@ import { PegaVariavelService } from '../pegaVariavel.service';
     this.http.post('pegaEmailNoticia', email).subscribe(res => this.noticias = res);
 
     console.log(this.pegaVariavel['emailGlobal']);
+
+    if(!this.pegaVariavel['emailGlobal']){
+      swal({
+        title: "Opa...",
+        text: "Parece que você não está logado! Ir para a página de login?",
+        icon: "error",
+        buttons: ['Contate-nos', 'Ok']
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          this.router.navigate(['login/']);
+        } else {
+          this.router.navigate(['contato/']);
+        }
+      });
+    } 
   }
 
   setEmailGlobal(visibilidade: string) {

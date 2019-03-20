@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 @Injectable() export class EditarEventsComponent implements OnInit {
 
   emailGlobal: string = '';
+  userNivel: string = '';
   msgErro = false;
 
   private events: Array<{}>;
@@ -31,35 +32,42 @@ import { ActivatedRoute } from '@angular/router';
     this.pegaVariavel.eventEmailGlobal.subscribe(
       event => this.setEmailGlobal(event)
     );
+    this.pegaVariavel.userNivelGlobal.subscribe(
+      event => this.setUserNivel(event)
+    );
 
     var email = this.pegaVariavel['emailGlobal'];
+    var nivel = 'admi0n'
 
+      if(nivel=='admin'){
+    this.http.get('events').subscribe(res => this.events = res);
+      }else{
     this.http.post('pegaEmail', email).subscribe(res => this.events = res);
-
+      }
     console.log(this.pegaVariavel['emailGlobal']);
 
     if(!this.pegaVariavel['emailGlobal']){
       swal({
-        title: "Oops...",
+        title: "Opa...",
         text: "Parece que você não está logado! Ir para a página de login?",
         icon: "error",
-        dangerMode: true,
-        buttons: ['Cancelar', 'Ok']
+        buttons: ['Contate-nos', 'Ok']
       })
       .then((willDelete) => {
         if (willDelete) {
-          this.vaiparalogin();
+          this.router.navigate(['login/']);
         } else {
+          this.router.navigate(['contato/']);
         }
       });
     } 
   }
+
   setEmailGlobal(visibilidade: string) {
     this.emailGlobal = visibilidade;
   }
-
-  vaiparalogin(){
-    this.router.navigate(['login/']);
+  setUserNivel(lvl: string) {
+    this.userNivel = lvl;
   }
 
 }
