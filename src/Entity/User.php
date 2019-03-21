@@ -50,17 +50,6 @@ class User implements Entity
      */
     private $createdAt;
 
-	/**
-	 * @var ArrayCollection
-	 * @ORM\ManyToMany(targetEntity="Event", mappedBy="userCollection")
-	 */
-	private $eventCollection;
-
-	public function __construct()
-	{
-		$this->eventCollection = new ArrayCollection();
-	}
-
     /**
      * @return mixed
      */

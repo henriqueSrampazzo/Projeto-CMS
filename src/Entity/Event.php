@@ -92,20 +92,6 @@ class Event implements Entity
      */
     private $eventpassword;
 
-	/**
-	 * @var ArrayCollection
-	 * @ORM\ManyToMany(targetEntity="User", inversedBy="eventCollection", cascade={"ALL"})
-	 */
-	private $userCollection;
-
-	/**
-	 * Event constructor.
-	 */
-	public function __construct()
-	{
-		$this->userCollection = new ArrayCollection();
-	}
-
     /**
      * @return mixed
      */
