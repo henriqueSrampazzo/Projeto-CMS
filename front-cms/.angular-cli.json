@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "eventos-cel"
+    "name": "front-cms"
   },
   "apps": [
     {
@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "logo.svg",
         "favicon.ico"
       ],
       "index": "index.html",
