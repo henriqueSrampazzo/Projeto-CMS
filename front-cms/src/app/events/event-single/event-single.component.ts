@@ -5,9 +5,9 @@ import { StorageService } from './../../storage.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
-@Pipe({name: 'safeHtml'})
+@Pipe({ name: 'safeHtml' })
 export class SafeHtml {
-  constructor(private sanitizer:DomSanitizer){}
+  constructor(private sanitizer: DomSanitizer) { }
 
   transform(html) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(html);
@@ -32,8 +32,8 @@ export class EventSingleComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-        this.httpService.getBy('events', params['slug'])
-            .subscribe(data => this.event = data);
+      this.httpService.getBy('events', params['slug'])
+        .subscribe(data => this.event = data);
     });
   }
 
