@@ -93,7 +93,7 @@
                 <div class="col-md-3 row-group">
                 <button type="submit" class="btn btn-primary btn-block " (click)="editanoticia()" [disabled]="f.invalid"> Editar notícia
                 </button>
-                <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()"> Deletar evento
+                <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()" [disabled]="noticiapassword.invalid"> Deletar evento
                   </button>
                 <button type="submit" class="btn btn-secondary btn-block" (click)="cancelar()">Cancelar edição</button>
               </div>

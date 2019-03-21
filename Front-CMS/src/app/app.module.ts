@@ -13,6 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { StorageService } from './storage.service';
 import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard2 } from './guard/auth.guard2';
 import { EventComponent } from './events/event/event.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { VerNoticiasComponent } from './vernoticias/vernoticias.component';
@@ -59,8 +60,12 @@ import { PegaVariavelService } from './pegaVariavel.service'
     NgxPaginationModule,
     HttpClientModule
   ],
+<<<<<<< HEAD:Front-CMS/src/app/app.module.ts
   
   providers: [HttpService, StorageService, AuthGuard, PegaVariavelService],
+=======
+  providers: [HttpService, StorageService, AuthGuard, AuthGuard2, PegaVariavelService],
+>>>>>>> 51be06db3dfadc4a57ffc3183bee869532c746ef:eventos-cel/src/app/app.module.ts
   bootstrap: [AppComponent]
 })
 export class AppModule { }

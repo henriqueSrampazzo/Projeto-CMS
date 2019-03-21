@@ -15,6 +15,7 @@ import { EditarNoticiasComponent } from '../editarnoticias/editarnoticias.compon
 import { EditarEventSingleComponent } from '../editarevents/editareventsingle/editar-event-single.component';
 import { EditarEventsComponent } from '../editarevents/editarevents.component';
 import { AuthGuard } from '../guard/auth.guard';
+import { AuthGuard2 } from '../guard/auth.guard2';
 
 
 const appRoutes: Routes = [
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
   {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent, canActivate: [AuthGuard]},
   {path: 'editareventos', component: EditarEventsComponent, canActivate: [AuthGuard]},
   {path: 'editareventos/:slug', component: EditarEventSingleComponent, canActivate: [AuthGuard]},
-  {path: 'signup', component: SignupComponent},
+  {path: 'signup', component: SignupComponent, canActivate: [AuthGuard2]},
   {path: 'cadastranoticia', component: NoticiasComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'contato', component: ContatoComponent},

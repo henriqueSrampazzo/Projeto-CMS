@@ -33,7 +33,7 @@ class EventController extends BaseController
 		$email = $request->request->all();
 		$emailfinal = (array) $email;
 
-		for ($i=0; $i < 100; $i++) { 
+		for ($i=0; $i < 200; $i++) { 
 			$email = "$email"."$emailfinal[$i]";
 		};
 

@@ -11,6 +11,8 @@ import 'rxjs/add/operator/map'
 import { HttpClient } from '@angular/common/http';
 import { NoticiaSingleComponent } from '../../vernoticias/noticiasingle/noticia-single.component';
 
+import { PegaVariavelService } from '../../pegaVariavel.service';
+
 import * as md5 from 'js-md5';
 
 @Pipe({ name: 'safeHtml' })
@@ -29,6 +31,8 @@ export class SafeHtml {
 })
 export class EditarNoticiaSingleComponent implements OnInit {
   private noticia: {};
+
+  userNivel: string = '';
 
   image;
   image2;
@@ -135,7 +139,8 @@ export class EditarNoticiaSingleComponent implements OnInit {
     private storage: StorageService,
     private router: Router,
     private domSanitizer: DomSanitizer,
-    private http: HttpService
+    private http: HttpService,
+    private pegaVariavel: PegaVariavelService
   ) { }
 
   ngOnInit() {
@@ -143,11 +148,20 @@ export class EditarNoticiaSingleComponent implements OnInit {
       this.httpService.getBy('noticias', params['slug'])
         .subscribe(data => this.noticia = data);
     });
+
+    this.pegaVariavel.userNivelGlobal.subscribe(
+      event => this.setUserNivel(event)
+    );
+
+    var nivel = this.pegaVariavel['userNivel'];
+
+    console.log(this.pegaVariavel['userNivel']);
+
   }
 
   editanoticia() {
 
-    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])){
+    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])||(this.pegaVariavel['userNivel'])=='admin'){
 
     this.noticiaeditada['id'] = this.noticia['id'];
 
@@ -174,7 +188,7 @@ export class EditarNoticiaSingleComponent implements OnInit {
   }
 
   confirmdelete() {
-    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])){
+    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])||(this.pegaVariavel['userNivel'])=='admin'){
     swal({
       title: "Deseja mesmo deletar essa notícia?",
       icon: "warning",
@@ -218,6 +232,10 @@ export class EditarNoticiaSingleComponent implements OnInit {
 
   cancelar(){
     this.router.navigate(['editarnoticias/']);
+  }
+
+  setUserNivel(lvl: string) {
+    this.userNivel = lvl;
   }
 
 }

@@ -50,13 +50,6 @@ class User implements Entity
      */
     private $createdAt;
 
-    /**
-     * @JMS\Groups({"list"})
-     *
-     * @ORM\Column(name="adminpassword", type="string")
-     */
-    private $adminpassword;
-
 	/**
 	 * @var ArrayCollection
 	 * @ORM\ManyToMany(targetEntity="Event", mappedBy="userCollection")
@@ -169,6 +162,7 @@ class User implements Entity
 
 		return $this;
 	}
+<<<<<<< HEAD
 
     /**
      * @return mixed
@@ -197,4 +191,6 @@ class User implements Entity
         }
         $this->adminpassword = md5($senhagerada);
     }
+=======
+>>>>>>> 51be06db3dfadc4a57ffc3183bee869532c746ef
 }

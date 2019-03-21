@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Pipe } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Injectable, Pipe } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { HttpService } from '../../http.service';
@@ -10,6 +10,8 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { HttpClient } from '@angular/common/http';
 import { EventSingleComponent } from '../../events/event-single/event-single.component';
+
+import { PegaVariavelService } from '../../pegaVariavel.service';
 
 import * as md5 from 'js-md5';
 
@@ -27,9 +29,13 @@ export class SafeHtml {
   templateUrl: './editar-event-single.component.html',
   styleUrls: ['./editar-event-single.component.css']
 })
-export class EditarEventSingleComponent implements OnInit {
+@Injectable() export class EditarEventSingleComponent implements OnInit {
   private event: {};
- 
+
+  userNivel: string = '';
+
+  mostraSenha = true;
+
   image;
   image2;
   image3;
@@ -134,7 +140,8 @@ export class EditarEventSingleComponent implements OnInit {
     private storage: StorageService,
     private router: Router,
     private domSanitizer: DomSanitizer,
-    private http: HttpService
+    private http: HttpService,
+    private pegaVariavel: PegaVariavelService
   ) { }
 
   ngOnInit() {
@@ -142,11 +149,24 @@ export class EditarEventSingleComponent implements OnInit {
       this.httpService.getBy('events', params['slug'])
         .subscribe(data => this.event = data);
     });
+
+    this.pegaVariavel.userNivelGlobal.subscribe(
+      event => this.setUserNivel(event)
+    );
+
+    var nivel = this.pegaVariavel['userNivel'];
+
+    console.log(this.pegaVariavel['userNivel']);
+
+      if(nivel=='admin'){
+        this.mostraSenha = false;
+      }
+
   }
 
   editaevent() {
 
-     if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])){
+     if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])||(this.pegaVariavel['userNivel'])=='admin'){
        
     this.eventeditado['id'] = this.event['id']; 
     this.eventeditado['photo1'] = this.image;
@@ -173,7 +193,7 @@ export class EditarEventSingleComponent implements OnInit {
 
   
   confirmdelete(){
-    if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])){
+    if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])||(this.pegaVariavel['userNivel'])=='admin'){
     swal({
       title: "Deseja mesmo deletar esse evento?",
       icon: "warning",
@@ -217,6 +237,10 @@ export class EditarEventSingleComponent implements OnInit {
 
   cancelar(){
     this.router.navigate(['editareventos/']);
+  }
+
+  setUserNivel(lvl: string) {
+    this.userNivel = lvl;
   }
 
 }
