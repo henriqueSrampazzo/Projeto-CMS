@@ -162,35 +162,5 @@ class User implements Entity
 
 		return $this;
 	}
-<<<<<<< HEAD
 
-    /**
-     * @return mixed
-     */
-    public function getAdminPassword()
-    {
-        return $this->adminpassword;
-    }
-
-    /**
-     * @param mixed $adminpassword
-     */
-    public function setAdminPassword($adminpassword)
-    {
-        $this->adminpassword = md5($adminpassword);
-    }
-    public function setAdminPasswordVazio($adminpassword)
-    {
-        $letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'];
-        $tamanho = count($letras);
-
-        for ($i=0; $i < 10; $i++) { 
-            $selecionaletra = rand(0,$tamanho);
-            $letra = $letras[$selecionaletra];
-            $senhagerada = $senhagerada.rand(0,9).$letra;
-        }
-        $this->adminpassword = md5($senhagerada);
-    }
-=======
->>>>>>> 51be06db3dfadc4a57ffc3183bee869532c746ef
 }

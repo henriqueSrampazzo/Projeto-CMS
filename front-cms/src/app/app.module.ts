@@ -60,12 +60,7 @@ import { PegaVariavelService } from './pegaVariavel.service'
     NgxPaginationModule,
     HttpClientModule
   ],
-<<<<<<< HEAD:Front-CMS/src/app/app.module.ts
-  
-  providers: [HttpService, StorageService, AuthGuard, PegaVariavelService],
-=======
   providers: [HttpService, StorageService, AuthGuard, AuthGuard2, PegaVariavelService],
->>>>>>> 51be06db3dfadc4a57ffc3183bee869532c746ef:eventos-cel/src/app/app.module.ts
   bootstrap: [AppComponent]
 })
 export class AppModule { }
