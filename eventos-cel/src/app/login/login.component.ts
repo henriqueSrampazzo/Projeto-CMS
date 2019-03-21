@@ -14,7 +14,9 @@ import { PegaVariavelService } from '../pegaVariavel.service';
 export class LoginComponent implements OnInit {
 
   emailGlobal: string = '';
+  userNivel: string = '';
   email;
+  nivel;
 
   checado = false;
 
@@ -35,6 +37,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.pegaVariavel.eventEmailGlobal.subscribe(
       event => this.setEmailGlobal(event)
+    );
+
+    this.pegaVariavel.userNivelGlobal.subscribe(
+      event => this.setUserNivel(event)
     );
 
     if (sessionStorage.length == 0) {
@@ -87,13 +93,15 @@ export class LoginComponent implements OnInit {
     this.emailGlobal = globalEmail;
   }
 
+  setUserNivel(nivelUser: string) {
+    this.userNivel = nivelUser;
+  }
+
   login() {
 
     this.http.post('auth/login', this.user)
 
       .subscribe(res => {
-
-        //console.log(res);
 
         Swal.fire({
           title: 'Logado com sucesso!',
@@ -105,8 +113,10 @@ export class LoginComponent implements OnInit {
         this.storage.set('token', res.token);
 
         var globalEmail = res.token;
+        var nivelUser = res.nivel;
 
         this.pegaVariavel.setEmailGlobal(globalEmail);
+        this.pegaVariavel.setUserNivel(nivelUser);
 
         return this.router.navigate(['']);
 

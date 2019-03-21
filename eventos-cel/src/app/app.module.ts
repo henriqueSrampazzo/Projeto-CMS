@@ -20,6 +20,7 @@ import { ConfirmComponent } from './make-subscription/confirm/confirm.component'
 import { PainelComponent } from './painel/painel.component';
 import { UserEventsComponent } from './painel/user-events/user-events.component';
 import { AuthGuard } from './guard/auth.guard';
+import { AuthGuard2 } from './guard/auth.guard2';
 import { EventComponent } from './events/event/event.component';
 import { NoticiasComponent } from './noticias/noticias.component';
 import { VerNoticiasComponent } from './vernoticias/vernoticias.component';
@@ -36,7 +37,6 @@ import { EditarEventSingleComponent } from './editarevents/editareventsingle/edi
 import { EditarEventsComponent } from './editarevents/editarevents.component';
 import { EditarEventComponent } from './editarevents/editarevent/editarevent.component';
 import { PegaVariavelService } from './pegaVariavel.service'
-
 
 @NgModule({
   declarations: [
@@ -74,7 +74,7 @@ import { PegaVariavelService } from './pegaVariavel.service'
     HttpClientModule
 
   ],
-  providers: [HttpService, StorageService, AuthGuard, PegaVariavelService],
+  providers: [HttpService, StorageService, AuthGuard, AuthGuard2, PegaVariavelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

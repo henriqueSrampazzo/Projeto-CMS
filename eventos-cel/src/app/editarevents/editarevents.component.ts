@@ -15,7 +15,6 @@ import { ActivatedRoute } from '@angular/router';
 
   emailGlobal: string = '';
   userNivel: string = '';
-  msgErro = false;
 
   private events: Array<{}>;
   p: number = 100;
@@ -37,7 +36,7 @@ import { ActivatedRoute } from '@angular/router';
     );
 
     var email = this.pegaVariavel['emailGlobal'];
-    var nivel = 'admi0n'
+    var nivel = this.pegaVariavel['userNivel'];
 
       if(nivel=='admin'){
     this.http.get('events').subscribe(res => this.events = res);
@@ -45,6 +44,7 @@ import { ActivatedRoute } from '@angular/router';
     this.http.post('pegaEmail', email).subscribe(res => this.events = res);
       }
     console.log(this.pegaVariavel['emailGlobal']);
+    console.log(this.pegaVariavel['userNivel']);
 
     if(!this.pegaVariavel['emailGlobal']){
       swal({

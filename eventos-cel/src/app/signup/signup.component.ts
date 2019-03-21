@@ -12,16 +12,12 @@ export class SignupComponent implements OnInit {
   private user: Object = {
     name: '',
     email: '',
-    nivel: '',
-    adminpassword: ''
+    nivel: ''
   };
-
-  nivelSelector = false;
 
   constructor(private http: HttpService) { }
 
-  ngOnInit() {
-   }
+  ngOnInit() {}
 
   signup() {
 

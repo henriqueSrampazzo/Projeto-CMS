@@ -48,17 +48,6 @@
               </div>
 
             </div>
-      
-            <div class="form-group">
-              <label>Chave geral do administrador *</label>
-              <input class="form-control" type="password" [(ngModel)]="user.adminpassword" name="adminpassword"
-                placeholder="Deixe vazio se for cadastrar um autor" #adminpassword=ngModel maxlength="100">
-
-                <div *ngIf="!adminpassword.valid" class="alert alert-info" role="alert">
-                  Guarde bem esta chave, ela será requisitada quando for editar eventos/notícias de algum autor ou cadastrar um novo usuário.
-                </div>
-
-            </div>
 
             <div class="form-group">
               <button type="submit" class="btn btn-primary btn-block" (click)="signup()" [disabled]="f.invalid">

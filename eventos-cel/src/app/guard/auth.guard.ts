@@ -16,13 +16,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
       if(this.storage.get('token')){
-      if(this.storage.get('token')!='mateuspetry@inovadora.com.br') {
-        
         return true;
-      }
-      else{
-        return true;
-      }
     }
     else{
       this.router.navigate(['/login']);
