@@ -117,9 +117,7 @@ export class CadastraEventoComponent implements OnInit {
     private route: ActivatedRoute
     ) {}
 
-  ngOnInit() { 
-    console.log('email: '+this.evento['id_user']);
-  }
+  ngOnInit() {}
 
   cadastraevento() {
     

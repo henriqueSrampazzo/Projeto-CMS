@@ -28,7 +28,8 @@ import { EditarNoticiasComponent } from './editarnoticias/editarnoticias.compone
 import { EditarEventSingleComponent } from './editarevents/editareventsingle/editar-event-single.component';
 import { EditarEventsComponent } from './editarevents/editarevents.component';
 import { EditarEventComponent } from './editarevents/editarevent/editarevent.component';
-import { PegaVariavelService } from './pegaVariavel.service'
+import { PegaVariavelService } from './pegaVariavel.service';
+
 
 @NgModule({
   declarations: [

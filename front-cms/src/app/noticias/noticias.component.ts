@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import swal from 'sweetalert';
 
+//import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-noticias',
