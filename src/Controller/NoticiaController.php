@@ -1,8 +1,8 @@
 <?php
-namespace CodeExperts\Controller;
+namespace CMS\Controller;
 
-use CodeExperts\Entity\Noticia;
-use CodeExperts\Service\EMService;
+use CMS\Entity\Noticia;
+use CMS\Service\EMService;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,8 +13,8 @@ class NoticiaController extends BaseController
 	public function index()
 	{
 		$noticias = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Noticia')
-			->findAll();
+		->getRepository('CMS\Entity\Noticia')
+		->findAll();
 
 		$build = SerializerBuilder::create()->build();
 
@@ -40,7 +40,7 @@ class NoticiaController extends BaseController
 		$email = substr($email, 5);		
 
 		$noticias = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\Noticia')
+		->getRepository('CMS\Entity\Noticia')
 		->findBy(array('id_user' => $email));
 
 		$build = SerializerBuilder::create()->build();
@@ -61,8 +61,8 @@ class NoticiaController extends BaseController
 		$id = (int) $id;
 
 		$noticia = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Noticia')
-			->find($id);
+		->getRepository('CMS\Entity\Noticia')
+		->find($id);
 
 		$build = SerializerBuilder::create()->build();
 
@@ -109,8 +109,8 @@ class NoticiaController extends BaseController
 		$data = $request->request->all();
 
 		$noticia = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Noticia')
-			->find($data['id']);
+		->getRepository('CMS\Entity\Noticia')
+		->find($data['id']);
 
 		foreach ($data as $key=>$value) {
 			$set = "set" . ucfirst($key);
@@ -131,8 +131,8 @@ class NoticiaController extends BaseController
 		$id = (int) $id;
 
 		$noticia = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Noticia')
-			->find($id);
+		->getRepository('CMS\Entity\Noticia')
+		->find($id);
 
 		$em = new EMService($this->app['orm.em']);
 

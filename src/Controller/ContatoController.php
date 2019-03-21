@@ -1,9 +1,9 @@
 <?php
 
-namespace CodeExperts\Controller;
+namespace CMS\Controller;
 
-use CodeExperts\Entity\Contato;
-use CodeExperts\Service\EMService;
+use CMS\Entity\Contato;
+use CMS\Service\EMService;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,5 +1,5 @@
 <?php
-namespace CodeExperts\Provider;
+namespace CMS\Provider;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
@@ -8,18 +8,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RouterServiceProvider implements ServiceProviderInterface
 {
-    public function register(Container $app)
-    {
-	    $verifyToken = function(Request $request, Container $app){
-		    $token =  $request->headers->get('Authorization');
-		    $token = str_replace('Bearer ', '', $token);
+	public function register(Container $app)
+	{
+		$verifyToken = function(Request $request, Container $app){
+			$token =  $request->headers->get('Authorization');
+			$token = str_replace('Bearer ', '', $token);
 
-		    try {
-			    $app['jwt']->validateToken($token);
-		    } catch (\Exception $e) {
-			    return $app->json(['msg'=> 'Invalid Token!'], 401);
-		    }
-	    };
+			try {
+				$app['jwt']->validateToken($token);
+			} catch (\Exception $e) {
+				return $app->json(['msg'=> 'Invalid Token!'], 401);
+			}
+		};
 
 	    /**
 	     * Auth
@@ -70,5 +70,5 @@ class RouterServiceProvider implements ServiceProviderInterface
 	    $app->post('/events/{event_id}/subscription', 'subscription:index')->before($verifyToken);
 
 	    $app["cors-enabled"]($app);
-    }
+	}
 }

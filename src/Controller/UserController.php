@@ -1,9 +1,9 @@
 <?php
-namespace CodeExperts\Controller;
+namespace CMS\Controller;
 
-use CodeExperts\Entity\User;
-use CodeExperts\Security\ExtractUser;
-use CodeExperts\Service\EMService;
+use CMS\Entity\User;
+use CMS\Security\ExtractUser;
+use CMS\Service\EMService;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use Lcobucci\JWT\Parser;
@@ -15,7 +15,7 @@ class UserController extends BaseController
 	public function index()
 	{
 		$users = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\User')
+		->getRepository('CMS\Entity\User')
 		->findAll();
 
 		$build = SerializerBuilder::create()->build();
@@ -35,7 +35,7 @@ class UserController extends BaseController
 		$id = (int) $id;
 
 		$user = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\User')
+		->getRepository('CMS\Entity\User')
 		->find($id);
 
 		$build = SerializerBuilder::create()->build();
@@ -81,7 +81,7 @@ class UserController extends BaseController
 		$data = $request->request->all();
 
 		$user = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\User')
+		->getRepository('CMS\Entity\User')
 		->find($data['id']);
 
 		foreach ($data as $key=>$value) {
@@ -114,7 +114,7 @@ class UserController extends BaseController
 		$id = (int) $id;
 
 		$user = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\User')
+		->getRepository('CMS\Entity\User')
 		->find($id);
 
 		$em = new EMService($this->app['orm.em']);
@@ -134,7 +134,7 @@ class UserController extends BaseController
 		$doctrine = $this->app['orm.em'];
 
 		$userEvents = $doctrine
-		->getRepository('CodeExperts\Entity\User')
+		->getRepository('CMS\Entity\User')
 		->findOneByEmail($userData['username']->getValue());
 
 		$build = SerializerBuilder::create()->build();

@@ -1,14 +1,14 @@
 <?php
-namespace CodeExperts\Provider;
+namespace CMS\Provider;
 
-use CodeExperts\Controller\AuthController;
-use CodeExperts\Controller\EventController;
-use CodeExperts\Controller\SubscriptionController;
-use CodeExperts\Controller\NoticiaController;
-use CodeExperts\Controller\ContatoController;
+use CMS\Controller\AuthController;
+use CMS\Controller\EventController;
+use CMS\Controller\SubscriptionController;
+use CMS\Controller\NoticiaController;
+use CMS\Controller\ContatoController;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use CodeExperts\Controller\UserController;
+use CMS\Controller\UserController;
 
 class ControllerServiceProvider implements ServiceProviderInterface
 {

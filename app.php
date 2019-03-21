@@ -2,9 +2,9 @@
 
 require __DIR__ . '/bootstrap.php';
 
-use CodeExperts\Provider\ControllerServiceProvider;
-use CodeExperts\Provider\RouterServiceProvider;
-use CodeExperts\Service\JWTServiceProvider;
+use CMS\Provider\ControllerServiceProvider;
+use CMS\Provider\RouterServiceProvider;
+use CMS\Service\JWTServiceProvider;
 use Silex\Application;
 
 $app = new Application();
@@ -42,7 +42,7 @@ $app->register(new \Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider(), a
 			array(
 				'type' => 'annotation',
 				'use_simple_annotation_reader' => false,
-				'namespace' => 'CodeExperts\Entity',
+				'namespace' => 'CMS\Entity',
 				'path' => __DIR__ . '/src'
 			),
 		),

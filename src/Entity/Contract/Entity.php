@@ -1,5 +1,5 @@
 <?php
-namespace CodeExperts\Entity\Contract;
+namespace CMS\Entity\Contract;
 
 interface Entity
 {

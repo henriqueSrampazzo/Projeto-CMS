@@ -1,20 +1,20 @@
 <?php
-namespace CodeExperts\Controller;
-use CodeExperts\Entity\Event;
-use CodeExperts\Service\EMService;
+namespace CMS\Controller;
+use CMS\Entity\Event;
+use CMS\Service\EMService;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use CodeExperts\Service\PasswordService;
+use CMS\Service\PasswordService;
 
 class EventController extends BaseController
 {
 	public function index()
 	{
 		$events = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Event')
-			->findAll();
+		->getRepository('CMS\Entity\Event')
+		->findAll();
 
 		$build = SerializerBuilder::create()->build();
 
@@ -40,7 +40,7 @@ class EventController extends BaseController
 		$email = substr($email, 5);		
 
 		$events = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\Event')
+		->getRepository('CMS\Entity\Event')
 		->findBy(array('id_user' => $email));
 
 		$build = SerializerBuilder::create()->build();
@@ -61,8 +61,8 @@ class EventController extends BaseController
 		$id = (int) $id;
 
 		$event = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Event')
-			->find($id);
+		->getRepository('CMS\Entity\Event')
+		->find($id);
 
 		$build = SerializerBuilder::create()->build();
 
@@ -88,14 +88,14 @@ class EventController extends BaseController
 
 		$event->setTitle($data['title']);
 		$event->setDataEvent($data['dataevent']);
-	    $event->setPhoto1($data['photo1']);
-	    $event->setPhoto2($data['photo2']);
-	    $event->setPhoto3($data['photo3']);
-	    $event->setPhoto4($data['photo4']);
-	    $event->setPhoto5($data['photo5']);
-	    $event->setIdUser($data['id_user']);
-	    $event->setNomeUser($data['nome_user']);
-	    $event->setEventPassword($data['eventpassword']);
+		$event->setPhoto1($data['photo1']);
+		$event->setPhoto2($data['photo2']);
+		$event->setPhoto3($data['photo3']);
+		$event->setPhoto4($data['photo4']);
+		$event->setPhoto5($data['photo5']);
+		$event->setIdUser($data['id_user']);
+		$event->setNomeUser($data['nome_user']);
+		$event->setEventPassword($data['eventpassword']);
 
 		$em = new EMService($this->app['orm.em']);
 
@@ -111,8 +111,8 @@ class EventController extends BaseController
 		$data = $request->request->all();
 
 		$event = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Event')
-			->find($data['id']);
+		->getRepository('CMS\Entity\Event')
+		->find($data['id']);
 
 		foreach ($data as $key=>$value) {
 			$set = "set" . ucfirst($key);
@@ -133,8 +133,8 @@ class EventController extends BaseController
 		$id = (int) $id;
 
 		$user = $this->app['orm.em']
-			->getRepository('CodeExperts\Entity\Event')
-			->find($id);
+		->getRepository('CMS\Entity\Event')
+		->find($id);
 
 		$em = new EMService($this->app['orm.em']);
 

@@ -1,7 +1,7 @@
 <?php
-namespace CodeExperts\Service;
+namespace CMS\Service;
 
-use CodeExperts\Security\Token;
+use CMS\Security\Token;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha256;
 use Pimple\Container;

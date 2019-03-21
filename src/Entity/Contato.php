@@ -1,7 +1,7 @@
 <?php
-namespace CodeExperts\Entity;
+namespace CMS\Entity;
 
-use CodeExperts\Entity\Contract\Entity;
+use CMS\Entity\Contract\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping AS ORM;
 use JMS\Serializer\Annotation as JMS;
@@ -33,7 +33,7 @@ class Contato implements Entity
      *
      * @ORM\Column(name="nome", type="string")
      */
-    private $nome;
+     private $nome;
 
     /**
      * @JMS\Groups({"list"})

@@ -1,5 +1,5 @@
 <?php
-namespace CodeExperts\Security;
+namespace CMS\Security;
 
 use Lcobucci\JWT\Parser;
 

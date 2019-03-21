@@ -12,11 +12,11 @@ $isDevMode = false;
 $paths = array(__DIR__ . '/src/Entity');
 
 $dbParams = array(
-    'driver'   => 'pdo_mysql',
-    'user'     => 'root',
-    'password' => '',
-    'dbname'   => 'db_inovadora_noticias',
-    'host'     => '127.0.0.1'
+	'driver'   => 'pdo_mysql',
+	'user'     => 'root',
+	'password' => '',
+	'dbname'   => 'db_inovadora_noticias',
+	'host'     => '127.0.0.1'
 );
 
 $config = Setup::createConfiguration($isDevMode);
@@ -26,7 +26,7 @@ $driver = new AnnotationDriver(new AnnotationReader(), $paths);
 $config->setMetadataDriverImpl($driver);
 
 AnnotationRegistry::registerFile(
-    __DIR__ . '/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php'
+	__DIR__ . '/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php'
 );
 
 AnnotationRegistry::registerAutoloadNamespace(

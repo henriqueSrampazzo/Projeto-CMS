@@ -1,9 +1,9 @@
 <?php
-namespace CodeExperts\Controller;
+namespace CMS\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use CodeExperts\Entity\User;
+use CMS\Entity\User;
 
 require_once __DIR__  .'/../../vendor/autoload.php';
 
@@ -25,7 +25,7 @@ class AuthController
 		$data = $request->request->all();
 
 		$user = $this->app['orm.em']
-		->getRepository('CodeExperts\Entity\User')
+		->getRepository('CMS\Entity\User')
 		->findOneByEmail($data['email']);
 
 		if(!$user || $data['email'] != $user->getEmail()) {

@@ -1,5 +1,5 @@
 <?php
-namespace CodeExperts\Service;
+namespace CMS\Service;
 
 class PasswordService
 {

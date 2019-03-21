@@ -1,7 +1,7 @@
 <?php
-namespace CodeExperts\Service;
+namespace CMS\Service;
 
-use CodeExperts\Entity\Contract\Entity;
+use CMS\Entity\Contract\Entity;
 use Doctrine\ORM\EntityManager;
 
 class EMService
@@ -19,7 +19,7 @@ class EMService
 	public function create($entity)
 	{
 		if(!$entity instanceof Entity)
-			throw new \InvalidArgumentException("Parameter invalid must be a CodeExperts\Entity\Contract\Entity instance");
+			throw new \InvalidArgumentException("Parameter invalid must be a CMS\Entity\Contract\Entity instance");
 		$this->em->persist($entity);
 		$this->em->flush();
 
@@ -29,7 +29,7 @@ class EMService
 	public function update($entity)
 	{
 		if(!$entity instanceof Entity)
-			throw new \InvalidArgumentException("Parameter invalid must be a CodeExperts\Entity\Contract\Entity instance");
+			throw new \InvalidArgumentException("Parameter invalid must be a CMS\Entity\Contract\Entity instance");
 
 		$this->em->merge($entity);
 		$this->em->flush();
@@ -40,7 +40,7 @@ class EMService
 	public function delete($entity)
 	{
 		if(!$entity instanceof Entity)
-			throw new \InvalidArgumentException("Parameter invalid must be a CodeExperts\Entity\Contract\Entity instance");
+			throw new \InvalidArgumentException("Parameter invalid must be a CMS\Entity\Contract\Entity instance");
 
 		$this->em->remove($entity);
 		$this->em->flush();

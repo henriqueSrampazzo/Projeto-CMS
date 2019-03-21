@@ -1,7 +1,7 @@
 <?php
-namespace CodeExperts\Entity;
+namespace CMS\Entity;
 
-use CodeExperts\Entity\Contract\Entity;
+use CMS\Entity\Contract\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping AS ORM;
 use JMS\Serializer\Annotation as JMS;
@@ -185,7 +185,7 @@ class User implements Entity
     {
         $this->adminpassword = md5($adminpassword);
     }
-        public function setAdminPasswordVazio($adminpassword)
+    public function setAdminPasswordVazio($adminpassword)
     {
         $letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'];
         $tamanho = count($letras);

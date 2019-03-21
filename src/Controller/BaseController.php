@@ -1,5 +1,5 @@
 <?php
-namespace CodeExperts\Controller;
+namespace CMS\Controller;
 
 use Silex\Application;
 
