@@ -29,6 +29,8 @@ import { EditarEventSingleComponent } from './editarevents/editareventsingle/edi
 import { EditarEventsComponent } from './editarevents/editarevents.component';
 import { EditarEventComponent } from './editarevents/editarevent/editarevent.component';
 import { PegaVariavelService } from './pegaVariavel.service';
+import { NaoEncontradoComponent } from './naoEncontrado/naoEncontrado.component';
+import { SairComponent } from './sair/sair.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { PegaVariavelService } from './pegaVariavel.service';
     EditarNoticiasComponent,
     EditarEventSingleComponent,
     EditarEventComponent,
-    EditarEventsComponent
+    EditarEventsComponent,
+    NaoEncontradoComponent,
+    SairComponent
   ],
 
   imports: [
@@ -59,7 +63,8 @@ import { PegaVariavelService } from './pegaVariavel.service';
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [HttpService, StorageService, AuthGuard, AuthGuard2, PegaVariavelService],
   bootstrap: [AppComponent]

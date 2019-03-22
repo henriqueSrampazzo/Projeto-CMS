@@ -16,28 +16,32 @@ import { EditarEventSingleComponent } from '../editarevents/editareventsingle/ed
 import { EditarEventsComponent } from '../editarevents/editarevents.component';
 import { AuthGuard } from '../guard/auth.guard';
 import { AuthGuard2 } from '../guard/auth.guard2';
-
+import { NaoEncontradoComponent } from '../naoEncontrado/naoEncontrado.component';
+import { SairComponent } from '../sair/sair.component';
 
 const appRoutes: Routes = [
-  {path: 'eventos/:slug', component: EventSingleComponent},
-  {path: 'noticia/:slug', component: NoticiaSingleComponent},
-  {path: 'editarnoticias', component: EditarNoticiasComponent, canActivate: [AuthGuard]},
-  {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent, canActivate: [AuthGuard]},
-  {path: 'editareventos', component: EditarEventsComponent, canActivate: [AuthGuard]},
-  {path: 'editareventos/:slug', component: EditarEventSingleComponent, canActivate: [AuthGuard]},
-  {path: 'signup', component: SignupComponent, canActivate: [AuthGuard2]},
-  {path: 'cadastranoticia', component: NoticiasComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'contato', component: ContatoComponent},
-  {path: 'cadastraevento', component: CadastraEventoComponent, canActivate: [AuthGuard]},
- {path: 'eventos', component: EventsComponent},
-  {path: '', component: VerNoticiasComponent}
+  { path: 'eventos/:slug', component: EventSingleComponent },
+  { path: 'noticia/:slug', component: NoticiaSingleComponent },
+  { path: 'editarnoticias', component: EditarNoticiasComponent, canActivate: [AuthGuard] },
+  { path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent, canActivate: [AuthGuard] },
+  { path: 'editareventos', component: EditarEventsComponent, canActivate: [AuthGuard] },
+  { path: 'editareventos/:slug', component: EditarEventSingleComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard2] },
+  { path: 'cadastranoticia', component: NoticiasComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'contato', component: ContatoComponent },
+  { path: 'cadastraevento', component: CadastraEventoComponent, canActivate: [AuthGuard] },
+  { path: 'eventos', component: EventsComponent },
+  { path: 'sair', component: SairComponent, canActivate: [AuthGuard] },
+  { path: '', component: VerNoticiasComponent },
+  { path: '**', component: NaoEncontradoComponent }
+
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes)
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
