@@ -1,57 +1,62 @@
 <div>
   <div class="container">
-    <br>  
-      <h1 class="centralizar animated pulse">{{noticia?.title}}</h1>
-      <p class="centralizar animated pulse">
-        {{noticia?.postdata | date:'dd/MM/yyyy H:mm:ss'}}
-        </p>
-        <p class="centralizar animated pulse">Publicada por: {{noticia?.nome_user}}</p>
+    <br>
+    <h1 class="centralizar animated pulse">{{noticia?.title}}</h1>
+    <p class="centralizar animated pulse">
+      {{noticia?.postdata | date:'dd/MM/yyyy H:mm:ss'}}
+    </p>
+    <p *ngIf="noticia?.id" class="centralizar animated pulse">Publicada por: {{noticia?.nome_user}}</p>
+    <br>
+    <div *ngIf="!noticia?.id" class="centralizar">
+
+      <div class="jumbotron container shadow-lg">
+        <h1 class="display-4 errorTitle">404 - Notícia não Encontrada</h1>
+        <hr class="my-4">
         <br>
-        <div class="diminuiTexto">
-        <h5 class="firstLetter animated fadeIn">
+        <p class="errorDesc">O caminho procurado não foi encontrado!</p>
+        <br>
+        <a class="btn btn-primary btn-lg fonte  " routerLink="" routerLinkActive="active" role="button">Voltar</a>
+
+      </div>
+
+    </div>
+    <div class="diminuiTexto">
+      <h5 class="firstLetter animated fadeIn">
         {{noticia?.description}}
       </h5>
       <br> <br> <br>
     </div>
-    
-    <!-- <img class="card-img-top" [src]="noticia?.photo1" alt="Card image cap"> -->
+
   </div>
 </div>
-<!-- Grid row -->
+
 <div class="gallery container wow bounceInLeft" id="gallery">
 
-  <!-- Grid column -->
   <div *ngIf="noticia?.photo1" class="mb-3 pics animation all 2">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo1)" class="d-block w-100" alt="Card image cap">
-  <!-- The Modal -->
+    <img class="img-fluid" id="myImg"
+      [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo1)" class="d-block w-100"
+      alt="Card image cap">
 
   </div>
 
-  <!-- Grid column -->
-
-  <!-- Grid column -->
   <div *ngIf="noticia?.photo2" class="mb-3 pics animation all 1">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo2)" alt="Card image cap">
+    <img class="img-fluid" id="myImg"
+      [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo2)" alt="Card image cap">
   </div>
-  <!-- Grid column -->
 
-  <!-- Grid column -->
   <div *ngIf="noticia?.photo3" class="mb-3 pics animation all 1">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo3)" alt="Card image cap">
+    <img class="img-fluid" id="myImg"
+      [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo3)" alt="Card image cap">
   </div>
-  <!-- Grid column -->
 
-  <!-- Grid column -->
   <div *ngIf="noticia?.photo4" class="mb-3 pics animation all 2">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo4)" alt="Card image cap">
+    <img class="img-fluid" id="myImg"
+      [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo4)" alt="Card image cap">
   </div>
-  <!-- Grid column -->
 
-  <!-- Grid column -->
   <div *ngIf="noticia?.photo5" class="mb-3 pics animation all 2">
-    <img class="img-fluid" id="myImg" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo5)" alt="Card image cap">
+    <img class="img-fluid" id="myImg"
+      [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo5)" alt="Card image cap">
   </div>
-  <!-- Grid column -->
 
 </div>
-<!-- Grid row -->

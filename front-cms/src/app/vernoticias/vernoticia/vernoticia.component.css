@@ -1,10 +1,10 @@
-.centralizar{
+.centralizar {
     display: flex;
-    flex-wrap: wrap ;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
-.centralizaTitle{
-    text-align: center; 
+.centralizaTitle {
+    text-align: center;
     font-weight: bold;
 }

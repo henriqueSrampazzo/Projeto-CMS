@@ -1,16 +1,17 @@
 <br><br><br>
 <div class="centralizar">
-<div class=" shadow-lg p-3 mb-5 bg-white rounded" style="width:30rem"> 
-  <img class="card-img-top" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo1)" alt="Capa notícia">
-<br><br>
-  <div class="card-content white-text container centralizaTitle">
-    <h3 class="card-title">{{noticia?.title}}</h3>
-    <p>{{noticia?.postdata | date:'dd/MM/yyyy H:mm:ss'}}</p>
+  <div class=" shadow-lg p-3 mb-5 bg-white rounded" style="width:30rem">
+    <img class="card-img-top" [src]="domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64,'+noticia?.photo1)"
+      alt="Capa notícia">
+    <br><br>
+    <div class="card-content white-text container centralizaTitle">
+      <h3 class="card-title">{{noticia?.title}}</h3>
+      <p>{{noticia?.postdata | date:'dd/MM/yyyy H:mm:ss'}}</p>
+    </div>
+    <br>
+    <div class="card-action centralizar">
+      <a class="btn btn-primary" [routerLink]="['noticia', noticia.id]">Ver Notícia</a>
+    </div>
+    <br>
   </div>
-  <br>
-  <div class="card-action centralizar">
-    <a class="btn btn-primary" [routerLink]="['noticia', noticia.id]">Ver Notícia</a>
-  </div>
-  <br>
-</div>
 </div>

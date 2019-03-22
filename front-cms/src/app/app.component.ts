@@ -16,16 +16,16 @@ export class AppComponent implements OnInit {
   constructor(
     public http: HttpService,
     public storage: StorageService
-  ) {}
+  ) { }
 
-   ngOnInit() {
+  ngOnInit() {
     this.storage.emmitLogin.subscribe(
-        change => this.changeMenu = change
+      change => this.changeMenu = change
     );
 
-  // if(this.storage.get('token')){
-  //   this.changeMenu = true;
-  // }
+    // if(this.storage.get('token')){
+    //   this.changeMenu = true;
+    // }
   }
 
 }

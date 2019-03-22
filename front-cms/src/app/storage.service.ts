@@ -7,7 +7,7 @@ export class StorageService {
   constructor() { }
 
   get(index) {
-     return localStorage.getItem(index);
+    return localStorage.getItem(index);
   }
 
   set(index, value) {

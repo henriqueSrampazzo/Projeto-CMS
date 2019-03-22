@@ -1,4 +1,18 @@
-<div class="container animated bounceIn">
+<div *ngIf="!noticia?.id" class="centralizar">
+
+  <div class="jumbotron container shadow-lg">
+    <h1 class="display-4 errorTitle">404 - Notícia não encontrada</h1>
+    <hr class="my-4">
+    <br>
+    <p class="errorDesc">O caminho procurado não foi encontrado!</p>
+    <br>
+    <a class="btn btn-primary btn-lg fonte  " routerLink="../" routerLinkActive="active" role="button">Voltar</a>
+
+  </div>
+
+</div>
+
+<div *ngIf="noticia?.id" class="container animated bounceIn">
   <br>
   <div class="row justify-content-center shadow-lg back-form">
     <div class="col-md-12">
@@ -9,70 +23,71 @@
         <article class="card-body">
 
           <form enctype="multipart/form-data" #f=ngForm>
-            
+
             <div class="form-row">
               <div class="col form-group">
                 <label>ID</label>
                 <input type="text" class="form-control" name="id_edit" value="{{noticia?.id}}" disabled>
-              </div> <!-- form-group end.// -->
-            </div> <!-- form-row end.// -->
+              </div>
+            </div>
 
             <div class="form-row">
               <div class="col form-group">
                 <label>Título *</label>
-                <input type="text" class="form-control" [(ngModel)]="noticiaeditada.title" name="title" value="{{noticia?.title}}" required #title=ngModel>
+                <input type="text" class="form-control" [(ngModel)]="noticiaeditada.title" name="title"
+                  value="{{noticia?.title}}" required #title=ngModel>
                 <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
-                    Título é obrigatório!
-                  </div>
-              </div> <!-- form-group end.// -->
-            </div> <!-- form-row end.// -->
+                  Título é obrigatório!
+                </div>
+              </div>
+            </div>
 
             <div class="form-row">
               <div class="col form-group">
                 <label>Descrição *</label>
-                <textarea class="form-control" [(ngModel)]="noticiaeditada.description" name="description"
-                  rows="10" value="{{noticia?.description}}" required #description=ngModel></textarea>
-                  <div *ngIf="!description.valid && description.touched" class="alert alert-danger" role="alert">
-                      Descrição é obrigatória!
-                    </div>
-              </div> <!-- form-group end.// -->
+                <textarea class="form-control" [(ngModel)]="noticiaeditada.description" name="description" rows="10"
+                  value="{{noticia?.description}}" required #description=ngModel></textarea>
+                <div *ngIf="!description.valid && description.touched" class="alert alert-danger" role="alert">
+                  Descrição é obrigatória!
+                </div>
+              </div>
             </div>
-            
+
             <hr>
 
             <div class="form-group row">
-                <div class="col-md-6">
-                  <label for="photo1">Foto 1</label>
-                  <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener($event)">
-                </div> <!-- form-group end.// -->
-                <div class="col-md-6">
-                    <label for="photo2">Foto 2</label>
-                    <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener2($event)">
-                  </div> <!-- form-group end.// -->
+              <div class="col-md-6">
+                <label for="photo1">Foto 1</label>
+                <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener($event)">
               </div>
-  
-              <div class="form-group row">
-                <div class="col-md-6">
-                  <label for="photo3">Foto 3</label>
-                  <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener3($event)">
-                </div> <!-- form-group end.// -->
-                <div class="col-md-6">
-                    <label for="photo4">Foto 4</label>
-                    <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener4($event)">
-                  </div> <!-- form-group end.// -->
+              <div class="col-md-6">
+                <label for="photo2">Foto 2</label>
+                <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener2($event)">
               </div>
-  
-              <div class="form-group row">
-                <div class="col-md-6">
-                  <label for="photo5">Foto 5</label>
-                  <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener5($event)">
-                </div> <!-- form-group end.// -->
-                <div class="col-md-6">
-                    <br>
-                    <div class="alert alert-warning" role="alert">
-                        Recomenda-se fazer upload de pelo menos uma foto! <small>(máximo 5)</small>
-                      </div>
-                  </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="photo3">Foto 3</label>
+                <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener3($event)">
+              </div>
+              <div class="col-md-6">
+                <label for="photo4">Foto 4</label>
+                <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener4($event)">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="photo5">Foto 5</label>
+                <input type="file" class="form-control-file" accept=".jpg" (change)="changeListener5($event)">
+              </div>
+              <div class="col-md-6">
+                <br>
+                <div class="alert alert-warning" role="alert">
+                  Recomenda-se fazer upload de pelo menos uma foto! <small>(máximo 5)</small>
+                </div>
+              </div>
             </div>
             <br>
             <hr>
@@ -90,21 +105,22 @@
 
             <br>
             <div class="container centralizar">
-                <div class="col-md-3 row-group">
-                <button type="submit" class="btn btn-primary btn-block " (click)="editanoticia()" [disabled]="f.invalid"> Editar notícia
+              <div class="col-md-3 row-group">
+                <button type="submit" class="btn btn-primary btn-block " (click)="editanoticia()"
+                  [disabled]="f.invalid"> Editar notícia
                 </button>
-                <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()" [disabled]="noticiapassword.invalid"> Deletar evento
-                  </button>
+                <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()"
+                  [disabled]="noticiapassword.invalid"> Deletar evento
+                </button>
                 <button type="submit" class="btn btn-secondary btn-block" (click)="cancelar()">Cancelar edição</button>
               </div>
-            </div> <!-- form-group// -->
+            </div>
           </form>
-        </article> <!-- card-body end .// -->
-      </div> <!-- card.// -->
-    </div> <!-- col.//-->
+        </article>
+      </div>
+    </div>
 
-  </div> <!-- row.//-->
+  </div>
 
 
 </div>
-<!--container end.//-->

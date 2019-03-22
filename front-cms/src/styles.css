@@ -1,124 +1,118 @@
-.back{
+.back {
     background-image: linear-gradient(blue);
 }
 
-.background{
-    background-color:  #242435;
-}
-.faixadebaixo{
-    background-color:  #00000065;
+.background {
+    background-color: #242435;
 }
 
-.espaco{
+.faixadebaixo {
+    background-color: #00000065;
+}
+
+.espaco {
     padding-top: 27.5%;
 }
 
-.txt{
+.txt {
     color: white;
     text-decoration: none;
 }
 
-.txt a{
+.txt a {
     color: white;
     text-decoration: none;
 }
 
-.desc{
+.desc {
     margin-left: 25%;
     margin-right: 25%;
-
 }
 
-@media(max-width:741px){
-.logo{
-    width:75px; 
-    margin-left: 40%;
-}
-}
-@media(min-width:741px){
-    .logo{
-        width:75px; 
+@media(max-width:741px) {
+    .logo {
+        width: 75px;
         margin-left: 40%;
     }
+}
+
+@media(min-width:741px) {
+    .logo {
+        width: 75px;
+        margin-left: 40%;
     }
-    @media(min-width:768px){
-        .logo{
-            width:75px; 
-            margin-left: 46%;
-        }
-        }
+}
 
-    .fundoFooter{
-        background-color: #6351ce;
-        /* background-image: linear-gradient(to right,  #800080, #1a1a94); */
-        }
+@media(min-width:768px) {
+    .logo {
+        width: 75px;
+        margin-left: 46%;
+    }
+}
 
-.centralizar{
+.fundoFooter {
+    background-color: #6351ce;
+    /* background-image: linear-gradient(to right,  #800080, #1a1a94); */
+}
+
+.centralizar {
     display: flex;
-    flex-wrap: wrap ;
+    flex-wrap: wrap;
     justify-content: center;
     text-align: center;
     position: relative !important;
 }
 
-.importante{
+.importante {
     position: relative !important;
 }
 
-.paginacao{
+.paginacao {
     height: 45px;
     width: 450px;
     background-color: white;
     border-radius: 5%;
     padding-right: 30px;
-    padding-top: 7px;  
+    padding-top: 7px;
     text-align: center;
 }
 
-.diminuiTexto{
+.diminuiTexto {
     max-width: 70%;
     margin-left: 15%;
     text-align: justify;
 }
 
-@media(max-width:414px){
-    .diminuiTexto{
+@media(max-width:414px) {
+    .diminuiTexto {
         max-width: 90%;
         margin-left: 5%;
         text-align: justify;
     }
-    
 }
-.btn-primary{
 
+.btn-primary {
     background-color: rgb(65, 126, 236) !important;
     border: none !important;
-
 }
 
-.btn-primary:hover{
-
+.btn-primary:hover {
     background-color: rgb(94, 51, 114) !important;
     transition: ease-in-out(0.9);
 }
 
-.current{
-
+.current {
     background-color: rgb(89, 131, 209) !important;
 }
 
-.gradient-lateral{
-
+.gradient-lateral {
     background-image: radial-gradient(circle, white, rgb(185, 185, 253));
-
 }
 
-.back-form{
-
+.back-form {
     background-color: white;
 }
 
-.block{
-
+.block {
     display: block;
 }

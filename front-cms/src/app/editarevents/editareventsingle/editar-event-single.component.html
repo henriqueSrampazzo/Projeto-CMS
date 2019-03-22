@@ -1,4 +1,16 @@
-<div class="container animated bounceIn">
+<br>
+<div *ngIf="!event?.id" class="centralizar">
+  <div class="jumbotron container shadow-lg">
+    <h1 class="display-4 errorTitle">404 - Evento não encontrado</h1>
+    <hr class="my-4">
+    <br>
+    <p class="errorDesc">O caminho procurado não foi encontrado!</p>
+    <br>
+    <a class="btn btn-primary btn-lg fonte  " routerLink="../" routerLinkActive="active" role="button">Voltar</a>
+  </div>
+</div>
+
+<div *ngIf="event?.id" class="container animated bounceIn">
   <br>
   <div class="row justify-content-center shadow-lg back-form">
     <div class="col-md-12">
@@ -97,7 +109,8 @@
                 <button type="submit" class="btn btn-primary btn-block " (click)="editaevent()" [disabled]="f.invalid">
                   Editar evento
                 </button>
-                <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()" [disabled]="eventpassword.invalid"> Deletar evento
+                <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()"
+                  [disabled]="eventpassword.invalid"> Deletar evento
                 </button>
                 <button type="submit" class="btn btn-secondary btn-block" (click)="cancelar()">Cancelar edição</button>
               </div>

@@ -19,25 +19,25 @@ import { AuthGuard2 } from '../guard/auth.guard2';
 
 
 const appRoutes: Routes = [
-  {path: 'eventos/:slug', component: EventSingleComponent},
-  {path: 'noticia/:slug', component: NoticiaSingleComponent},
-  {path: 'editarnoticias', component: EditarNoticiasComponent, canActivate: [AuthGuard]},
-  {path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent, canActivate: [AuthGuard]},
-  {path: 'editareventos', component: EditarEventsComponent, canActivate: [AuthGuard]},
-  {path: 'editareventos/:slug', component: EditarEventSingleComponent, canActivate: [AuthGuard]},
-  {path: 'signup', component: SignupComponent, canActivate: [AuthGuard2]},
-  {path: 'cadastranoticia', component: NoticiasComponent, canActivate: [AuthGuard]},
-  {path: 'login', component: LoginComponent},
-  {path: 'contato', component: ContatoComponent},
-  {path: 'cadastraevento', component: CadastraEventoComponent, canActivate: [AuthGuard]},
- {path: 'eventos', component: EventsComponent},
-  {path: '', component: VerNoticiasComponent}
+  { path: 'eventos/:slug', component: EventSingleComponent },
+  { path: 'noticia/:slug', component: NoticiaSingleComponent },
+  { path: 'editarnoticias', component: EditarNoticiasComponent, canActivate: [AuthGuard] },
+  { path: 'editarnoticias/:slug', component: EditarNoticiaSingleComponent, canActivate: [AuthGuard] },
+  { path: 'editareventos', component: EditarEventsComponent, canActivate: [AuthGuard] },
+  { path: 'editareventos/:slug', component: EditarEventSingleComponent, canActivate: [AuthGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [AuthGuard2] },
+  { path: 'cadastranoticia', component: NoticiasComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'contato', component: ContatoComponent },
+  { path: 'cadastraevento', component: CadastraEventoComponent, canActivate: [AuthGuard] },
+  { path: 'eventos', component: EventsComponent },
+  { path: '', component: VerNoticiasComponent }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes)
   ],
-  exports: [ RouterModule ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -5,9 +5,9 @@ import { StorageService } from '../../storage.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
-@Pipe({name: 'safeHtml'})
+@Pipe({ name: 'safeHtml' })
 export class SafeHtml {
-  constructor(private sanitizer:DomSanitizer){}
+  constructor(private sanitizer: DomSanitizer) { }
 
   transform(html) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(html);
@@ -33,18 +33,18 @@ export class NoticiaSingleComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-        this.httpService.getBy('noticias', params['slug'])
-            .subscribe(data => this.noticia = data);
+      this.httpService.getBy('noticias', params['slug'])
+        .subscribe(data => this.noticia = data);
     });
-}
-  
+  }
+
   subscribe(noticia_id) {
     this.storage.set('noticia', noticia_id);
 
-    if(this.storage.get('token') != undefined) {
+    if (this.storage.get('token') != undefined) {
       this.router.navigate(['/make-subscription']);
     } else {
-      this.router.navigate(['/login'], {'queryParams': {'to': 'subscription_confirm'}});
+      this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
     }
   }
 

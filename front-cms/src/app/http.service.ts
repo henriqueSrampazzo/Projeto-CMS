@@ -23,8 +23,8 @@ export class HttpService {
     let opt = new RequestOptions({ headers: headers });
 
     return this.http.get(`${this.mainUrl}${endpoint}`, opt)
-             .map(res => {
-                return res.json();
+      .map(res => {
+        return res.json();
       }).catch(ErrorHandler.handleError);
   }
 
@@ -35,19 +35,19 @@ export class HttpService {
       }).catch(ErrorHandler.handleError);
   }
 
-  post(endpoint: string, data: Object, token?:string) {
+  post(endpoint: string, data: Object, token?: string) {
     let headers = new Headers();
-        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    if(token) {
+    if (token) {
       headers.append('Authorization', 'Bearer ' + token);
     }
 
-    let opt = new RequestOptions({ headers: headers});
+    let opt = new RequestOptions({ headers: headers });
 
     let urlData = new URLSearchParams();
 
-    for(let k in data) {
+    for (let k in data) {
       urlData.append(k, data[k]);
     }
 

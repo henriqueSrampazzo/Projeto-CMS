@@ -1,16 +1,15 @@
-body{
+body {
     background-color: rgba(192, 186, 186, 0.678)
 }
 
-.brandNav{
+.brandNav {
     font-size: 30px;
 }
 
-.corFontNav{
+.corFontNav {
     color: white;
 }
 
-.fundo{
-    
-    background-image: linear-gradient(to right,  #800080, #1a1a94);
-   }
+.fundo {
+    background-image: linear-gradient(to right, #800080, #1a1a94);
+}
