@@ -12,12 +12,20 @@ $isDevMode = false;
 $paths = array(__DIR__ . '/src/Entity');
 
 $dbParams = array(
-	'driver'   => 'pdo_mysql',
-	'user'     => 'root',
-	'password' => '',
+	'driver'   => 'pdo_pgsql',
+	'user'     => 'postgres',
+	'password' => 'root',
 	'dbname'   => 'db_inovadora_noticias',
-	'host'     => '127.0.0.1'
+	'host'     => 'localhost'
 );
+
+// $dbParams = array(
+// 	'driver'   => 'pdo_mysql',
+// 	'user'     => 'root',
+// 	'password' => '',
+// 	'dbname'   => 'db_inovadora_noticias',
+// 	'host'     => '127.0.0.1'
+// );
 
 $config = Setup::createConfiguration($isDevMode);
 
