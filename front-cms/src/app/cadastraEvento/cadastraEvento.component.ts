@@ -115,12 +115,12 @@ export class CadastraEventoComponent implements OnInit {
     private storage: StorageService,
     private router: Router,
     private route: ActivatedRoute
-    ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   cadastraevento() {
-    
+
     this.evento['photo1'] = this.image;
     this.evento['photo2'] = this.image2;
     this.evento['photo3'] = this.image3;
@@ -128,11 +128,12 @@ export class CadastraEventoComponent implements OnInit {
     this.evento['photo5'] = this.image5;
 
     this.http.post('events', this.evento)
-             .subscribe(res => {
-              swal({title:"Evento cadastrado com sucesso!",
-                     icon:"success", 
-              });    
-             });
+      .subscribe(res => {
+        swal({
+          title: "Evento cadastrado com sucesso!",
+          icon: "success",
+        });
+      });
   }
 
 }

@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import swal from 'sweetalert';
 
-//import {MatTooltipModule} from '@angular/material/tooltip';
-
 @Component({
   selector: 'app-noticias',
   templateUrl: './noticias.component.html',
@@ -109,10 +107,10 @@ export class NoticiasComponent implements OnInit {
   constructor(private http: HttpService) { }
 
   ngOnInit() {
-    console.log('email: '+this.noticia['id_user']);
+    //console.log('email: '+this.noticia['id_user']);
   }
   cadastranoticia() {
-    
+
     this.noticia['photo1'] = this.image;
     this.noticia['photo2'] = this.image2;
     this.noticia['photo3'] = this.image3;
@@ -120,11 +118,12 @@ export class NoticiasComponent implements OnInit {
     this.noticia['photo5'] = this.image5;
 
     this.http.post('noticias', this.noticia)
-             .subscribe(res => {
-              swal({title:"Notícia cadastrada com sucesso!",
-                     icon:"success", 
-              });
-             });
+      .subscribe(res => {
+        swal({
+          title: "Notícia cadastrada com sucesso!",
+          icon: "success",
+        });
+      });
   }
 
 }

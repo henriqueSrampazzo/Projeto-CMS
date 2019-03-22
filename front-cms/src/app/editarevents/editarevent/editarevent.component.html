@@ -1,19 +1,19 @@
 <br><br><br>
 <div class="centralizar">
-<div class=" shadow-lg p-3 mb-5 bg-white rounded" style="width:30rem"> 
-<br><br>
-  <div class="card-content white-text container centralizaTitle">
-    <h3 class="card-title">{{event?.title}}</h3>
-    <div class="centralizar">
-      <p>Data: {{event?.dataevent | date:'dd/MM/yyyy'}}
-      <br>Hora: {{event?.dataevent | date:'H:mm:ss'}}
-      </p>
+  <div class=" shadow-lg p-3 mb-5 bg-white rounded" style="width:30rem">
+    <br><br>
+    <div class="card-content white-text container centralizaTitle">
+      <h3 class="card-title">{{event?.title}}</h3>
+      <div class="centralizar">
+        <p>Data: {{event?.dataevent | date:'dd/MM/yyyy'}}
+          <br>Hora: {{event?.dataevent | date:'H:mm:ss'}}
+        </p>
+      </div>
     </div>
+    <br>
+    <div class="card-action centralizar">
+      <a class="btn btn-primary" [routerLink]="[event.id]">Editar Evento</a>
+    </div>
+    <br>
   </div>
-  <br>
-  <div class="card-action centralizar">
-    <a class="btn btn-primary" [routerLink]="[event.id]">Editar Evento</a>
-  </div>
-  <br>
-</div>
 </div>

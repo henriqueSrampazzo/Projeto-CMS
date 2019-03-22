@@ -1,14 +1,15 @@
 <br><br>
-<div class="centralizar wow bounceInDown">  
-    <pagination-controls class="paginacao shadow-lg" (pageChange)="p = $event"  maxSize="5" responsive="true" previousLabel="Anterior"
-    nextLabel="Próxima"></pagination-controls>
-    </div>  
+<div class="centralizar wow bounceInDown">
+  <pagination-controls class="paginacao shadow-lg" (pageChange)="p = $event" maxSize="5" responsive="true"
+    previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+</div>
 <div class="container">
 
-<div class="row">
-  <div class="col-sm wow zoomIn"  data-wow-duration="1.6s" *ngFor="let event of events | paginate: { itemsPerPage: 12, totalItems: total, currentPage:p}">
-    <app-event [event]="event"></app-event>
+  <div class="row">
+    <div class="col-sm wow zoomIn" data-wow-duration="1.6s"
+      *ngFor="let event of events | paginate: { itemsPerPage: 12, totalItems: total, currentPage:p}">
+      <app-event [event]="event"></app-event>
+    </div>
   </div>
-</div>
 
 </div>

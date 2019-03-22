@@ -7,13 +7,13 @@ import { HttpService } from './../http.service';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-    private events: Array<{}>;
-    p:number = 100;
+  private events: Array<{}>;
+  p: number = 100;
 
-    constructor(public http: HttpService) {}
+  constructor(public http: HttpService) { }
 
-    ngOnInit() {
-      this.http.get('events')
-               .subscribe(res => this.events = res);
-    }
+  ngOnInit() {
+    this.http.get('events')
+      .subscribe(res => this.events = res);
+  }
 }

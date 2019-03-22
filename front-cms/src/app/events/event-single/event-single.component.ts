@@ -35,6 +35,8 @@ export class EventSingleComponent implements OnInit {
       this.httpService.getBy('events', params['slug'])
         .subscribe(data => this.event = data);
     });
+
+
   }
 
 }

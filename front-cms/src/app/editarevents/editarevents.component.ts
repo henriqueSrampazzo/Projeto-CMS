@@ -4,7 +4,7 @@ import { StorageService } from '../storage.service';
 import { PegaVariavelService } from '../pegaVariavel.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-editarevents',
@@ -38,29 +38,29 @@ import { ActivatedRoute } from '@angular/router';
     var email = this.pegaVariavel['emailGlobal'];
     var nivel = this.pegaVariavel['userNivel'];
 
-      if(nivel=='admin'){
-    this.http.get('events').subscribe(res => this.events = res);
-      }else{
-    this.http.post('pegaEmail', email).subscribe(res => this.events = res);
-      }
-    console.log(this.pegaVariavel['emailGlobal']);
-    console.log(this.pegaVariavel['userNivel']);
+    if (nivel == 'admin') {
+      this.http.get('events').subscribe(res => this.events = res);
+    } else {
+      this.http.post('pegaEmail', email).subscribe(res => this.events = res);
+    }
+    //console.log(this.pegaVariavel['emailGlobal']);
+    //console.log(this.pegaVariavel['userNivel']);
 
-    if(!this.pegaVariavel['emailGlobal']){
+    if (!this.pegaVariavel['emailGlobal']) {
       swal({
         title: "Opa...",
         text: "Parece que você não está logado! Ir para a página de login?",
         icon: "error",
         buttons: ['Contate-nos', 'Ok']
       })
-      .then((willDelete) => {
-        if (willDelete) {
-          this.router.navigate(['login/']);
-        } else {
-          this.router.navigate(['contato/']);
-        }
-      });
-    } 
+        .then((willDelete) => {
+          if (willDelete) {
+            this.router.navigate(['login/']);
+          } else {
+            this.router.navigate(['contato/']);
+          }
+        });
+    }
   }
 
   setEmailGlobal(visibilidade: string) {

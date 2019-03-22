@@ -8,13 +8,13 @@ import { NoticiasComponent } from '../noticias/noticias.component';
   styleUrls: ['./vernoticias.component.css']
 })
 export class VerNoticiasComponent implements OnInit {
-    private noticias: Array<{}>;
-    p:number = 100;
+  private noticias: Array<{}>;
+  p: number = 100;
 
-    constructor(public http: HttpService) {}
+  constructor(public http: HttpService) { }
 
-    ngOnInit() {
-      this.http.get('noticias')
-               .subscribe(res => this.noticias = res);
-    }
+  ngOnInit() {
+    this.http.get('noticias')
+      .subscribe(res => this.noticias = res);
+  }
 }

@@ -39,7 +39,7 @@ export class ContatoComponent implements OnInit {
       });
   }
 
-  aguardar(){
+  aguardar() {
     this.aguardando = true;
   }
 

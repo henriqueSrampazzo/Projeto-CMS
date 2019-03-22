@@ -155,29 +155,29 @@ export class EditarNoticiaSingleComponent implements OnInit {
 
     var nivel = this.pegaVariavel['userNivel'];
 
-    console.log(this.pegaVariavel['userNivel']);
+    //console.log(this.pegaVariavel['userNivel']);
 
   }
 
   editanoticia() {
 
-    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])||(this.pegaVariavel['userNivel'])=='admin'){
+    if (md5(this.senha['noticiapassword']) == (this.noticia['noticiapassword']) || (this.pegaVariavel['userNivel']) == 'admin') {
 
-    this.noticiaeditada['id'] = this.noticia['id'];
+      this.noticiaeditada['id'] = this.noticia['id'];
 
-    this.noticiaeditada['photo1'] = this.image;
-    this.noticiaeditada['photo2'] = this.image2;
-    this.noticiaeditada['photo3'] = this.image3;
-    this.noticiaeditada['photo4'] = this.image4;
-    this.noticiaeditada['photo5'] = this.image5;
+      this.noticiaeditada['photo1'] = this.image;
+      this.noticiaeditada['photo2'] = this.image2;
+      this.noticiaeditada['photo3'] = this.image3;
+      this.noticiaeditada['photo4'] = this.image4;
+      this.noticiaeditada['photo5'] = this.image5;
 
-    this.http.post('noticiasedit', this.noticiaeditada)
-      .subscribe(res => {
-        swal({
-          title: "Notícia editada com sucesso!",
-          icon: "success",
+      this.http.post('noticiasedit', this.noticiaeditada)
+        .subscribe(res => {
+          swal({
+            title: "Notícia editada com sucesso!",
+            icon: "success",
+          });
         });
-      });
     }
 
     swal({
@@ -188,31 +188,31 @@ export class EditarNoticiaSingleComponent implements OnInit {
   }
 
   confirmdelete() {
-    if(md5(this.senha['noticiapassword'])==(this.noticia['noticiapassword'])||(this.pegaVariavel['userNivel'])=='admin'){
-    swal({
-      title: "Deseja mesmo deletar essa notícia?",
-      icon: "warning",
-      dangerMode: true,
-      buttons: ['Cancelar', 'Ok']
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          this.deletanoticia();
-          swal("Notícia deletada com sucesso", {
-            icon: "success",
-          });
-          this.router.navigate(['editarnoticias/']);
-        } else {
-        }
-      });
+    if (md5(this.senha['noticiapassword']) == (this.noticia['noticiapassword']) || (this.pegaVariavel['userNivel']) == 'admin') {
+      swal({
+        title: "Deseja mesmo deletar essa notícia?",
+        icon: "warning",
+        dangerMode: true,
+        buttons: ['Cancelar', 'Ok']
+      })
+        .then((willDelete) => {
+          if (willDelete) {
+            this.deletanoticia();
+            swal("Notícia deletada com sucesso", {
+              icon: "success",
+            });
+            this.router.navigate(['editarnoticias/']);
+          } else {
+          }
+        });
     }
 
-    else{
+    else {
       swal({
         title: "Senha incorreta!",
         icon: "error",
       });
-      }
+    }
   }
 
   deletanoticia() {
@@ -221,7 +221,7 @@ export class EditarNoticiaSingleComponent implements OnInit {
 
     var id_del = this.noticiaeditada['id'];
 
-    this.http.post(`noticias/`+id_del, this.noticiaeditada)
+    this.http.post(`noticias/` + id_del, this.noticiaeditada)
       .subscribe(res => {
         swal({
           title: "Notícia deletada com sucesso!",
@@ -230,7 +230,7 @@ export class EditarNoticiaSingleComponent implements OnInit {
       });
   }
 
-  cancelar(){
+  cancelar() {
     this.router.navigate(['editarnoticias/']);
   }
 

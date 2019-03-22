@@ -45,8 +45,8 @@ import { ActivatedRoute } from '@angular/router';
       this.http.post('pegaEmailNoticia', email).subscribe(res => this.noticias = res);
     }
 
-    console.log(this.pegaVariavel['emailGlobal']);
-    console.log(this.pegaVariavel['userNivel']);
+    //console.log(this.pegaVariavel['emailGlobal']);
+    //console.log(this.pegaVariavel['userNivel']);
 
     if (!this.pegaVariavel['emailGlobal']) {
       swal({

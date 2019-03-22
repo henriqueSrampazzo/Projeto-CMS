@@ -56,7 +56,7 @@ export class SafeHtml {
       this.image = myReader.result;
     }
     myReader.readAsDataURL(file);
-    
+
   }
 
   //foto2
@@ -124,14 +124,14 @@ export class SafeHtml {
   };
 
   private eventeditado: Object = {
-    id:null,
-    title:null,
-    dataevent:null,
-    photo1:null,
-    photo2:null,
-    photo3:null,
-    photo4:null,
-    photo5:null,
+    id: null,
+    title: null,
+    dataevent: null,
+    photo1: null,
+    photo2: null,
+    photo3: null,
+    photo4: null,
+    photo5: null,
   };
 
   constructor(
@@ -156,77 +156,77 @@ export class SafeHtml {
 
     var nivel = this.pegaVariavel['userNivel'];
 
-    console.log(this.pegaVariavel['userNivel']);
+    //console.log(this.pegaVariavel['userNivel']);
 
-      if(nivel=='admin'){
-        this.mostraSenha = false;
-      }
+    if (nivel == 'admin') {
+      this.mostraSenha = false;
+    }
 
   }
 
   editaevent() {
 
-     if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])||(this.pegaVariavel['userNivel'])=='admin'){
-       
-    this.eventeditado['id'] = this.event['id']; 
-    this.eventeditado['photo1'] = this.image;
-    this.eventeditado['photo2'] = this.image2;
-    this.eventeditado['photo3'] = this.image3;
-    this.eventeditado['photo4'] = this.image4;
-    this.eventeditado['photo5'] = this.image5;
+    if (md5(this.senha['eventpassword']) == (this.event['eventpassword']) || (this.pegaVariavel['userNivel']) == 'admin') {
 
-    this.http.post('eventosedit', this.eventeditado)
-      .subscribe(res => {
-        swal({
-          title: "Evento editado com sucesso!",
-          icon: "success",
+      this.eventeditado['id'] = this.event['id'];
+      this.eventeditado['photo1'] = this.image;
+      this.eventeditado['photo2'] = this.image2;
+      this.eventeditado['photo3'] = this.image3;
+      this.eventeditado['photo4'] = this.image4;
+      this.eventeditado['photo5'] = this.image5;
+
+      this.http.post('eventosedit', this.eventeditado)
+        .subscribe(res => {
+          swal({
+            title: "Evento editado com sucesso!",
+            icon: "success",
+          });
         });
-      });
-     }
+    }
 
-     swal({
+    swal({
       title: "Senha incorreta!",
       icon: "error",
     });
 
   }
 
-  
-  confirmdelete(){
-    if(md5(this.senha['eventpassword'])==(this.event['eventpassword'])||(this.pegaVariavel['userNivel'])=='admin'){
-    swal({
-      title: "Deseja mesmo deletar esse evento?",
-      icon: "warning",
-      dangerMode: true,
-      buttons: ['Cancelar', 'Ok']
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        this.deletaevent();
-        swal("Evento deletado com sucesso", {
-          icon: "success",
-        });
-        this.router.navigate(['editareventos/']);
-      } else {
-      }
-    });
-  }
 
-  else{
-  swal({
-    title: "Senha incorreta!",
-    icon: "error",
-  });
-  }
+  confirmdelete() {
+    if (md5(this.senha['eventpassword']) == (this.event['eventpassword']) || (this.pegaVariavel['userNivel']) == 'admin') {
+      swal({
+        title: "Deseja mesmo deletar esse evento?",
+        icon: "warning",
+        dangerMode: true,
+        buttons: ['Cancelar', 'Ok']
+      })
+        .then((willDelete) => {
+          if (willDelete) {
+            this.deletaevent();
+            swal("Evento deletado com sucesso", {
+              icon: "success",
+            });
+            this.router.navigate(['editareventos/']);
+          } else {
+          }
+        });
+    }
+
+    else {
+      swal({
+        title: "Senha incorreta!",
+        icon: "error",
+      });
+    }
   }
 
   deletaevent() {
-    
+
     this.eventeditado['id'] = this.event['id'];
-    
+
     var id_del = this.eventeditado['id'];
 
-    this.http.post(`events/`+id_del, this.eventeditado)
+    this.http.post(`events/` + id_del, this.eventeditado)
       .subscribe(res => {
         swal({
           title: "Evento deletado com sucesso!",
@@ -235,7 +235,7 @@ export class SafeHtml {
       });
   }
 
-  cancelar(){
+  cancelar() {
     this.router.navigate(['editareventos/']);
   }
 

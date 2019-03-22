@@ -1,14 +1,15 @@
 <br><br>
-<div class="centralizar wow bounceInDown">  
-<pagination-controls class="paginacao shadow-lg" (pageChange)="p = $event"  maxSize="5" responsive="true" previousLabel="Anterior"
-nextLabel="Próxima"></pagination-controls>
-</div>  
-<div class="centralizar">  
+<div class="centralizar wow bounceInDown">
+  <pagination-controls class="paginacao shadow-lg" (pageChange)="p = $event" maxSize="5" responsive="true"
+    previousLabel="Anterior" nextLabel="Próxima"></pagination-controls>
+</div>
+<div class="centralizar">
   <br>
-  <div class="col-sm wow zoomIn"  data-wow-duration="1.6s" *ngFor="let noticia of noticias | paginate: { itemsPerPage: 12, totalItems: total, currentPage:p}">
+  <div class="col-sm wow zoomIn" data-wow-duration="1.6s"
+    *ngFor="let noticia of noticias | paginate: { itemsPerPage: 12, totalItems: total, currentPage:p}">
     <app-vernoticia [noticia]="noticia"></app-vernoticia>
   </div>
   <br><br><br>
   <div class="centralizar">
-  </div>  
+  </div>
 </div>
