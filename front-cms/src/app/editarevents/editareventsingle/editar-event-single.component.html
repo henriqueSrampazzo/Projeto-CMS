@@ -32,7 +32,7 @@
             <div class="form-row">
               <div class="col form-group">
                 <label>Título *</label>
-                <input type="text" class="form-control" [(ngModel)]="eventeditado.title" name="title" required
+                <input type="text" class="form-control" [(ngModel)]="event.title" name="title" required
                   #title=ngModel value="{{event?.title}}">
                 <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
                   Título é obrigatório!
@@ -43,7 +43,7 @@
             <div class="form-row">
               <div class="col form-group">
                 <label>Data *</label>
-                <input type="datetime-local" class="form-control" [(ngModel)]="eventeditado.dataevent" name="dataevent"
+                <input type="datetime-local" class="form-control" [(ngModel)]="event.dataevent" name="dataevent"
                   value="{{event?.dataevent}}" id="dataevent" required #dataevent=ngModel>
                 <div *ngIf="!dataevent.valid && dataevent.touched" class="alert alert-danger" role="alert">
                   Data é obrigatória!

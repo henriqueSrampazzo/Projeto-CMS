@@ -132,7 +132,6 @@ export class EditarNoticiaSingleComponent implements OnInit {
     photo5: null
   };
 
-
   constructor(
     private route: ActivatedRoute,
     private httpService: HttpService,
@@ -147,6 +146,7 @@ export class EditarNoticiaSingleComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.httpService.getBy('noticias', params['slug'])
         .subscribe(data => this.noticia = data);
+       // console.log(this.noticia['title']);
     });
 
     this.pegaVariavel.userNivelGlobal.subscribe(
@@ -154,8 +154,6 @@ export class EditarNoticiaSingleComponent implements OnInit {
     );
 
     var nivel = this.pegaVariavel['userNivel'];
-
-    //console.log(this.pegaVariavel['userNivel']);
 
   }
 
@@ -170,6 +168,9 @@ export class EditarNoticiaSingleComponent implements OnInit {
       this.noticiaeditada['photo3'] = this.image3;
       this.noticiaeditada['photo4'] = this.image4;
       this.noticiaeditada['photo5'] = this.image5;
+
+      this.noticiaeditada['title'] = this.noticia['title'];
+      this.noticiaeditada['description'] = this.noticia['description'];
 
       this.http.post('noticiasedit', this.noticiaeditada)
         .subscribe(res => {

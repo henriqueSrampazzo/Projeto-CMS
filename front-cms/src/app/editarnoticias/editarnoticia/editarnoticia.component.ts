@@ -23,6 +23,6 @@ export class EditarNoticiaComponent implements OnInit {
 
   constructor(private domSanitizer: DomSanitizer) { }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
 }

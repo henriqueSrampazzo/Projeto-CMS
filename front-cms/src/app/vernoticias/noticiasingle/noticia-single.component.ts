@@ -22,7 +22,6 @@ export class SafeHtml {
 export class NoticiaSingleComponent implements OnInit {
   private noticia: {};
 
-
   constructor(
     private route: ActivatedRoute,
     private httpService: HttpService,
@@ -36,16 +35,7 @@ export class NoticiaSingleComponent implements OnInit {
       this.httpService.getBy('noticias', params['slug'])
         .subscribe(data => this.noticia = data);
     });
-  }
-
-  subscribe(noticia_id) {
-    this.storage.set('noticia', noticia_id);
-
-    if (this.storage.get('token') != undefined) {
-      this.router.navigate(['/make-subscription']);
-    } else {
-      this.router.navigate(['/login'], { 'queryParams': { 'to': 'subscription_confirm' } });
-    }
+    
   }
 
 }

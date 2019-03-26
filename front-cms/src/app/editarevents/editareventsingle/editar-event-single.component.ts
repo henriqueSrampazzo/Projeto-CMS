@@ -175,6 +175,9 @@ export class SafeHtml {
       this.eventeditado['photo4'] = this.image4;
       this.eventeditado['photo5'] = this.image5;
 
+      this.eventeditado['title'] = this.event['title'];
+      this.eventeditado['dataevent'] = this.event['dataevent'];
+
       this.http.post('eventosedit', this.eventeditado)
         .subscribe(res => {
           swal({
@@ -190,7 +193,6 @@ export class SafeHtml {
     });
 
   }
-
 
   confirmdelete() {
     if (md5(this.senha['eventpassword']) == (this.event['eventpassword']) || (this.pegaVariavel['userNivel']) == 'admin') {

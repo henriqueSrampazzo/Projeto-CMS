@@ -34,7 +34,7 @@
             <div class="form-row">
               <div class="col form-group">
                 <label>Título *</label>
-                <input type="text" class="form-control" [(ngModel)]="noticiaeditada.title" name="title"
+                <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title"
                   value="{{noticia?.title}}" required #title=ngModel>
                 <div *ngIf="!title.valid && title.touched" class="alert alert-danger" role="alert">
                   Título é obrigatório!
@@ -45,7 +45,7 @@
             <div class="form-row">
               <div class="col form-group">
                 <label>Descrição *</label>
-                <textarea class="form-control" [(ngModel)]="noticiaeditada.description" name="description" rows="10"
+                <textarea class="form-control" [(ngModel)]="noticia.description" name="description" rows="10"
                   value="{{noticia?.description}}" required #description=ngModel></textarea>
                 <div *ngIf="!description.valid && description.touched" class="alert alert-danger" role="alert">
                   Descrição é obrigatória!
@@ -113,7 +113,7 @@
                   [disabled]="f.invalid"> Editar notícia
                 </button>
                 <button type="submit" class="btn btn-danger btn-block " (click)="confirmdelete()"
-                  [disabled]="noticiapassword.invalid"> Deletar evento
+                  [disabled]="noticiapassword.invalid"> Deletar notícia
                 </button>
                 <button type="submit" class="btn btn-secondary btn-block" (click)="cancelar()">Cancelar edição</button>
               </div>
@@ -124,6 +124,5 @@
     </div>
 
   </div>
-
 
 </div>
