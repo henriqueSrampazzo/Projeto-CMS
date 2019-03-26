@@ -21,20 +21,22 @@ ng serve
 6- Baixe o composer
 https://getcomposer.org/download/
 
-7- Instale o arquivo composer.json 
+7- Antes de instalar as dependências, delete as pastas vendor e bin, além do arquivo composer.lock
+
+8- Instale o arquivo composer.json 
 composer install
 
-8- Instale e execute o Xampp ou outro servidor de sua preferência
+9- Instale e execute o Xampp ou outro servidor de sua preferência
 https://www.edivaldobrito.com.br/como-instalar-o-xampp-no-linux/
 
-9- Instale e configure o MySQL ou Postgre, você que escolhe:
+10- Instale e configure o MySQL ou Postgre, você que escolhe:
 PostgreSQL -> https://www.techrepublic.com/blog/diy-it-guy/diy-a-postgresql-database-server-setup-anyone-can-handle/
 MySQL -> https://www.digitalocean.com/community/tutorials/como-instalar-o-mysql-no-ubuntu-18-04-pt
 
-10- Gere o sql do banco
+11- Gere o sql do banco
 php bin/doctrine orm:schema-tool:create --dump-sql
 
-11- Configure seu banco para PostgreSQL ou para MySQL entrando no diretório Projeto-CMS/bootstrap.php, e alterando o código:
+12- Configure seu banco para PostgreSQL ou para MySQL entrando no diretório Projeto-CMS/bootstrap.php, e alterando o código:
 
 //Para banco PostgreSQL
 $dbParams = array(
@@ -54,7 +56,7 @@ $dbParams = array(
 	'host'     => 'localhost'
 );
 
-12- Inicie a aplicação PHP 
+13- Inicie a aplicação PHP 
 php -S localhost:3030 -t public
 
 
