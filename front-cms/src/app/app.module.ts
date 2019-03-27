@@ -32,7 +32,6 @@ import { PegaVariavelService } from './pegaVariavel.service';
 import { NaoEncontradoComponent } from './naoEncontrado/naoEncontrado.component';
 import { SairComponent } from './sair/sair.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,8 +62,7 @@ import { SairComponent } from './sair/sair.component';
     AppRoutingModule,
     FormsModule,
     NgxPaginationModule,
-    HttpClientModule,
-    
+    HttpClientModule
   ],
   providers: [HttpService, StorageService, AuthGuard, AuthGuard2, PegaVariavelService],
   bootstrap: [AppComponent]

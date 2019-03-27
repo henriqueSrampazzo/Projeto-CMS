@@ -84,7 +84,7 @@ class ContatoController extends BaseController
 		//$mail->addAddress('petrymateus@hotmail.com', 'Administrador');
 
 //Set the subject line
-		$mail->Subject = utf8_decode('Mensagem de '. utf8_decode($nome));
+		$mail->Subject = utf8_decode('Mensagem de '). utf8_decode($nome);
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
